@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title> - 文刀白水</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="基础语法 GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] &#39;password&#39;] [,user [IDENTIFIED BY [PASSWORD] &#39;password&#39;]...]   priv_type代表允许操作的权限。
+  database.table代表数据库名.表名
+ 注意*代表所有，如database.*代表该数据库的所有表，*.*代表所有数据库的所有表    user由用户名(User)和主机名(Host)构成,中间用@隔开，最好加上单引号，不加也可以执行通过。
+  password代表设置的密码
+  例子   授权所有数据库的所有表的所有权限给ip为任意值用户名为test密码为pwd的用户
+ GRANT ALL ON *.* TO &#39;test&#39;@&#39;%&#39; IDENTIFIED BY &#39;pwd&#39;;    授权mydb数据库的所有表的增删改查权限给ip为1.1.1.1用户名为test密码为pwd的用户
+ GRANT SELECT,INSERT,UPDATE,DELETE ON mydb.* TO &#39;test&#39;@&#39;1.1.1.1&#39; IDENTIFIED BY &#39;pwd&#39;;    授权mydb数据库的stu表的修改权限给ip为1.1.1.1用户名为test密码为pwd的用户
+ GRANT UPDATE(name,age) ON mydb.stu TO &#39;test&#39;@&#39;1." /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/mysql%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%AE%9Aip%E8%AE%BF%E9%97%AE%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="基础语法 GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] &#39;password&#39;] [,user [IDENTIFIED BY [PASSWORD] &#39;password&#39;]...]   priv_type代表允许操作的权限。
+  database.table代表数据库名.表名
+ 注意*代表所有，如database.*代表该数据库的所有表，*.*代表所有数据库的所有表    user由用户名(User)和主机名(Host)构成,中间用@隔开，最好加上单引号，不加也可以执行通过。
+  password代表设置的密码
+  例子   授权所有数据库的所有表的所有权限给ip为任意值用户名为test密码为pwd的用户
+ GRANT ALL ON *.* TO &#39;test&#39;@&#39;%&#39; IDENTIFIED BY &#39;pwd&#39;;    授权mydb数据库的所有表的增删改查权限给ip为1.1.1.1用户名为test密码为pwd的用户
+ GRANT SELECT,INSERT,UPDATE,DELETE ON mydb.* TO &#39;test&#39;@&#39;1.1.1.1&#39; IDENTIFIED BY &#39;pwd&#39;;    授权mydb数据库的stu表的修改权限给ip为1.1.1.1用户名为test密码为pwd的用户
+ GRANT UPDATE(name,age) ON mydb.stu TO &#39;test&#39;@&#39;1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/mysql%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%AE%9Aip%E8%AE%BF%E9%97%AE%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="基础语法 GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] &#39;password&#39;] [,user [IDENTIFIED BY [PASSWORD] &#39;password&#39;]...]   priv_type代表允许操作的权限。
+  database.table代表数据库名.表名
+ 注意*代表所有，如database.*代表该数据库的所有表，*.*代表所有数据库的所有表    user由用户名(User)和主机名(Host)构成,中间用@隔开，最好加上单引号，不加也可以执行通过。
+  password代表设置的密码
+  例子   授权所有数据库的所有表的所有权限给ip为任意值用户名为test密码为pwd的用户
+ GRANT ALL ON *.* TO &#39;test&#39;@&#39;%&#39; IDENTIFIED BY &#39;pwd&#39;;    授权mydb数据库的所有表的增删改查权限给ip为1.1.1.1用户名为test密码为pwd的用户
+ GRANT SELECT,INSERT,UPDATE,DELETE ON mydb.* TO &#39;test&#39;@&#39;1.1.1.1&#39; IDENTIFIED BY &#39;pwd&#39;;    授权mydb数据库的stu表的修改权限给ip为1.1.1.1用户名为test密码为pwd的用户
+ GRANT UPDATE(name,age) ON mydb.stu TO &#39;test&#39;@&#39;1.">
+
+<meta itemprop="wordCount" content="360">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="基础语法 GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] &#39;password&#39;] [,user [IDENTIFIED BY [PASSWORD] &#39;password&#39;]...]   priv_type代表允许操作的权限。
+  database.table代表数据库名.表名
+ 注意*代表所有，如database.*代表该数据库的所有表，*.*代表所有数据库的所有表    user由用户名(User)和主机名(Host)构成,中间用@隔开，最好加上单引号，不加也可以执行通过。
+  password代表设置的密码
+  例子   授权所有数据库的所有表的所有权限给ip为任意值用户名为test密码为pwd的用户
+ GRANT ALL ON *.* TO &#39;test&#39;@&#39;%&#39; IDENTIFIED BY &#39;pwd&#39;;    授权mydb数据库的所有表的增删改查权限给ip为1.1.1.1用户名为test密码为pwd的用户
+ GRANT SELECT,INSERT,UPDATE,DELETE ON mydb.* TO &#39;test&#39;@&#39;1.1.1.1&#39; IDENTIFIED BY &#39;pwd&#39;;    授权mydb数据库的stu表的修改权限给ip为1.1.1.1用户名为test密码为pwd的用户
+ GRANT UPDATE(name,age) ON mydb.stu TO &#39;test&#39;@&#39;1."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">文刀白水</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">文刀白水</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title"></h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        
+          <span class="more-meta"> 360 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#grant-priv-type-on-databasetable-to-useridentified-by-password-password-user-identified-by-password-password">GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] 'password'] [,user [IDENTIFIED BY [PASSWORD] 'password']...]</a></li>
+        <li><a href="#heading-1">例子</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#user">user表：全局层级</a></li>
+        <li><a href="#db">db表：数据库层级</a></li>
+        <li><a href="#tables-priv">tables_priv表：表层级</a></li>
+        <li><a href="#columns-priv">columns_priv表：列层级</a></li>
+        <li><a href="#procs-priv">procs_priv表：子程序层级</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-3">创建用户</a>
+      <ul>
+        <li><a href="#create-user">CREATE USER方式</a></li>
+        <li><a href="#insert">INSERT方式</a></li>
+        <li><a href="#grant">GRANT方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4">删除用户</a>
+      <ul>
+        <li><a href="#drop-user">DROP USER方式</a></li>
+        <li><a href="#delete">DELETE方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-5">修改用户</a>
+      <ul>
+        <li><a href="#heading-6">修改用户名称</a></li>
+        <li><a href="#heading-7">修改用户密码</a></li>
+        <li><a href="#mysqladmin">mysqladmin方式</a></li>
+        <li><a href="#user-1">修改user表</a></li>
+        <li><a href="#set">SET语句方式</a></li>
+        <li><a href="#grant-1">GRANT方式</a></li>
+        <li><a href="#heading-8">忘记密码</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-9">收回用户权限</a>
+      <ul>
+        <li><a href="#heading-10">查看权限</a></li>
+        <li><a href="#revoke">revoke收回权限</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#privileges">PRIVILEGES分类权限</a>
+      <ul>
+        <li><a href="#heading-12">数据库/数据表/数据列权限</a></li>
+        <li><a href="#mysql-1">全局管理MySQL用户权限：</a></li>
+        <li><a href="#heading-13">特别的权限：</a></li>
+      </ul>
+    </li>
+    <li><a href="#userhost">user表中host列的值的意义</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="0001-01-01T00:00:00" title="January 1, 0001">January 1, 0001</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="heading">基础语法</h1>
+<h3 id="grant-priv-type-on-databasetable-to-useridentified-by-password-password-user-identified-by-password-password"><code>GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] 'password'] [,user [IDENTIFIED BY [PASSWORD] 'password']...]</code></h3>
+<ul>
+<li>
+<p>priv_type代表允许操作的权限。</p>
+</li>
+<li>
+<p>database.table代表数据库名.表名</p>
+<ul>
+<li>注意*代表所有，如database.*代表该数据库的所有表，*.*代表所有数据库的所有表</li>
+</ul>
+</li>
+<li>
+<p>user由用户名(User)和主机名(Host)构成,中间用@隔开，最好加上单引号，不加也可以执行通过。</p>
+</li>
+<li>
+<p>password代表设置的密码</p>
+</li>
+</ul>
+<h3 id="heading-1">例子</h3>
+<ul>
+<li>
+<p>授权所有数据库的所有表的所有权限给ip为任意值用户名为test密码为pwd的用户</p>
+<ul>
+<li><code>GRANT ALL ON *.* TO 'test'@'%' IDENTIFIED BY 'pwd';</code></li>
+</ul>
+</li>
+<li>
+<p>授权mydb数据库的所有表的增删改查权限给ip为1.1.1.1用户名为test密码为pwd的用户</p>
+<ul>
+<li><code>GRANT SELECT,INSERT,UPDATE,DELETE ON mydb.* TO 'test'@'1.1.1.1' IDENTIFIED BY 'pwd';</code></li>
+</ul>
+</li>
+<li>
+<p>授权mydb数据库的stu表的修改权限给ip为1.1.1.1用户名为test密码为pwd的用户</p>
+<ul>
+<li><code>GRANT UPDATE(name,age) ON mydb.stu TO 'test'@'1.1.1.1' IDENTIFIED BY 'pwd';</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="mysql">Mysql权限层级相关表</h1>
+<h3 id="user">user表：全局层级</h3>
+<ul>
+<li>
+<p>存储用户记录的表。关键字段有Host、User、Password。</p>
+</li>
+<li>
+<p>创建对所有表有SELECT操作权限的用户</p>
+</li>
+<li>
+<p><code>GRANT SELECT ON *.* TO name@'1.1.1.1' IDENTIFIED BY 'pwd';</code></p>
+</li>
+</ul>
+<h3 id="db">db表：数据库层级</h3>
+<ul>
+<li>
+<p>存储该用户对一个数据库所有的操作权限。关键字段有Host、User、Db。</p>
+</li>
+<li>
+<p>授予所有权限</p>
+<ul>
+<li><code>GRANT ALL ON mydb.* TO name@'1.1.1.1' IDENTIFIED BY 'pwd';</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="tables-priv">tables_priv表：表层级</h3>
+<ul>
+<li>
+<p>记录了对一个表的单独授权记录.关键字段有Host、User、Db、Table_name、Table_priv、Column_priv。</p>
+</li>
+<li>
+<p>当授权all在某张表的时候，Table_priv会有如下授权记录：</p>
+<ul>
+<li>Select,Insert,Update,Delete,Create,Drop,References,Index,Alter,Create View,Show view,Trigger。</li>
+</ul>
+</li>
+<li>
+<p>单独授权表的某一列，会记录在此表的Column_priv里</p>
+<ul>
+<li>
+<p><code>GRANT UPDATE(age) ON mydb.user  TO name@'1.1.1.1';</code></p>
+</li>
+<li>
+<p><code>GRANT SELECT(birthday) ON  mydb.user TO name@'1.1.1.1';</code></p>
+</li>
+<li>
+<p>此时会在另一张表columns_priv表中留下单独授权记录</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="columns-priv">columns_priv表：列层级</h3>
+<ul>
+<li>记录对表的某一列的授权记录。关键字段Host、User、Db、Table_name、Column_name。</li>
+</ul>
+<h3 id="procs-priv">procs_priv表：子程序层级</h3>
+<ul>
+<li>可以对存储过程和存储函数进行权限设置。关键字段Host、User、proc_priv</li>
+</ul>
+<h1 id="heading-2">用户相关操作</h1>
+<h2 id="heading-3">创建用户</h2>
+<h3 id="create-user">CREATE USER方式</h3>
+<ul>
+<li>
+<p>必须要拥有CREATE USER权限。</p>
+</li>
+<li>
+<p><code>CREATE USER user[IDENTIFIED BY [PASSWORD] 'password'], [user[IDENTIFIED BY [PASSWORD] 'password']]...</code></p>
+<ul>
+<li><code>CREATE USER 'name'@'%' IDENTIFIED BY 'pwd';</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="insert">INSERT方式</h3>
+<ul>
+<li>
+<p>必须拥有mysql.user表的INSERT权限。另外，ssl_cipher、x509_issuer、x509_subject等必须要设置值</p>
+</li>
+<li>
+<p><code>INSERT INTO mysql.user(Host,User,Password,ssl_cipher,x509_issuer,x509_subject) VALUES('%','name',PASSWORD('pwd'),'','','') </code></p>
+</li>
+</ul>
+<h3 id="grant">GRANT方式</h3>
+<ul>
+<li>
+<p>需要拥有GRANT权限。</p>
+</li>
+<li>
+<p><code>GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] 'password'] [,user [IDENTIFIED BY [PASSWORD] 'password']...]</code></p>
+<ul>
+<li><code>GRANT ALL ON mydb.*  TO name@'1.1.1.1' IDENTIFIED BY 'pwd';</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-4">删除用户</h2>
+<h3 id="drop-user">DROP USER方式</h3>
+<ul>
+<li>
+<p>需要拥有DROP USER权限。</p>
+</li>
+<li>
+<p>DROP USER user[,user]&hellip;</p>
+<ul>
+<li>user是需要删除的用户，由用户名(User)和主机名(Host)构成。</li>
+<li>eg：<code>DROP USER name@'1.1.1.1'</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="delete">DELETE方式</h3>
+<ul>
+<li><code>DELETE FROM mydb.user WHERE Host = '% AND User = 'admin';</code></li>
+</ul>
+<h2 id="heading-5">修改用户</h2>
+<h3 id="heading-6">修改用户名称</h3>
+<ul>
+<li><code>RENAME USER name TO newname</code></li>
+</ul>
+<h3 id="heading-7">修改用户密码</h3>
+<h3 id="mysqladmin">mysqladmin方式</h3>
+<ul>
+<li><code>mysqladmin -u username -p password &quot;new_password&quot;;</code></li>
+</ul>
+<h3 id="user-1">修改user表</h3>
+<ul>
+<li><code>UPDATE user SET Password = PASSWORD('pwd') WHERE USER = 'name';</code></li>
+</ul>
+<h3 id="set">SET语句方式</h3>
+<ul>
+<li>
+<p>修改自己用户</p>
+<ul>
+<li><code>SET PASSWORD = PASSWORD(&quot;pwd&quot;);</code></li>
+</ul>
+</li>
+<li>
+<p>修改其他用户</p>
+<ul>
+<li><code>SET PASSWORD FOR 'name'@'%'=PASSWORD(&quot;pwd&quot;)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="grant-1">GRANT方式</h3>
+<ul>
+<li><code>GRANT SELECT ON *.* TO 'name'@'%' IDENTIFIED BY 'pwd'</code></li>
+</ul>
+<h3 id="heading-8">忘记密码</h3>
+<ul>
+<li>
+<p>mysqld_saft方式</p>
+<ul>
+<li>
+<p>停止mysql：<code>service mysqld stop;</code></p>
+</li>
+<li>
+<p>安全模式启动：<code>mysqld_safe –skip-grant-tables &amp; </code></p>
+</li>
+<li>
+<p>无密码回车键登录：`mysql -uroot –p</p>
+</li>
+<li>
+<p>重置密码：<code>use mysql; update user set password=password(&quot;&quot;) where user=’root’ and host=’localhost’; flush privileges;</code></p>
+</li>
+<li>
+<p>正常启动：<code>service mysql restart</code></p>
+</li>
+<li>
+<p>再使用mysqladmin：<code>mysqladmin password '123456';</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用普通账号来找回密码</p>
+<ul>
+<li>
+<p>有一个修改test库的用户：grant all on mydb.* to test@’%’ identified by ‘test’;</p>
+</li>
+<li>
+<p>复制user表文件到test库下并且赋予mysql用户访问权限:</p>
+<ul>
+<li>
+<p>cp /home/data/mysql/data/mysql/user.* /home/data/mysql/data/test/;</p>
+</li>
+<li>
+<p>chown mysql.mysql /home/data/mysql/data/test/user.*</p>
+</li>
+</ul>
+</li>
+<li>
+<p>mysql -utest -ptest登录修改root密码</p>
+</li>
+<li>
+<p>将test库的user表文件覆盖 mysql库的user表文件</p>
+<ul>
+<li>
+<p>cp /home/data/mysql/data/mysql/user.* /tmp/;</p>
+</li>
+<li>
+<p>mv /home/data/mysql/data/test/user.* /home/data/mysql/data/mysql/ ;</p>
+</li>
+<li>
+<p>chown mysql.mysql /home/data/mysql/data/mysql/user.*;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>查找mysql进程号，并且发送SIGHUP信号，重新加载权限表。</p>
+<ul>
+<li>
+<p>pgrep -n mysql;</p>
+</li>
+<li>
+<p>kill -SIGHUP 11111;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>无密码登录，再使用mysqladmin重新设置密码。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-9">收回用户权限</h2>
+<h3 id="heading-10">查看权限</h3>
+<ul>
+<li>
+<p><code>SHOW GRANTS;</code></p>
+</li>
+<li>
+<p><code>SHOW GRANTS FOR name@'%';</code></p>
+</li>
+<li>
+<p><code>SELECT * FROM mysql.user WHERE USER='name' AND HOST='%'; </code></p>
+</li>
+</ul>
+<h3 id="revoke">revoke收回权限</h3>
+<ul>
+<li><code>REVOKE priv_type[(column_list)] ON database.table FROM user[,user]</code>
+<ul>
+<li><code>REVOKE EXECUTE ON mydb.* FROM name@'%';</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="heading-11">附录常见概念</h1>
+<h2 id="privileges">PRIVILEGES分类权限</h2>
+<h3 id="heading-12">数据库/数据表/数据列权限</h3>
+<ul>
+<li>
+<p>Alter: 修改已存在的数据表(例如增加/删除列)和索引。</p>
+</li>
+<li>
+<p>Create: 建立新的数据库或数据表。</p>
+</li>
+<li>
+<p>Delete: 删除表的记录。</p>
+</li>
+<li>
+<p>Drop: 删除数据表或数据库。</p>
+</li>
+</ul>
+<p>-INDEX: 建立或删除索引。</p>
+<ul>
+<li>
+<p>Insert: 增加表的记录。</p>
+</li>
+<li>
+<p>Select: 显示/搜索表的记录。</p>
+</li>
+<li>
+<p>Update: 修改表中已存在的记录。</p>
+</li>
+</ul>
+<h3 id="mysql-1">全局管理MySQL用户权限：</h3>
+<ul>
+<li>
+<p>file: 在MySQL服务器上读写文件。</p>
+</li>
+<li>
+<p>PROCESS: 显示或杀死属于其它用户的服务线程。</p>
+</li>
+<li>
+<p>RELOAD: 重载访问控制表，刷新日志等。</p>
+</li>
+<li>
+<p>SHUTDOWN: 关闭MySQL服务。</p>
+</li>
+</ul>
+<h3 id="heading-13">特别的权限：</h3>
+<ul>
+<li>
+<p>ALL: 允许做任何事(和root一样)。</p>
+</li>
+<li>
+<p>USAGE: 只允许登录&ndash;其它什么也不允许做。</p>
+</li>
+</ul>
+<h2 id="userhost">user表中host列的值的意义</h2>
+<ul>
+<li>
+<p>%：匹配所有主机</p>
+</li>
+<li>
+<p>localhost：localhost不会被解析成IP地址，直接通过UNIXsocket连接</p>
+</li>
+<li>
+<p>127.0.0.1：会通过TCP/IP协议连接，并且只能在本机访问；</p>
+</li>
+<li>
+<p>::1：兼容支持ipv6的，表示同ipv4的127.0.0.1</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        0001-01-01
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://github.com/ToughMind" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/WEB%E5%BC%80%E5%8F%91/mybatis/%E6%97%A0%E6%A0%87%E9%A2%98Markdown/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default"></span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E5%B7%A5%E4%BD%9C/%E6%88%91%E7%9A%84%E6%9C%8D%E5%8A%A1/">
+            <span class="next-text nav-default"></span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://www.cnblogs.com/stevexu" class="iconfont icon-cnblogs" title="cnblogs"></a>
+      <a href="mailto:stevexugc@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="https://juejin.im/user/59aeb829f265da249960595a" class="iconfont icon-juejin" title="juejin"></a>
+      <a href="https://www.v2ex.com/member/stevexu" class="iconfont icon-v2ex" title="v2ex"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

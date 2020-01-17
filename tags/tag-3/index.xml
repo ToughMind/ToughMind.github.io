@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tag-3 on 文刀白水</title>
+    <link>http://blog.nbgg.xyz/tags/tag-3/</link>
+    <description>Recent content in tag-3 on 文刀白水</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/tags/tag-3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git操作</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git-%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git-%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/</guid>
+      <description>1. 配置相关 简单配置操作 git config &amp;ndash;global user.name XXXX 常用的配置属性还有user.email, color.ui, core.editor, alias 显示当前的配置信息 git config &amp;ndash;list 2. 本地操作 仓库相关 从其他仓库获取 git clone git@code.csdn.net:liuquan0071/XXX.git</description>
+    </item>
+    
+    <item>
+      <title>Theme preview</title>
+      <link>http://blog.nbgg.xyz/post/even-preview/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/even-preview/</guid>
+      <description>Based on MarkdownPreview test.md. Markdown 1 2 3 4 5 6 7 8 # H1 ## H2 ### H3 #### H4 ##### H5 ###### H6 ### Duplicate Header ### Duplicate Header H1 H2 H3 H4 H5 H6 Duplicate Header Duplicate Header Paragraphs 1 2 3 4 This is a paragraph. I am still part of the paragraph. New paragraph. This is a paragraph. I am still part of the paragraph.</description>
+    </item>
+    
+  </channel>
+</rss>

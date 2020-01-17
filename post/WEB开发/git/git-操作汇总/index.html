@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>git操作 - 文刀白水</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="1. 配置相关 简单配置操作 git config &amp;ndash;global user.name XXXX 常用的配置属性还有user.email, color.ui, core.editor, alias 显示当前的配置信息 git config &amp;ndash;list 2. 本地操作 仓库相关 从其他仓库获取 git clone git@code.csdn.net:liuquan0071/XXX.git" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git-%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="git操作" />
+<meta property="og:description" content="1. 配置相关 简单配置操作 git config &ndash;global user.name XXXX 常用的配置属性还有user.email, color.ui, core.editor, alias 显示当前的配置信息 git config &ndash;list 2. 本地操作 仓库相关 从其他仓库获取 git clone git@code.csdn.net:liuquan0071/XXX.git" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git-%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/" />
+<meta property="article:published_time" content="2018-07-10T00:00:00+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="git操作">
+<meta itemprop="description" content="1. 配置相关 简单配置操作 git config &ndash;global user.name XXXX 常用的配置属性还有user.email, color.ui, core.editor, alias 显示当前的配置信息 git config &ndash;list 2. 本地操作 仓库相关 从其他仓库获取 git clone git@code.csdn.net:liuquan0071/XXX.git">
+<meta itemprop="datePublished" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="1954">
+
+
+
+<meta itemprop="keywords" content="preview,Theme preview,tag-3," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="git操作"/>
+<meta name="twitter:description" content="1. 配置相关 简单配置操作 git config &ndash;global user.name XXXX 常用的配置属性还有user.email, color.ui, core.editor, alias 显示当前的配置信息 git config &ndash;list 2. 本地操作 仓库相关 从其他仓库获取 git clone git@code.csdn.net:liuquan0071/XXX.git"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">文刀白水</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">文刀白水</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">git操作</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-07-10 </span>
+        <div class="post-category">
+            <a href="/categories/Theme-preview/"> Theme preview </a>
+            <a href="/categories/category-2/"> category-2 </a>
+            <a href="/categories/category-3/"> category-3 </a>
+            </div>
+          <span class="more-meta"> 1954 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-">1. 配置相关</a>
+      <ul>
+        <li><a href="#heading">简单配置操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-">2. 本地操作</a>
+      <ul>
+        <li><a href="#heading-1">仓库相关</a></li>
+        <li><a href="#heading-2">简单文件操作</a></li>
+        <li><a href="#heading-3">改动相关</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4">分支相关</a>
+      <ul>
+        <li><a href="#heading-5">简单分支操作</a></li>
+        <li><a href="#heading-6">标签相关</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-7">远端相关</a>
+      <ul>
+        <li><a href="#heading-8">简单远端操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-9">补丁相关</a>
+      <ul>
+        <li><a href="#heading-10">简单操作</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h2 id="1-">1. 配置相关</h2>
+<h3 id="heading">简单配置操作</h3>
+<ul>
+<li>
+<p><strong>git config &ndash;global user.name</strong>  XXXX</p>
+</li>
+<li>
+<p>常用的配置属性还有<strong>user.email, color.ui, core.editor, alias</strong></p>
+</li>
+<li>
+<p>显示当前的配置信息</p>
+<ul>
+<li><strong>git config &ndash;list</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-">2. 本地操作</h2>
+<h3 id="heading-1">仓库相关</h3>
+<ul>
+<li>
+<p>从其他仓库获取</p>
+<ul>
+<li><strong>git clone <a href="mailto:git@code.csdn.net">git@code.csdn.net</a>:liuquan0071/XXX.git</strong></li>
+</ul>
+</li>
+<li>
+<p>初始化仓库</p>
+<ul>
+<li><strong>git int</strong> 在当前文件夹中建立</li>
+</ul>
+</li>
+<li>
+<p>显示状态</p>
+<ul>
+<li><strong>git status</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-2">简单文件操作</h3>
+<ul>
+<li>
+<p>增加和提交文件</p>
+<ul>
+<li>
+<p><strong>git add</strong> files</p>
+</li>
+<li>
+<p><strong>git add -p</strong> 交互式，可选择</p>
+</li>
+<li>
+<p><strong>git commit -m &ldquo;XXX&rdquo;</strong> 直接提交已暂存文件</p>
+</li>
+<li>
+<p><strong>git commit -am &ldquo;XXX&rdquo;</strong> 直接提交未暂存文件</p>
+</li>
+<li>
+<p>若输入<code>git commit</code>或者<code>gitcommit -m</code>，则会跳转到编辑器中提示编写提交信息。编辑器类型可以通过<code>git config --global core.editor XXX</code>设定</p>
+<ul>
+<li>如果是新增文件，不可一次性commit，需要先<code>git add</code>添加到暂存区</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>删除文件</p>
+<ul>
+<li>
+<p><strong>git rm file</strong> 彻底删除某个文件</p>
+</li>
+<li>
+<p><strong>git rm &ndash;cached file</strong> 从版本库中删除，保留本地文件。即取消跟踪状态</p>
+</li>
+</ul>
+</li>
+<li>
+<p>重命名文件</p>
+<ul>
+<li><strong>git mv file newfile</strong></li>
+</ul>
+</li>
+<li>
+<p>显示提交日志</p>
+<ul>
+<li>
+<p><strong>git log</strong></p>
+</li>
+<li>
+<p><strong>git log -p</strong> 显示patch</p>
+</li>
+<li>
+<p><strong>git log　&ndash;stat</strong> 显示改动的一个总结</p>
+</li>
+<li>
+<p><strong>git log &ndash;graph</strong> 只显示当前branch的</p>
+</li>
+<li>
+<p><strong>git log &ndash;graph &ndash;all</strong> 显示所有branch的</p>
+</li>
+<li>
+<p><strong>git log &ndash;graph &ndash;all &ndash;decorate</strong> 显示branch的名字</p>
+</li>
+<li>
+<p><strong>git log &ndash;pretty=oneline,short,full,fuller</strong> 输出不同的形式</p>
+</li>
+<li>
+<p><strong>git log &ndash;pretty=oneline, short, full, fuller</strong> 输出的log 形式不同</p>
+</li>
+<li>
+<p><strong>git log &ndash;pretty=format:&quot;%h - %an, %ar : %s&rdquo;</strong> 按照指定的格式输出</p>
+<ul>
+<li>关于<code>--pretty</code>的其他选项和具体的format格式，参考 <code>git log --help</code>中PRETTY FORMAT这部分。</li>
+</ul>
+</li>
+<li>
+<p><strong>git log &ndash;follow file</strong></p>
+<ul>
+<li>通常我们会移动某个文件到某个目录下。如果这么做，<code>git log</code>是不能显示目录移动前的记录的。那就加上 <code>--follow</code>吧</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>显示日志筛选</p>
+<ul>
+<li>
+<p><strong>git log -2 -p</strong> 显示最近两次commit的log 和 diff</p>
+</li>
+<li>
+<p><strong>git log &ndash;author=&quot;liuquan&rdquo;</strong> 筛选特定作者的log</p>
+</li>
+<li>
+<p><strong>git log &ndash;since=&quot;2016-9-21&rdquo; &ndash;before=&quot;2016-9-22&rdquo;</strong> 筛选时间段</p>
+</li>
+<li>
+<p><strong>git log &ndash;grep=&quot;key word&rdquo;</strong> 在commit 的message中查找关键字</p>
+</li>
+<li>
+<p><strong>git log dev &ndash;not master</strong>  dev，但不在master上的记录。</p>
+</li>
+<li>
+<p><strong>git log -S&quot;func_name&rdquo;</strong>   查找某个字符出现，或者移出的commit。 比如可以查找一个函数是什么时候添加，或者删除的。</p>
+</li>
+<li>
+<p><strong>git show sha1</strong> 这个sha1是每个commit的sha1，这样显示某个commit的完全信息，包括diff</p>
+</li>
+<li>
+<p><strong>git log master ^dev</strong> 可以在merge前看看有哪些需要commit</p>
+<ul>
+<li>在master上，但不在dev上的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-3">改动相关</h3>
+<ul>
+<li>
+<p>撤销未提交改动</p>
+<ul>
+<li>
+<p><strong>git checkout &ndash; file</strong> 撤销了未暂存区文件的改动</p>
+<ul>
+<li><code>--</code>表明了这是一个文件，而不是分支的名字</li>
+</ul>
+</li>
+<li>
+<p><strong>git checkout head file</strong> 暂存区和未暂存区的改动都会清除</p>
+</li>
+<li>
+<p><strong>git reset &ndash;hard head</strong> 撤销所有未提交的改动，包括暂存区和未暂存区</p>
+</li>
+</ul>
+</li>
+<li>
+<p>撤销已提交改动</p>
+<ul>
+<li>
+<p><strong>git revert head</strong> 自动重新做一个commit，返回最后一次commit</p>
+</li>
+<li>
+<p><strong>git reset &ndash;hard~1</strong> 删除最近的一次提交（类似指针前移）</p>
+</li>
+<li>
+<p><strong>git reset &ndash;hard (SHA1)</strong> 回退已提交状态，包括暂存区和未暂存区（相当于回到文件初始状态，即上一次提交状态）</p>
+</li>
+<li>
+<p><strong>git reset &ndash;mixed (SHA1)</strong> 回退已提交状态，回到未暂存区</p>
+</li>
+<li>
+<p><strong>git reset &ndash;soft (SHA1)</strong> 回退已提交状态，回到暂存区</p>
+</li>
+<li>
+<p><strong>git commit &ndash;amend</strong> 提交最新，代替之前的提交</p>
+</li>
+</ul>
+</li>
+<li>
+<p>显示所做的改动</p>
+<ul>
+<li>
+<p><strong>git diff</strong> 未暂存区VS本地初始文件（或者暂存区）</p>
+<ul>
+<li>同一文件先add到暂存区，然后又做了修改，此时被比较的文件是暂存区的</li>
+</ul>
+</li>
+<li>
+<p><strong>git diff &ndash;staged</strong>或者<strong>git diff &ndash;cached</strong> 暂存区VS本地版本库</p>
+</li>
+<li>
+<p><strong>git diff commit1 commit2</strong> 从commit1到commit2的变动</p>
+<ul>
+<li>注意：顺序不定，可以逆向</li>
+</ul>
+</li>
+<li>
+<p><strong>git blame -C file</strong> 显示文件的具体改动</p>
+</li>
+<li>
+<p><strong>git blame -L n,m file</strong> 查看n、m两行间的改动</p>
+</li>
+<li>
+<p><strong>git blame commit1~1 -L n,m file</strong> 查看commit1版本之前的改动</p>
+</li>
+<li>
+<p><strong>git blame commit1~1 -L n,m &ndash; oldfile</strong></p>
+<ul>
+<li>
+<p>如果这个文件被命名过，或者移动过，就要输入旧文件的名字。</p>
+</li>
+<li>
+<p>而且一定要加上 <code>--</code></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-4">分支相关</h2>
+<h3 id="heading-5">简单分支操作</h3>
+<ul>
+<li>
+<p>显示分支</p>
+<ul>
+<li>
+<p><strong>git branch</strong></p>
+</li>
+<li>
+<p><strong>git branch -v</strong> 显示详细点的信息</p>
+</li>
+<li>
+<p><strong>git branch &ndash;merged</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>创建分支</p>
+<ul>
+<li>
+<p><strong>git branch XXX</strong></p>
+</li>
+<li>
+<p><strong>git checkout -b XXX</strong></p>
+</li>
+<li>
+<p><strong>git branch XXX commit1</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>切换分支</p>
+<ul>
+<li><strong>git checkout XXX</strong></li>
+</ul>
+</li>
+<li>
+<p>图形化显示分支信息</p>
+<ul>
+<li>
+<p><strong>gitk</strong></p>
+</li>
+<li>
+<p><strong>gitk &ndash;all</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>合并分支</p>
+<ul>
+<li><strong>git merge XXX</strong></li>
+</ul>
+</li>
+<li>
+<p>删除分支</p>
+<ul>
+<li><strong>git branch -d XXX</strong></li>
+</ul>
+</li>
+<li>
+<p>处理冲突</p>
+<ul>
+<li><strong>git mergetool</strong></li>
+</ul>
+</li>
+<li>
+<p>查看哪些分支合并了</p>
+<ul>
+<li>
+<p><strong>git branch &ndash;merged</strong></p>
+</li>
+<li>
+<p><strong>git branch &ndash;no-merged</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>备份工作区</p>
+<ul>
+<li><strong>git stash</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-6">标签相关</h3>
+<ul>
+<li>
+<p>显示tag</p>
+<ul>
+<li>
+<p><strong>git tag</strong></p>
+</li>
+<li>
+<p><strong>git tag -l v3.0</strong> 匹配显示</p>
+</li>
+<li>
+<p><strong>git show XXX</strong> 显示某个tag的详细信息</p>
+</li>
+</ul>
+</li>
+<li>
+<p>创建tag</p>
+<ul>
+<li>
+<p><strong>git tag -a XXX -m &ldquo;XXXXX&rdquo;</strong></p>
+</li>
+<li>
+<p><strong>git tag -s XXX -m &ldquo;XXXXX&rdquo;</strong></p>
+<ul>
+<li>这个将会加上pgp的签名</li>
+</ul>
+</li>
+<li>
+<p><strong>git tag -a XXX SHA</strong> 对某个指定的SHA大tag</p>
+</li>
+</ul>
+</li>
+<li>
+<p>推送tag，默认情况是不会推送tag到远端的</p>
+<ul>
+<li>
+<p><strong>git push origin XXX</strong></p>
+</li>
+<li>
+<p><strong>git push origin &ndash;tags</strong> 推送所有标签</p>
+</li>
+</ul>
+</li>
+<li>
+<p>验证tag</p>
+<ul>
+<li><strong>git tag -v XXX</strong> 对于<code>-s</code>签名的tag</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-7">远端相关</h2>
+<h3 id="heading-8">简单远端操作</h3>
+<ul>
+<li>
+<p>显示远端信息</p>
+<ul>
+<li>
+<p><strong>git remote</strong></p>
+</li>
+<li>
+<p><strong>git remote -v</strong></p>
+</li>
+<li>
+<p><strong>git remote show origin</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>添加其他远端库</p>
+<ul>
+<li><strong>git remote add XXX</strong></li>
+</ul>
+</li>
+<li>
+<p>从远端下载</p>
+<ul>
+<li>
+<p><strong>git fetch XXX</strong></p>
+</li>
+<li>
+<p><strong>git pull</strong> 下载更新后直接<code>merge</code>了</p>
+</li>
+<li>
+<p><strong>git clone</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>上传</p>
+<ul>
+<li><strong>git push origin master</strong></li>
+</ul>
+</li>
+<li>
+<p>删除远端分支</p>
+<ul>
+<li><strong>git push origin :master</strong></li>
+</ul>
+</li>
+<li>
+<p>同步</p>
+<ul>
+<li>
+<p><strong>git fetch</strong> 同步状态</p>
+</li>
+<li>
+<p><strong>git fetch -p</strong> 可以清空远端已经不用的分支</p>
+</li>
+<li>
+<p><strong>git branch -v</strong>  可以看到本地仓库中分支的状态。</p>
+</li>
+<li>
+<p><strong>git branch -av</strong> 可以看到远端和本地分支的状态</p>
+</li>
+<li>
+<p><strong>git checkout XXX</strong> 换到你想要更新的local branch上</p>
+</li>
+<li>
+<p><strong>git rebase origin/XXX</strong> 这样可以将本地做的commit 取下，并重新apply到最新的地方。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-9">补丁相关</h2>
+<h3 id="heading-10">简单操作</h3>
+<ul>
+<li>patch相关
+<ul>
+<li>
+<p><strong>git apply patchfile</strong> 从patchfile中应用这个patch。 效果和patch命令类似。</p>
+<ul>
+<li>
+<p><code>apply</code>要么成功，要么不成功。而<code>patch</code>可能有部分的patch打上了，有的没有打上。</p>
+</li>
+<li>
+<p><code>git apply</code>后，并没有自动生成一个commit</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>git apply &ndash;check</strong>  可以用来检测这个patch是不是会产生冲突或者失败</p>
+</li>
+<li>
+<p><strong>git am patchfile</strong> 专为git设计patchfile，patchfile是通过<code>git format-patch</code>生成的，会自动生成一个commit</p>
+</li>
+<li>
+<p><strong>git am &ndash;resolved</strong></p>
+<ul>
+<li><code>git am</code>过程中可能会有conflict. 若遇到conflict，就需要手动修改code，<code>git add</code>后用<code>git am --resolved</code></li>
+</ul>
+</li>
+<li>
+<p>可以学习一下git制作patch</p>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/preview/">preview</a>
+          <a href="/tags/Theme-preview/">Theme preview</a>
+          <a href="/tags/tag-3/">tag-3</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/even-preview/">
+            <span class="next-text nav-default">Theme preview</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://www.cnblogs.com/stevexu" class="iconfont icon-cnblogs" title="cnblogs"></a>
+      <a href="mailto:stevexugc@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="https://juejin.im/user/59aeb829f265da249960595a" class="iconfont icon-juejin" title="juejin"></a>
+      <a href="https://www.v2ex.com/member/stevexu" class="iconfont icon-v2ex" title="v2ex"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
