@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="文刀白水" /><meta name="description" content="基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的roles：(galaxy.ansible.com" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="文刀白水" /><meta name="description" content="安装ansible 1 2 3 sudo apt-add-repository ppa:ansible/ansible sudo apt-get update sudo apt-get install ansible 基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的rol" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="ansible基础学习" />
-<meta property="og:description" content="基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的roles：(galaxy.ansible.com" />
+<meta property="og:description" content="安装ansible 1 2 3 sudo apt-add-repository ppa:ansible/ansible sudo apt-get update sudo apt-get install ansible 基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的rol" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/ansible/ansible%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" />
 <meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
 <meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
 <meta itemprop="name" content="ansible基础学习">
-<meta itemprop="description" content="基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的roles：(galaxy.ansible.com">
+<meta itemprop="description" content="安装ansible 1 2 3 sudo apt-add-repository ppa:ansible/ansible sudo apt-get update sudo apt-get install ansible 基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的rol">
 <meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
 <meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
-<meta itemprop="wordCount" content="249">
+<meta itemprop="wordCount" content="271">
 
 
 
 <meta itemprop="keywords" content="ansible," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ansible基础学习"/>
-<meta name="twitter:description" content="基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的roles：(galaxy.ansible.com"/>
+<meta name="twitter:description" content="安装ansible 1 2 3 sudo apt-add-repository ppa:ansible/ansible sudo apt-get update sudo apt-get install ansible 基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的rol"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -133,7 +133,7 @@
         <div class="post-category">
             <a href="/categories/ansible/"> ansible </a>
             </div>
-          <span class="more-meta"> 249 words </span>
+          <span class="more-meta"> 271 words </span>
           <span class="more-meta"> 1 min read </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
       </div>
@@ -144,6 +144,7 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#ansible">安装ansible</a></li>
     <li><a href="#heading">基本连接命令</a></li>
     <li><a href="#heading-1">角色相关</a></li>
     <li><a href="#heading-2">常用命令</a></li>
@@ -159,7 +160,20 @@
     </div>
   </div>
     <div class="post-content">
-      <h2 id="heading">基本连接命令</h2>
+      <h2 id="ansible">安装ansible</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="heading">基本连接命令</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

@@ -17,7 +17,16 @@
       <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
       
       <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git-%E5%90%84%E5%8C%BA%E5%9F%9F%E8%BD%AC%E6%8D%A2%E5%9B%BE%E8%A7%A3/</guid>
-      <description>注意：此图解主要针对已跟踪状态文件而言，对于新增文件，有些操作会有问题。 1. 修改本地已被跟踪文件，文件进入未暂存区域。 2. 未暂存区域转到暂存区域</description>
+      <description>注意 此图解主要针对已跟踪状态文件而言，对于新增文件，有些操作会有问题。 修改本地已被跟踪文件，文件进入未暂存区域。 未暂存区域转到暂存区域 git add files</description>
+    </item>
+    
+    <item>
+      <title>git学习笔记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>2016.7.11 本地版本控制类似于文件打补丁；集中化的版本控制，都有单一的集中管理的服务器，而客户端连接这台服务器，取出最新的文件或者提交更新，缺点是单点</description>
     </item>
     
     <item>
@@ -27,15 +36,6 @@
       
       <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git-%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB/</guid>
       <description>1. 配置相关 简单配置操作 git config &amp;ndash;global user.name XXXX 常用的配置属性还有user.email, color.ui, core.editor, alias 显示当前的配置信息 git config &amp;ndash;list 2. 本地操作 仓库相关 从其他仓库获取 git clone git@code.csdn.net:liuquan0071/XXX.git</description>
-    </item>
-    
-    <item>
-      <title>git操作汇总</title>
-      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
-      
-      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/git/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
-      <description>2016.7.11 本地版本控制类似于文件打补丁；集中化的版本控制，都有单一的集中管理的服务器，而客户端连接这台服务器，取出最新的文件或者提交更新，缺点是单点</description>
     </item>
     
   </channel>

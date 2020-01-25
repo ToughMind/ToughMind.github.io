@@ -144,16 +144,12 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#heading">基础语法</a>
       <ul>
-        <li><a href="#grant-priv-type-on-databasetable-to-useridentified-by-password-password-user-identified-by-password-password">GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] 'password'] [,user [IDENTIFIED BY [PASSWORD] 'password']...]</a></li>
         <li><a href="#heading-1">例子</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li>
+    <li><a href="#mysql">Mysql权限层级相关表</a>
       <ul>
         <li><a href="#user">user表：全局层级</a></li>
         <li><a href="#db">db表：数据库层级</a></li>
@@ -162,36 +158,18 @@
         <li><a href="#procs-priv">procs_priv表：子程序层级</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li><a href="#heading-3">创建用户</a>
+    <li><a href="#heading-2">用户相关操作</a>
       <ul>
-        <li><a href="#create-user">CREATE USER方式</a></li>
-        <li><a href="#insert">INSERT方式</a></li>
-        <li><a href="#grant">GRANT方式</a></li>
+        <li><a href="#heading-3">创建用户</a></li>
+        <li><a href="#heading-4">删除用户</a></li>
+        <li><a href="#heading-5">修改用户</a></li>
+        <li><a href="#heading-6">修改用户密码</a></li>
+        <li><a href="#heading-7">忘记密码</a></li>
       </ul>
     </li>
-    <li><a href="#heading-4">删除用户</a>
+    <li><a href="#heading-8">收回用户权限</a>
       <ul>
-        <li><a href="#drop-user">DROP USER方式</a></li>
-        <li><a href="#delete">DELETE方式</a></li>
-      </ul>
-    </li>
-    <li><a href="#heading-5">修改用户</a>
-      <ul>
-        <li><a href="#heading-6">修改用户名称</a></li>
-        <li><a href="#heading-7">修改用户密码</a></li>
-        <li><a href="#mysqladmin">mysqladmin方式</a></li>
-        <li><a href="#user-1">修改user表</a></li>
-        <li><a href="#set">SET语句方式</a></li>
-        <li><a href="#grant-1">GRANT方式</a></li>
-        <li><a href="#heading-8">忘记密码</a></li>
-      </ul>
-    </li>
-    <li><a href="#heading-9">收回用户权限</a>
-      <ul>
-        <li><a href="#heading-10">查看权限</a></li>
+        <li><a href="#heading-9">查看权限</a></li>
         <li><a href="#revoke">revoke收回权限</a></li>
       </ul>
     </li>
@@ -200,9 +178,9 @@
   <ul>
     <li><a href="#privileges">PRIVILEGES分类权限</a>
       <ul>
-        <li><a href="#heading-12">数据库/数据表/数据列权限</a></li>
+        <li><a href="#heading-11">数据库/数据表/数据列权限</a></li>
         <li><a href="#mysql-1">全局管理MySQL用户权限：</a></li>
-        <li><a href="#heading-13">特别的权限：</a></li>
+        <li><a href="#heading-12">特别的权限：</a></li>
       </ul>
     </li>
     <li><a href="#userhost">user表中host列的值的意义</a></li>
@@ -216,8 +194,10 @@
     </div>
   </div>
     <div class="post-content">
-      <h1 id="heading">基础语法</h1>
-<h3 id="grant-priv-type-on-databasetable-to-useridentified-by-password-password-user-identified-by-password-password"><code>GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] 'password'] [,user [IDENTIFIED BY [PASSWORD] 'password']...]</code></h3>
+      <h2 id="heading">基础语法</h2>
+<ul>
+<li>
+<p><code>GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] 'password'] [,user [IDENTIFIED BY [PASSWORD] 'password']...]</code></p>
 <ul>
 <li>
 <p>priv_type代表允许操作的权限。</p>
@@ -233,6 +213,8 @@
 </li>
 <li>
 <p>password代表设置的密码</p>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="heading-1">例子</h3>
@@ -256,7 +238,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="mysql">Mysql权限层级相关表</h1>
+<h2 id="mysql">Mysql权限层级相关表</h2>
 <h3 id="user">user表：全局层级</h3>
 <ul>
 <li>
@@ -315,9 +297,11 @@
 <ul>
 <li>可以对存储过程和存储函数进行权限设置。关键字段Host、User、proc_priv</li>
 </ul>
-<h1 id="heading-2">用户相关操作</h1>
-<h2 id="heading-3">创建用户</h2>
-<h3 id="create-user">CREATE USER方式</h3>
+<h2 id="heading-2">用户相关操作</h2>
+<h3 id="heading-3">创建用户</h3>
+<blockquote>
+<p>CREATE USER方式</p>
+</blockquote>
 <ul>
 <li>
 <p>必须要拥有CREATE USER权限。</p>
@@ -329,7 +313,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="insert">INSERT方式</h3>
+<blockquote>
+<p>INSERT方式</p>
+</blockquote>
 <ul>
 <li>
 <p>必须拥有mysql.user表的INSERT权限。另外，ssl_cipher、x509_issuer、x509_subject等必须要设置值</p>
@@ -338,7 +324,9 @@
 <p><code>INSERT INTO mysql.user(Host,User,Password,ssl_cipher,x509_issuer,x509_subject) VALUES('%','name',PASSWORD('pwd'),'','','') </code></p>
 </li>
 </ul>
-<h3 id="grant">GRANT方式</h3>
+<blockquote>
+<p>GRANT方式</p>
+</blockquote>
 <ul>
 <li>
 <p>需要拥有GRANT权限。</p>
@@ -350,8 +338,10 @@
 </ul>
 </li>
 </ul>
-<h2 id="heading-4">删除用户</h2>
-<h3 id="drop-user">DROP USER方式</h3>
+<h3 id="heading-4">删除用户</h3>
+<blockquote>
+<p>DROP USER方式</p>
+</blockquote>
 <ul>
 <li>
 <p>需要拥有DROP USER权限。</p>
@@ -364,25 +354,35 @@
 </ul>
 </li>
 </ul>
-<h3 id="delete">DELETE方式</h3>
+<blockquote>
+<p>DELETE方式</p>
+</blockquote>
 <ul>
 <li><code>DELETE FROM mydb.user WHERE Host = '% AND User = 'admin';</code></li>
 </ul>
-<h2 id="heading-5">修改用户</h2>
-<h3 id="heading-6">修改用户名称</h3>
+<h3 id="heading-5">修改用户</h3>
+<blockquote>
+<p>修改用户名称</p>
+</blockquote>
 <ul>
 <li><code>RENAME USER name TO newname</code></li>
 </ul>
-<h3 id="heading-7">修改用户密码</h3>
-<h3 id="mysqladmin">mysqladmin方式</h3>
+<h3 id="heading-6">修改用户密码</h3>
+<blockquote>
+<p>mysqladmin方式</p>
+</blockquote>
 <ul>
 <li><code>mysqladmin -u username -p password &quot;new_password&quot;;</code></li>
 </ul>
-<h3 id="user-1">修改user表</h3>
+<blockquote>
+<p>修改user表</p>
+</blockquote>
 <ul>
 <li><code>UPDATE user SET Password = PASSWORD('pwd') WHERE USER = 'name';</code></li>
 </ul>
-<h3 id="set">SET语句方式</h3>
+<blockquote>
+<p>SET语句方式</p>
+</blockquote>
 <ul>
 <li>
 <p>修改自己用户</p>
@@ -397,11 +397,13 @@
 </ul>
 </li>
 </ul>
-<h3 id="grant-1">GRANT方式</h3>
+<blockquote>
+<p>GRANT方式</p>
+</blockquote>
 <ul>
 <li><code>GRANT SELECT ON *.* TO 'name'@'%' IDENTIFIED BY 'pwd'</code></li>
 </ul>
-<h3 id="heading-8">忘记密码</h3>
+<h3 id="heading-7">忘记密码</h3>
 <ul>
 <li>
 <p>mysqld_saft方式</p>
@@ -477,8 +479,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="heading-9">收回用户权限</h2>
-<h3 id="heading-10">查看权限</h3>
+<h2 id="heading-8">收回用户权限</h2>
+<h3 id="heading-9">查看权限</h3>
 <ul>
 <li>
 <p><code>SHOW GRANTS;</code></p>
@@ -498,9 +500,9 @@
 </ul>
 </li>
 </ul>
-<h1 id="heading-11">附录常见概念</h1>
+<h1 id="heading-10">附录常见概念</h1>
 <h2 id="privileges">PRIVILEGES分类权限</h2>
-<h3 id="heading-12">数据库/数据表/数据列权限</h3>
+<h3 id="heading-11">数据库/数据表/数据列权限</h3>
 <ul>
 <li>
 <p>Alter: 修改已存在的数据表(例如增加/删除列)和索引。</p>
@@ -542,7 +544,7 @@
 <p>SHUTDOWN: 关闭MySQL服务。</p>
 </li>
 </ul>
-<h3 id="heading-13">特别的权限：</h3>
+<h3 id="heading-12">特别的权限：</h3>
 <ul>
 <li>
 <p>ALL: 允许做任何事(和root一样)。</p>

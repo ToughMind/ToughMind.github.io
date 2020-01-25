@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>git操作汇总</title>
-      <link>http://blog.nbgg.xyz/post/%E6%9D%82%E8%AE%B0/%E9%A6%96%E5%B1%8A%E9%98%BF%E9%87%8C%E5%B3%B0%E4%BC%9A/</link>
-      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
-      
-      <guid>http://blog.nbgg.xyz/post/%E6%9D%82%E8%AE%B0/%E9%A6%96%E5%B1%8A%E9%98%BF%E9%87%8C%E5%B3%B0%E4%BC%9A/</guid>
-      <description>首届阿里峰会 云端基于Docker的微服务与持续交付实践(2016.7.19) 容器编排 优点： 简单，易于开发 镜像开发 本地环境沙箱： 不足 只是运维 容</description>
-    </item>
-    
-    <item>
       <title>英文术语</title>
       <link>http://blog.nbgg.xyz/post/%E6%9D%82%E8%AE%B0/%E8%8B%B1%E6%96%87%E6%9C%AF%E8%AF%AD/</link>
       <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
@@ -45,6 +36,15 @@
       
       <guid>http://blog.nbgg.xyz/post/%E6%9D%82%E8%AE%B0/%E9%9C%80%E6%8E%8C%E6%8F%A1/</guid>
       <description>1、jvm相关，内存溢出 2、消息队列原理 3、缓存原理 4、树结构（B+，红黑树） 5、http和https过程，以及密钥啥的 6、HTTP的RES</description>
+    </item>
+    
+    <item>
+      <title>首届阿里峰会</title>
+      <link>http://blog.nbgg.xyz/post/%E6%9D%82%E8%AE%B0/%E9%A6%96%E5%B1%8A%E9%98%BF%E9%87%8C%E5%B3%B0%E4%BC%9A/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/%E6%9D%82%E8%AE%B0/%E9%A6%96%E5%B1%8A%E9%98%BF%E9%87%8C%E5%B3%B0%E4%BC%9A/</guid>
+      <description>云端基于Docker的微服务与持续交付实践(2016.7.19) 容器编排 优点： 简单，易于开发 镜像开发 本地环境沙箱： 不足 只是运维 容器集群管理 Docker</description>
     </item>
     
   </channel>

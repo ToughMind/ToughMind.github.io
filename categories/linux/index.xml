@@ -26,7 +26,7 @@
       <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
       
       <guid>http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/unix%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>系统 配置 命令 说明 sudo chown -R git:git /home/git 修改权限 hostnamectl set-hostname &amp;lt;主机名&amp;gt; 修改主机名 ifconfig -a 查看内网ip curl ifconfig.me 查看外网ip cat /etc/redhat-release 查看当前系统 uname -m 查看多少位系统 进程</description>
+      <description>系统 配置 命令 说明 sudo chown -R git:git /home/git 修改权限 hostnamectl set-hostname &amp;lt;主机名&amp;gt; 修改主机名 ifconfig -a 查看内网ip curl ifconfig.me 查看外网ip cat /etc/redhat-release 查看当前系统 uname -m 查看多少位系统 lspci |</description>
     </item>
     
     <item>

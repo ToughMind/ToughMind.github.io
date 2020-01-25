@@ -26,7 +26,7 @@
       <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
       
       <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>2016.8.21 查看和更改字符集语句 查找MySQL的cnf文件的位置 find / -iname &amp;lsquo;*.cnf&amp;rsquo; -print 查看字符集设置 show variables like &amp;lsquo;collation_%&#39;; show variables like &amp;lsquo;character_set_%&#39;;</description>
+      <description>2016.8.21 查看和更改字符集语句 查找MySQL的cnf文件的位置 find / -iname &amp;lsquo;*.cnf&amp;rsquo; -print 查看字符集设置 show variables like &amp;lsquo;collation_%&#39;; show variables like &amp;lsquo;character_set_%&#39;; 彻底卸载mysql 1 2 3 4 5 6 7 8 sudo apt-get autoremove --purge mysql-server-5.7 Y</description>
     </item>
     
     <item>

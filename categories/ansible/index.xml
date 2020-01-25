@@ -17,7 +17,7 @@
       <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
       
       <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/ansible/ansible%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</guid>
-      <description>基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的roles：(galaxy.ansible.com</description>
+      <description>安装ansible 1 2 3 sudo apt-add-repository ppa:ansible/ansible sudo apt-get update sudo apt-get install ansible 基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的rol</description>
     </item>
     
   </channel>
