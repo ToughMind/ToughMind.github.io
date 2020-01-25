@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>消息队列 on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</link>
+    <description>Recent content in 消息队列 on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>消息队列学习</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%AD%A6%E4%B9%A0/</guid>
+      <description>消息队列是分布式应用间交换信息的重要组件，队列可以存储消息直到它们被应用程序读走。应用程序可以在不知道彼此位置的情况下独立处理消息，或者在处</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《廖雪峰Python教程》笔记 - 人间忽晚 山河已秋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="博客链接 1、字符串编码 ASCII、Unicode、UTF-8 ASCII编码是1个字节，而Unicode编码通常是2个字节 如果统一成Unico" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/python/%E5%BB%96%E9%9B%AA%E5%B3%B0Python%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="《廖雪峰Python教程》笔记" />
+<meta property="og:description" content="博客链接 1、字符串编码 ASCII、Unicode、UTF-8 ASCII编码是1个字节，而Unicode编码通常是2个字节 如果统一成Unico" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/python/%E5%BB%96%E9%9B%AA%E5%B3%B0Python%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="《廖雪峰Python教程》笔记">
+<meta itemprop="description" content="博客链接 1、字符串编码 ASCII、Unicode、UTF-8 ASCII编码是1个字节，而Unicode编码通常是2个字节 如果统一成Unico">
+<meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="3740">
+
+
+
+<meta itemprop="keywords" content="python," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《廖雪峰Python教程》笔记"/>
+<meta name="twitter:description" content="博客链接 1、字符串编码 ASCII、Unicode、UTF-8 ASCII编码是1个字节，而Unicode编码通常是2个字节 如果统一成Unico"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《廖雪峰Python教程》笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-17 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> python </a>
+            </div>
+          <span class="more-meta"> 3740 words </span>
+          <span class="more-meta"> 8 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1">1、字符串编码</a>
+      <ul>
+        <li><a href="#asciiunicodeutf-8">ASCII、Unicode、UTF-8</a></li>
+        <li><a href="#heading">编码语法点</a></li>
+      </ul>
+    </li>
+    <li><a href="#2">2、剩余基础语法</a>
+      <ul>
+        <li><a href="#listtuple">列表list和元祖tuple</a></li>
+        <li><a href="#if">if判断流程</a></li>
+        <li><a href="#listtupledictset">list,tuple,dict,set</a></li>
+        <li><a href="#heading-1">函数调用</a></li>
+        <li><a href="#heading-2">递归函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#3">3、高级特性</a>
+      <ul>
+        <li><a href="#heading-3">迭代</a></li>
+        <li><a href="#heading-4">列表生成器</a></li>
+        <li><a href="#heading-5">生成器</a></li>
+        <li><a href="#heading-6">迭代器</a></li>
+      </ul>
+    </li>
+    <li><a href="#4">4、函数编程</a>
+      <ul>
+        <li><a href="#heading-7">基本概念</a></li>
+        <li><a href="#heading-8">高阶函数</a></li>
+        <li><a href="#heading-9">返回函数</a></li>
+        <li><a href="#heading-10">装饰器</a></li>
+        <li><a href="#heading-11">偏函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#5">5、模块</a>
+      <ul>
+        <li><a href="#heading-12">简介</a></li>
+        <li><a href="#heading-13">使用模块</a></li>
+      </ul>
+    </li>
+    <li><a href="#6oop">6、OOP面向对象编程</a>
+      <ul>
+        <li><a href="#heading-14">面向过程和面向对象</a></li>
+        <li><a href="#heading-15">类与实例</a></li>
+        <li><a href="#heading-16">访问限制</a></li>
+        <li><a href="#heading-17">继承和多态</a></li>
+        <li><a href="#heading-18">获取对象信息</a></li>
+        <li><a href="#--slots--">使用__slots__</a></li>
+        <li><a href="#property">@property</a></li>
+        <li><a href="#heading-19">多重继承</a></li>
+        <li><a href="#heading-20">定制类</a></li>
+        <li><a href="#heading-21">元类</a></li>
+        <li><a href="#heading-22">调试</a></li>
+      </ul>
+    </li>
+    <li><a href="#7io">7、IO操作</a>
+      <ul>
+        <li><a href="#heading-23">文件读写</a></li>
+        <li><a href="#io">内存IO</a></li>
+        <li><a href="#heading-24">文件和目录操作</a></li>
+        <li><a href="#heading-25">序列化</a></li>
+      </ul>
+    </li>
+    <li><a href="#8">8、多进程线程</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <p><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">博客链接</a></p>
+<h2 id="1">1、字符串编码</h2>
+<h3 id="asciiunicodeutf-8">ASCII、Unicode、UTF-8</h3>
+<ul>
+<li>ASCII编码是1个字节，而Unicode编码通常是2个字节</li>
+<li>如果统一成Unicode编码，乱码解决，但存储空间要多一倍，存储和传输上非常不划算</li>
+<li>本着节约的精神，又出现了把Unicode编码转化为“可变长编码”的UTF-8编码
+<ul>
+<li>UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节</li>
+</ul>
+</li>
+<li>计算机系统通用的字符编码工作方式：
+<ul>
+<li>在计算机内存中，统一使用Unicode编码，当需要保存到硬盘或传输的时候，就转换为UTF-8
+<img src="https://www.liaoxuefeng.com/files/attachments/001387245992536e2ba28125cf04f5c8985dbc94a02245e000/0" alt="image">
+<img src="https://www.liaoxuefeng.com/files/attachments/001387245979827634fd6204f9346a1ae6358d9ed051666000/0" alt="image"></li>
+</ul>
+</li>
+</ul>
+<h3 id="heading">编码语法点</h3>
+<ul>
+<li>要注意区分'ABC'和b'ABC&rsquo;，前者是str，后者虽然内容显示得和前者一样，但bytes的每个字符都只占用一个字节</li>
+<li>含有中文的str无法用ASCII编码，因为中文编码的范围超过了ASCII编码的范围，Python会报错</li>
+<li>1个中文字符经过UTF-8编码后通常会占用3个字节，而1个英文字符只占用1个字节</li>
+<li>通常在文件开头写上这两行</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2">2、剩余基础语法</h2>
+<h3 id="listtuple">列表list和元祖tuple</h3>
+<ul>
+<li>
+<p>当定义一个元祖的时候<code>t=(1)</code></p>
+<ul>
+<li>这个时候，按小括号进行计算</li>
+<li>此时若要是元祖，要加上逗号分隔，<code>t=(1,)</code></li>
+</ul>
+</li>
+<li>
+<p>tuple一旦初始化就不能修改</p>
+<ul>
+<li>是指向不变</li>
+</ul>
+</li>
+</ul>
+<h3 id="if">if判断流程</h3>
+<ul>
+<li>if条件是非零数值、非空字符串、非空list等，就判断为True，否则为False</li>
+</ul>
+<h3 id="listtupledictset">list,tuple,dict,set</h3>
+<ul>
+<li>dict和set的key，不能使用可变对象（如List）
+<ul>
+<li>内容不可变的tuple可以作为key</li>
+<li>内容可变的tuple不能作为key，如tuple中包含有list</li>
+</ul>
+</li>
+<li>对于不变对象来说，调用对象自身的任意方法，也不会改变该对象自身的内容</li>
+</ul>
+<h3 id="heading-1">函数调用</h3>
+<ul>
+<li>参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数</li>
+<li>定义默认参数要牢记一点：默认参数必须指向不变对象！</li>
+<li><em>nums表示把nums这个list的所有元素作为可变参数传入</em>numbers参数</li>
+<li><strong>extra表示把extra这个dict的所有key-value用关键字参数传入到函数的</strong>kw参数</li>
+<li>对于任意函数，都可以通过类似func(*args, **kw)的形式调用它</li>
+</ul>
+<h3 id="heading-2">递归函数</h3>
+<ul>
+<li>
+<p>注意防止栈溢出</p>
+<ul>
+<li>每当进入一个函数调用，栈就会加一层栈帧，每当函数返回，栈就会减一层栈帧</li>
+</ul>
+</li>
+<li>
+<p>尾递归优化</p>
+<ul>
+<li>在函数返回的时候，调用自身本身，并且，return语句不能包含表达式</li>
+<li>大多数编程语言没有做这个优化，python解释器也没有</li>
+</ul>
+</li>
+</ul>
+<h2 id="3">3、高级特性</h2>
+<h3 id="heading-3">迭代</h3>
+<ul>
+<li>如何判断一个对象是否可以迭代</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt;&gt;&gt; from collections import Iterable
+&gt;&gt;&gt; isinstance(&#39;abc&#39;, Iterable) # str是否可迭代
+True
+&gt;&gt;&gt; isinstance([1,2,3], Iterable) # list是否可迭代
+True
+&gt;&gt;&gt; isinstance(123, Iterable) # 整数是否可迭代
+False
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="heading-4">列表生成器</h3>
+<ul>
+<li><code>[x * x for x in range(1, 11) if x % 2 == 0]</code></li>
+<li><code>[m + n for m in 'ABC' for n in 'XYZ']</code></li>
+<li><code>for i, value in enumerate(['A', 'B', 'C'])</code></li>
+<li><code>[d for d in os.listdir('.')] # os.listdir可以列出文件和目录</code></li>
+</ul>
+<h3 id="heading-5">生成器</h3>
+<ul>
+<li>一边循环一边计算的机制，称为生成器：generator</li>
+<li>a, b = b, a + b
+<ul>
+<li>相当于t = (b, a + b) # t是一个tuple</li>
+</ul>
+</li>
+<li>如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator
+<ul>
+<li>在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行</li>
+</ul>
+</li>
+<li>generator的return如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中</li>
+</ul>
+<h3 id="heading-6">迭代器</h3>
+<ul>
+<li>可迭代对象 Iterable
+<ul>
+<li>一类是集合数据类型，如list、tuple、dict、set、str等</li>
+<li>一类是generator，包括生成器和带yield的generator function</li>
+</ul>
+</li>
+<li>可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator</li>
+<li>注意可迭代对象Iterable和迭代器Iterator</li>
+<li>Iterator可以通过iter()函数获得一个Iterator</li>
+<li>Python的for循环本质上就是通过不断调用next()函数实现的</li>
+</ul>
+<h2 id="4">4、函数编程</h2>
+<h3 id="heading-7">基本概念</h3>
+<ul>
+<li>函数就是面向过程的程序设计的基本单元</li>
+<li>函数式编程就是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量
+<ul>
+<li>允许把函数本身作为参数传入另一个函数，还允许返回一个函数</li>
+</ul>
+</li>
+<li>由于Python允许使用变量，因此，Python不是纯函数式编程语言</li>
+</ul>
+<h3 id="heading-8">高阶函数</h3>
+<ul>
+<li>变量可以指向函数</li>
+<li>函数名也是变量</li>
+<li>既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数</li>
+<li>map，reduce，filter，sorted</li>
+</ul>
+<h3 id="heading-9">返回函数</h3>
+<ul>
+<li>闭包：当一个函数返回了一个函数后，其内部的局部变量还被新函数引用
+<ul>
+<li>返回函数不要引用任何循环变量，或者后续会发生变化的变量</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-10">装饰器</h3>
+<ul>
+<li>在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）</li>
+</ul>
+<h3 id="heading-11">偏函数</h3>
+<ul>
+<li>functools.partial的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数</li>
+</ul>
+<h2 id="5">5、模块</h2>
+<h3 id="heading-12">简介</h3>
+<ul>
+<li>在Python中，一个.py文件就称之为一个模块（Module）</li>
+<li>提高了代码的可维护性</li>
+<li>可以避免函数名和变量名冲突</li>
+<li>每一个包目录下面都会有一个__init__.py的文件，这个文件是必须存在的</li>
+</ul>
+<h3 id="heading-13">使用模块</h3>
+<ul>
+<li>当我们在命令行运行hello模块文件时，Python解释器把一个特殊变量__name__置为__main__</li>
+<li>常用模块
+<ul>
+<li>Pillow：图片处理</li>
+<li>mysql-connector-python：mysql驱动</li>
+<li>numpy：科学计算</li>
+<li>Jinja2：生成文本的模板工具</li>
+</ul>
+</li>
+</ul>
+<h2 id="6oop">6、OOP面向对象编程</h2>
+<h3 id="heading-14">面向过程和面向对象</h3>
+<ul>
+<li>面向过程：把计算机程序视为一系列的命令集合，即一组函数的顺序执行</li>
+<li>面向对象：把计算机程序视为一组对象的集合，计算机程序的执行就是一系列消息在各个对象之间传递</li>
+</ul>
+<h3 id="heading-15">类与实例</h3>
+<ul>
+<li>各个实例拥有的数据都互相独立</li>
+<li>方法就是与实例绑定的函数</li>
+<li>两个实例变量，拥有的变量名称都可能不同</li>
+</ul>
+<h3 id="heading-16">访问限制</h3>
+<ul>
+<li>双下划线开头的实例变量是不是一定不能从外部访问呢
+<ul>
+<li>不是，因为Python解释器对外把__name变量改成了_Student__name（注意不同解释器机制不同）</li>
+</ul>
+</li>
+<li>一个下划线开头的实例变量名
+<ul>
+<li>虽然我可以被访问，但是，请把我视为私有变量，不要随意访问</li>
+</ul>
+</li>
+<li>双下划线开头，并且以双下划线结尾的，是特殊变量，不是private</li>
+</ul>
+<h3 id="heading-17">继承和多态</h3>
+<ul>
+<li>具体调用的方法，由运行时该对象的确切类型决定</li>
+<li>静态语言和动态语言
+<ul>
+<li>对于静态语言（例如Java）来说，如果需要传入Animal类型，则传入的对象必须是Animal类型或者它的子类</li>
+<li>对于Python这样的动态语言来说，则不一定需要传入Animal类型。我们只需要保证传入的对象有一个run()方法就可以
+<ul>
+<li>这就是动态语言的“鸭子类型”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-18">获取对象信息</h3>
+<ul>
+<li>判断类型</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt;&gt;&gt; type(fn)==types.FunctionType
+True
+&gt;&gt;&gt; type(abs)==types.BuiltinFunctionType
+True
+&gt;&gt;&gt; type(lambda x: x)==types.LambdaType
+True
+&gt;&gt;&gt; type((x for x in range(10)))==types.GeneratorType
+True
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>类似__xxx__的属性和方法在Python中都是有特殊用途的</p>
+<ul>
+<li>在len()函数内部，它自动去调用该对象的__len__()方法</li>
+</ul>
+</li>
+<li>
+<p>dir(),getattr(),setattr(),hasattr()</p>
+</li>
+<li>
+<p>要注意的是，只有在不知道对象信息的时候，我们才会去获取对象信息</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">def readImage(fp):
+    if hasattr(fp, &#39;read&#39;):
+        return readData(fp)
+    return None
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="--slots--">使用__slots__</h3>
+<ul>
+<li>限制该class实例能添加的属性
+<ul>
+<li>__slots__定义的属性仅对当前类实例起作用，对继承的子类是不起作用的</li>
+</ul>
+</li>
+</ul>
+<h3 id="property">@property</h3>
+<ul>
+<li>注意<code>@property</code>本身又创建了另一个装饰器<code>@某某.setter</code>，</li>
+</ul>
+<h3 id="heading-19">多重继承</h3>
+<ul>
+<li>MixIn设计</li>
+</ul>
+<h3 id="heading-20">定制类</h3>
+<ul>
+<li><strong>str__和__repr</strong>
+<ul>
+<li>前者是返回用户看的，后者是返回开发者看的</li>
+</ul>
+</li>
+<li><strong>iter</strong>
+<ul>
+<li>如果一个类要被用于for……in循环，类似于list或tuple</li>
+</ul>
+</li>
+<li><strong>getattr</strong></li>
+<li><strong>getitem</strong></li>
+<li><strong>call</strong></li>
+</ul>
+<h3 id="heading-21">元类</h3>
+<ul>
+<li>可创建class类
+<ul>
+<li>type()</li>
+<li>metaclass
+<ul>
+<li>可以把类看成是metaclass创建出来的“实例”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-22">调试</h3>
+<ul>
+<li>pdb
+<ul>
+<li><code>python3 -m pdb xxx.py</code></li>
+<li><code>pdb.set_trace()</code></li>
+</ul>
+</li>
+<li>单元测试
+<ul>
+<li>从unittest.TestCase继承</li>
+<li>最常用的断言就是<code>assertEqual()</code></li>
+<li>另一种重要的断言就是期待抛出指定类型的Error，比如<code>with self.assertRaises(KeyError)</code></li>
+<li>可以在单元测试中编写两个特殊的setUp()和tearDown()方法</li>
+</ul>
+</li>
+</ul>
+<h2 id="7io">7、IO操作</h2>
+<h3 id="heading-23">文件读写</h3>
+<ul>
+<li><code>with open('/path/to/file', 'r', encoding='gbk', errors='ignore') as f</code>可自动调用close()</li>
+</ul>
+<h3 id="io">内存IO</h3>
+<ul>
+<li>StringIO</li>
+<li>BytesIO</li>
+</ul>
+<h3 id="heading-24">文件和目录操作</h3>
+<ul>
+<li>函数有的在os模块中，有的在os.path模块中</li>
+</ul>
+<h3 id="heading-25">序列化</h3>
+<ul>
+<li>pickle</li>
+<li>json
+<ul>
+<li>序列化，default参数</li>
+<li>反序列化，object_hook参数</li>
+</ul>
+</li>
+</ul>
+<h2 id="8">8、多进程线程</h2>
+<ul>
+<li>
+<p>多进程</p>
+<ul>
+<li>fork</li>
+<li>multiprocessing</li>
+<li>Pool</li>
+<li>subprocess</li>
+</ul>
+</li>
+<li>
+<p>进程间通信</p>
+<ul>
+<li>multiprocessing模块包装了底层的机制，提供了Queue、Pipes等</li>
+<li>Queue、Pipes等实现</li>
+</ul>
+</li>
+<li>
+<p>多线程</p>
+<ul>
+<li>线程是操作系统直接支持的执行单元，因此，高级语言通常都内置多线程的支持</li>
+<li>Python的线程是真正的Posix Thread，而不是模拟出来的线程</li>
+<li>多线程和多进程最大的不同在于，多进程中，同一个变量，各自有一份拷贝存在于每个进程中，互不影响，而多线程中，所有变量都由所有线程共享</li>
+</ul>
+</li>
+<li>
+<p>Python的线程虽然是真正的线程，但解释器执行代码时，有一个GIL锁：Global Interpreter Lock。</p>
+<ul>
+<li>所以，多线程在Python中只能交替执行，即使100个线程跑在100核CPU上，也只能用到1个核</li>
+<li>Python虽然不能利用多线程实现多核任务，但可以通过多进程实现多核任务。多个Python进程有各自独立的GIL锁，互不影响。</li>
+</ul>
+</li>
+<li>
+<p>ThreadLocal</p>
+</li>
+<li>
+<p>多进程与多线程</p>
+<ul>
+<li>多任务，通常设计是一个Master多个Worker</li>
+<li>多进程模式代价大；多线程模式任何一个线程挂掉可能造成整个进程崩溃</li>
+</ul>
+</li>
+<li>
+<p>计算密集型和IO密集型</p>
+<ul>
+<li>计算密集型要进行大量的计算，最好用C编写</li>
+<li>IO密集型99%时间花费在网络IO上，脚本语言是首选</li>
+</ul>
+</li>
+<li>
+<p>异步IO</p>
+<ul>
+<li>协程：不是线程切换，不需要多线程锁机制</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/WEB%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E6%88%98Java%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E8%91%9B%E4%B8%80%E9%B8%A3%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">《实战Java高并发程序设计 葛一鸣》笔记</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E5%BC%80%E6%B6%9B%E5%AD%A6Spring-MVC%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">《跟开涛学Spring MVC》笔记</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

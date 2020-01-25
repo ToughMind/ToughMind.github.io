@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mybatis on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/tags/mybatis/</link>
+    <description>Recent content in mybatis on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mybatis学习笔记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mybatis/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mybatis/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>2016.7.19 SqlSession的作用 向SQL语句传入参数 执行SQL语句 获取执行SQL语句的结果 事务的控制 2016.7.21 jdbcType 数据表支持的类型列表。这个属性只在ins</description>
+    </item>
+    
+    <item>
+      <title>mybatis配置</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mybatis/mybatis%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mybatis/mybatis%E9%85%8D%E7%BD%AE/</guid>
+      <description>整合配置的坑 读取资源文件问题 一般在applicationContext.xml文件里写引入properties文件的代码 1 2 3 4 5 6 7 8 &amp;lt;bean id=&amp;#34;propertyConfigurer&amp;#34;</description>
+    </item>
+    
+  </channel>
+</rss>

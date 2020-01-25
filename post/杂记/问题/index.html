@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>问题 - 人间忽晚 山河已秋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="2016.7.12 git如何删除当前目录的文件夹？ git本地协议中使用直接路径和使用file://的区别？ 2016.7.13 mysql配置中的url后面接&amp;rdquo;？k" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/%E6%9D%82%E8%AE%B0/%E9%97%AE%E9%A2%98/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="问题" />
+<meta property="og:description" content="2016.7.12 git如何删除当前目录的文件夹？ git本地协议中使用直接路径和使用file://的区别？ 2016.7.13 mysql配置中的url后面接&rdquo;？k" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/%E6%9D%82%E8%AE%B0/%E9%97%AE%E9%A2%98/" />
+<meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="问题">
+<meta itemprop="description" content="2016.7.12 git如何删除当前目录的文件夹？ git本地协议中使用直接路径和使用file://的区别？ 2016.7.13 mysql配置中的url后面接&rdquo;？k">
+<meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="811">
+
+
+
+<meta itemprop="keywords" content="杂记," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="问题"/>
+<meta name="twitter:description" content="2016.7.12 git如何删除当前目录的文件夹？ git本地协议中使用直接路径和使用file://的区别？ 2016.7.13 mysql配置中的url后面接&rdquo;？k"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">问题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-17 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%9D%82%E8%AE%B0/"> 杂记 </a>
+            </div>
+          <span class="more-meta"> 811 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#20161029">2016.10.29</a></li>
+    <li><a href="#2016128">2016.12.8</a></li>
+    <li><a href="#2017220">2017.2.20</a></li>
+    <li><a href="#2017519">2017.5.19</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="2016712">2016.7.12</h1>
+<ul>
+<li>git如何删除当前目录的文件夹？</li>
+<li>git本地协议中使用直接路径和使用file://的区别？</li>
+</ul>
+<h1 id="2016713">2016.7.13</h1>
+<ul>
+<li>mysql配置中的url后面接&rdquo;？key=……&ldquo;是什么意思，用navicat该如何连接？</li>
+<li>git的.ssh文件中在clone ssh链接时候会生成known_hosts文件是什么？ 但公司连接github的ssh不会生成这个文件，而且一直提示连接超时？</li>
+<li>开发环境、线上环境、测试环境和预发布环境？（profile切换环境特性）</li>
+</ul>
+<h1 id="2016720">2016.7.20</h1>
+<ul>
+<li>spring mvc传统和激进型的区别，使用监听器无法对action进行aop(事务)？</li>
+<li>spring mvc拦截器和aop的联系？</li>
+</ul>
+<h1 id="2016721">2016.7.21</h1>
+<ul>
+<li>mybatis字符串代入法，这样地接收和应用一个用户输入到未更改的语句中，是非常不安全的???</li>
+</ul>
+<h1 id="2016725">2016.7.25</h1>
+<ul>
+<li>用fiddler创建表单并重定向。</li>
+</ul>
+<h1 id="201685">2016.8.5</h1>
+<ul>
+<li>有必要了解一下WebService</li>
+<li>mysql boolean和tinyint(1)之间的转换</li>
+</ul>
+<h1 id="2016810">2016.8.10</h1>
+<ul>
+<li>hibernate中对column的限制长度好像没有起作用</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;property name=&#34;name&#34; type=&#34;java.lang.String&#34;&gt;
+	&lt;column name=&#34;name&#34; length=&#34;50&#34; /&gt;
+&lt;/property&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>JMS、MDB有必要了解一下，用weblogic实现</p>
+</li>
+<li>
+<p>Comet服务器推技术</p>
+</li>
+<li>
+<p>各框架版本的新特性</p>
+</li>
+</ul>
+<h2 id="20161029">2016.10.29</h2>
+<ul>
+<li>eclipse中java compile有一项添加变量信息到Class文件（调试器使用）？？
+<ul>
+<li>默认是不包含变量调试信息的，从而能获取参数名字，否则获取不到参数名字</li>
+<li>或构造器上使用@ConstructorProperties（java.beans.ConstructorProperties）注解来指定参数名</li>
+</ul>
+</li>
+</ul>
+<h2 id="2016128">2016.12.8</h2>
+<ul>
+<li>单例里的readResolve方法防止序列化过程新建对象？</li>
+</ul>
+<h2 id="2017220">2017.2.20</h2>
+<ul>
+<li>linux连接memcache服务器，get key输出的value中，后面几个输出参数代表什么含义？</li>
+<li>偏向锁、轻量级锁、自旋锁在虚拟机中的锁优化</li>
+<li>强引用、弱引用、软引用概念</li>
+<li>有关BootStrap</li>
+</ul>
+<h2 id="2017519">2017.5.19</h2>
+<ul>
+<li>spring4.3.3+struts2.5.5+hibernate5.2.3始终搞不出logback的slf4j，必须要用log4j2</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E6%9D%82%E8%AE%B0/">杂记</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E6%9D%82%E8%AE%B0/%E8%8B%B1%E6%96%87%E6%9C%AF%E8%AF%AD/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">英文术语</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E6%9D%82%E8%AE%B0/%E9%9C%80%E6%8E%8C%E6%8F%A1/">
+            <span class="next-text nav-default">需掌握</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

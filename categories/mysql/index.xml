@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/categories/mysql/</link>
+    <description>Recent content in mysql on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DB分库分表</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/DB%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/DB%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/</guid>
+      <description>1、基本思想 Sharding的基本思想是把一个数据库切分成多个部分放到不同的数据库上，缓解单一数据库的性能问题。 对于海量数据，如果因为表多而</description>
+    </item>
+    
+    <item>
+      <title>mysql常用命令</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>2016.8.21 查看和更改字符集语句 查找MySQL的cnf文件的位置 find / -iname &amp;lsquo;*.cnf&amp;rsquo; -print 查看字符集设置 show variables like &amp;lsquo;collation_%&#39;; show variables like &amp;lsquo;character_set_%&#39;;</description>
+    </item>
+    
+    <item>
+      <title>mysql设置指定ip访问，用户权限相关操作</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/mysql%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%AE%9Aip%E8%AE%BF%E9%97%AE%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/mysql%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%AE%9Aip%E8%AE%BF%E9%97%AE%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</guid>
+      <description>基础语法 GRANT priv_type ON database.table TO user[IDENTIFIED BY [PASSWORD] &#39;password&#39;] [,user [IDENTIFIED BY [PASSWORD] &#39;password&#39;]...] priv_type代表允许操作的权限。 database.table代表数据库名.表名 注意*代表所有，如d</description>
+    </item>
+    
+    <item>
+      <title>sql优化</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/sql%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/sql%E4%BC%98%E5%8C%96/</guid>
+      <description>1、执行计划 数据库根据sql语句和相关表的统计信息作出的一个查询方案。由查询优化器自动分析产生。 如sql语句10W中查1条，会选择索引；若该</description>
+    </item>
+    
+    <item>
+      <title>sql数据库问题</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/sql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/sql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98/</guid>
+      <description>1、mysql的cpu飙到500%怎么处理？ top查看哪个进程、哪个端口占用cpu最多 show processeslist查看是否由于大量并发，锁引</description>
+    </item>
+    
+  </channel>
+</rss>

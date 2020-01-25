@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《跟开涛学Spring MVC》笔记 - 人间忽晚 山河已秋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="2016.7.19 比较MVC框架的性能 SpringMvc使用简单，学习成本低；灵活；性能高。 SpringMvc核心类和接口 DispatcherServlet 前置控制器 HandlerMapp" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E5%BC%80%E6%B6%9B%E5%AD%A6Spring-MVC%E7%AC%94%E8%AE%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="《跟开涛学Spring MVC》笔记" />
+<meta property="og:description" content="2016.7.19 比较MVC框架的性能 SpringMvc使用简单，学习成本低；灵活；性能高。 SpringMvc核心类和接口 DispatcherServlet 前置控制器 HandlerMapp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E5%BC%80%E6%B6%9B%E5%AD%A6Spring-MVC%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="《跟开涛学Spring MVC》笔记">
+<meta itemprop="description" content="2016.7.19 比较MVC框架的性能 SpringMvc使用简单，学习成本低；灵活；性能高。 SpringMvc核心类和接口 DispatcherServlet 前置控制器 HandlerMapp">
+<meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="5829">
+
+
+
+<meta itemprop="keywords" content="spring," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《跟开涛学Spring MVC》笔记"/>
+<meta name="twitter:description" content="2016.7.19 比较MVC框架的性能 SpringMvc使用简单，学习成本低；灵活；性能高。 SpringMvc核心类和接口 DispatcherServlet 前置控制器 HandlerMapp"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《跟开涛学Spring MVC》笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-17 </span>
+        <div class="post-category">
+            <a href="/categories/spring/"> spring </a>
+            </div>
+          <span class="more-meta"> 5829 words </span>
+          <span class="more-meta"> 12 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#2016811">2016.8.11</a></li>
+    <li><a href="#2016813">2016.8.13</a>
+      <ul>
+        <li><a href="#dispatcherservlet">DispatcherServlet初始化顺序</a></li>
+        <li><a href="#mvccdispatcherservlet--controller">MVC中完整的C（包含控制逻辑+功能处理）由（DispatcherServlet + Controller）组成。</a></li>
+        <li><a href="#controller">Controller接口控制器</a></li>
+      </ul>
+    </li>
+    <li><a href="#2016815">2016.8.15</a>
+      <ul>
+        <li><a href="#heading">拦截器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="2016719">2016.7.19</h1>
+<ul>
+<li>
+<p>比较MVC框架的性能</p>
+<ul>
+<li>SpringMvc使用简单，学习成本低；灵活；性能高。</li>
+</ul>
+</li>
+<li>
+<p>SpringMvc核心类和接口</p>
+<ul>
+<li>
+<p>DispatcherServlet 前置控制器</p>
+</li>
+<li>
+<p>HandlerMapping接口 处理请求的映射</p>
+<ul>
+<li>SimpleUrlHandlerMapping  通过配置文件，把一个URL映射到Controller</li>
+<li>DefaultAnnotationHandlerMapping  通过注解，把一个URL映射到Controller类上</li>
+</ul>
+</li>
+<li>
+<p>HandlerAdapter接口 处理请求的映射</p>
+<ul>
+<li>AnnotationMethodHandlerAdapter类，通过注解，把一个URL映射到Controller类的方法上</li>
+</ul>
+</li>
+<li>
+<p>Controller接口 由于我们使用了@Controller注解，添加了@Controller注解注解的类就可以担任控制器（Action）的职责,所以我们并没有用到这个接口。</p>
+</li>
+<li>
+<p>HandlerInterceptor接口 拦截器</p>
+</li>
+<li>
+<p>ViewResolver接口</p>
+<ul>
+<li>UrlBasedViewResolver类 通过配置文件，把一个视图名交给到一个View来处理</li>
+<li>InternalResourceViewResolver类，比上面的类，加入了JSTL的支持</li>
+</ul>
+</li>
+<li>
+<p>View接口</p>
+</li>
+<li>
+<p>LocalResolver接口</p>
+</li>
+<li>
+<p>HandlerExceptionResolver接口 异常处理</p>
+<ul>
+<li>SimpleMappingExceptionResolver实现类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="2016720">2016.7.20</h1>
+<ul>
+<li>
+<p>DispatcherServlet是前置控制器，配置在web.xml文件中。</p>
+</li>
+<li>
+<p>每一个DispatcherServlet有自己的WebApplicationContext上下文对象。</p>
+</li>
+<li>
+<p>在DispatcherServlet初始化过程中，默认的，框架会在web应用的web-inf文件夹下寻找名为servlet.xml的配置文件，生成文件中定义的bean。</p>
+<ul>
+<li>如果用了监听器，spring会创建WebApplicationContext上下文，保存在ServletContext中，称为父容器key是WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE。</li>
+<li>每个 DispatcherServlet有一个自己的WebApplicationContext，称为子容器，也保存在ServletContext中，key是org.springframework.web.servlet.FrameworkServlet.CONTEXT+Servlet。子容器可以访问父容器，反过来不行。</li>
+<li>当有一个Request产生时，会把这个WebApplicationContext保存在Request对象中，key是DispatcherServlet.class.getName() + &ldquo;.CONTEXT&rdquo;。</li>
+</ul>
+</li>
+<li>
+<p>&lt;mvc:annotation-driven /&gt;会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean。</p>
+</li>
+<li>
+<p><a href="mvc:default-servlet-handler/">mvc:default-servlet-handler/</a> 使用默认的Servlet来响应静态文件。</p>
+</li>
+<li>
+<p>如果用REST风格拦截所有请求，如何对静态资源访问?</p>
+<ul>
+<li>用tomcat的defaultServlet来处理，就是配置servletMapping；要写在DispatcherServlet前面让defaultServlet先拦截请求。</li>
+<li>在spring3.0.4以后版本提供了mvc:resources</li>
+<li>使用<a href="mvc:default-servlet-handler/">mvc:default-servlet-handler/</a></li>
+</ul>
+</li>
+<li>
+<p>在spring MVC的配置文件中配置有三种方法</p>
+<ul>
+<li>
+<p>（近似）总拦截器，拦截所有url</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;mvc:interceptors&gt;
+&lt;bean class=&#34;com.app.mvc.MyInteceptor&#34; /&gt;
+&lt;/mvc:interceptors&gt;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>（近似） 总拦截器，拦截匹配的URL。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;mvc:interceptors &gt;
+&lt;mvc:interceptor&gt;
+&lt;mvc:mapping path=&#34;/user/*&#34; /&gt; &lt;!-- /user/* --&gt;
+&lt;bean class=&#34;com.mvc.MyInteceptor&#34;&gt;&lt;/bean&gt;
+&lt;/mvc:interceptor&gt;
+&lt;/mvc:interceptors&gt;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>HandlerMappint上的拦截器。如果是REST风格的URL，静态资源就不会被拦截。因为我们精准的注入了拦截器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;bean class=&#34;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&#34;&gt;
+&lt;property name=&#34;interceptors&#34;&gt;
+&lt;list&gt;
+&lt;bean class=&#34;com.mvc.MyInteceptor&#34;&gt;&lt;/bean&gt;
+&lt;/list&gt;
+&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>如果使用了&lt;mvc:annotation-driven /&gt;，它会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter这两个bean,所以就没有机会再给它注入interceptors属性，就无法指定拦截器。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>如何获取spring管理的bean</p>
+<ul>
+<li>
+<p>servlet方式加载时：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ServletContext sc=略  
+WebApplicationContext attr = (WebApplicationContext)sc.getAttribute(&#34;org.springframework.web.servlet.FrameworkServlet.CONTEXT.springMVC&#34;);
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>listener方式加载时</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ServletContext context = getServletContext();  
+WebApplicationContext applicationContext  = WebApplicationContextUtils .getWebApplicationContext(context);
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>通用的方法，在配置文件中加入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;!-- 用于持有ApplicationContext,可以使用SpringContextHolder.getBean(&#39;xxxx&#39;)的静态方法得到spring bean对象 --&gt;  
+&lt;bean class=&#34;com.xxxxx.SpringContextHolder&#34; lazy-init=&#34;false&#34; /&gt;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>&lt;mvc:annotation-driven /&gt; 到底做了什么工作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;!-- 注解请求映射  --&gt;  
+&lt;bean class=&#34;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&#34;&gt;          
+    &lt;property name=&#34;interceptors&#34;&gt;  
+        &lt;list&gt;    
+            &lt;ref bean=&#34;logNDCInteceptor&#34;/&gt;   &lt;!-- 日志拦截器，这是你自定义的拦截器 --&gt;  
+            &lt;ref bean=&#34;myRequestHelperInteceptor&#34;/&gt;   &lt;!-- RequestHelper拦截器，这是你自定义的拦截器--&gt;   
+            &lt;ref bean=&#34;myPermissionsInteceptor&#34;/&gt;  &lt;!-- 权限拦截器，这是你自定义的拦截器--&gt;   
+            &lt;ref bean=&#34;myUserInfoInteceptor&#34;/&gt;  &lt;!-- 用户信息拦截器，这是你自定义的拦截器--&gt;   
+        &lt;/list&gt;          
+    &lt;/property&gt;          
+&lt;/bean&gt;     
+&lt;bean class=&#34;org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter&#34;&gt;  
+    &lt;property name=&#34;messageConverters&#34;&gt;    
+        &lt;list&gt;    
+            &lt;ref bean=&#34;byteArray_hmc&#34; /&gt;    
+            &lt;ref bean=&#34;string_hmc&#34; /&gt;    
+            &lt;ref bean=&#34;resource_hmc&#34; /&gt;    
+            &lt;ref bean=&#34;source_hmc&#34; /&gt;    
+            &lt;ref bean=&#34;xmlAwareForm_hmc&#34; /&gt;    
+            &lt;ref bean=&#34;jaxb2RootElement_hmc&#34; /&gt;    
+            &lt;ref bean=&#34;jackson_hmc&#34; /&gt;    
+        &lt;/list&gt;    
+    &lt;/property&gt;    
+&lt;/bean&gt;    
+&lt;bean id=&#34;byteArray_hmc&#34; class=&#34;org.springframework.http.converter.ByteArrayHttpMessageConverter&#34; /&gt;&lt;!-- 处理.. --&gt;  
+&lt;bean id=&#34;string_hmc&#34; class=&#34;org.springframework.http.converter.StringHttpMessageConverter&#34; /&gt;&lt;!-- 处理.. --&gt;  
+&lt;bean id=&#34;resource_hmc&#34; class=&#34;org.springframework.http.converter.ResourceHttpMessageConverter&#34; /&gt;&lt;!-- 处理.. --&gt;  
+&lt;bean id=&#34;source_hmc&#34; class=&#34;org.springframework.http.converter.xml.SourceHttpMessageConverter&#34; /&gt;&lt;!-- 处理.. --&gt;  
+&lt;bean id=&#34;xmlAwareForm_hmc&#34; class=&#34;org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter&#34; /&gt;&lt;!-- 处理.. --&gt;  
+&lt;bean id=&#34;jaxb2RootElement_hmc&#34; class=&#34;org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter&#34; /&gt;&lt;!-- 处理.. --&gt;  
+&lt;bean id=&#34;jackson_hmc&#34; class=&#34;org.springframework.http.converter.json.MappingJacksonHttpMessageConverter&#34; /&gt;&lt;!-- 处理json--&gt;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="2016811">2016.8.11</h2>
+<ul>
+<li>
+<p>核心架构的具体流程步骤如下：</p>
+<ul>
+<li>1、 首先用户发送请求——&gt;DispatcherServlet，前端控制器收到请求后自己不进行处理，而是委托给其他的解析器进行处理，作为统一访问点，进行全局的流程控制；</li>
+<li>2、 DispatcherServlet——&gt;HandlerMapping，HandlerMapping将会把请求映射为HandlerExecutionChain对象（包含一个Handler处理器（页面控制器）对象、多个HandlerInterceptor拦截器）对象，通过这种策略模式，很容易添加新的映射策略；</li>
+<li>3、  DispatcherServlet——&gt;HandlerAdapter，HandlerAdapter将会把处理器包装为适配器，从而支持多种类型的处理器，即适配器设计模式的应用，从而很容易支持很多类型的处理器；</li>
+<li>4、  HandlerAdapter——&gt;处理器功能处理方法的调用，HandlerAdapter将会根据适配的结果调用真正的处理器的功能处理方法，完成功能处理；并返回一个ModelAndView对象（包含模型数据、逻辑视图名）；</li>
+<li>5、  ModelAndView的逻辑视图名——&gt; ViewResolver，ViewResolver将把逻辑视图名解析为具体的View，通过这种策略模式，很容易更换其他视图技术；</li>
+<li>6、  View——&gt;渲染，View会根据传进来的Model模型数据进行渲染，此处的Model实际是一个Map数据结构，因此很容易支持其他视图技术；</li>
+<li>7、返回控制权给DispatcherServlet，由DispatcherServlet返回响应给用户，到此一个流程结束。</li>
+</ul>
+</li>
+<li>
+<p>spring mvc 优势</p>
+<ul>
+<li>1、清晰的角色划分：前端控制器（DispatcherServlet）、请求到处理器映射（HandlerMapping）、处理器适配器（HandlerAdapter）、视图解析器（ViewResolver）、处理器或页面控制器（Controller）、验证器（   Validator）、命令对象（Command  请求参数绑定到的对象就叫命令对象）、表单对象（Form Object 提供给表单展示和提交到的对象就叫表单对象）。</li>
+<li>2、分工明确，而且扩展点相当灵活，可以很容易扩展，虽然几乎不需要；</li>
+<li>3、由于命令对象就是一个POJO，无需继承框架特定API，可以使用命令对象直接作为业务对象；</li>
+<li>4、和Spring 其他框架无缝集成，是其它Web框架所不具备的；</li>
+<li>5、可适配，通过HandlerAdapter可以支持任意的类作为处理器；</li>
+<li>6、可定制性，HandlerMapping、ViewResolver等能够非常简单的定制；</li>
+<li>7、功能强大的数据验证、格式化、绑定机制；</li>
+<li>8、利用Spring提供的Mock对象能够非常简单的进行Web层单元测试；</li>
+<li>9、本地化、主题的解析的支持，使我们更容易进行国际化和主题的切换。</li>
+<li>10、强大的JSP标签库，使JSP编写更容易。</li>
+<li>还有比如RESTful风格的支持、简单的文件上传、约定大于配置的契约式编程支持、基于注解的零配置支持等等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2016813">2016.8.13</h2>
+<h3 id="dispatcherservlet">DispatcherServlet初始化顺序</h3>
+<ul>
+<li>
+<p>HttpServletBean继承HttpServlet，将Servlet初始化参数（init-param）设置到该组件上（如contextAttribute、contextClass、namespace、contextConfigLocation），通过BeanWrapper简化设值过程，提供给子类初始化扩展点，initServletBean()。</p>
+</li>
+<li>
+<p>FrameworkServlet继承HttpServletBean，初始化web上下文，提供给子类初始化扩展点。</p>
+</li>
+<li>
+<p>DispatcherServlet继承FrameworkServlet，DispatcherServlet启动时会进行我们需要的Web层Bean的配置，如HandlerMapping、HandlerAdapter等，而且如果我们没有配置，还会给我们提供默认的配置。</p>
+</li>
+<li>
+<p>初始化Spring Web MVC使用的Web上下文，并且可能指定父容器为（ContextLoaderListener加载了根上下文）</p>
+</li>
+<li>
+<p>初始化DispatcherServlet使用的策略，如HandlerMapping、HandlerAdapter等</p>
+</li>
+</ul>
+<h3 id="mvccdispatcherservlet--controller">MVC中完整的C（包含控制逻辑+功能处理）由（DispatcherServlet + Controller）组成。</h3>
+<ul>
+<li>
+<p>Controller控制器</p>
+<ul>
+<li>收集、验证请求参数并绑定到命令对象</li>
+<li>将命令对象交给业务对象，由业务对象处理并返回模型数据</li>
+<li>返回ModelAndView</li>
+</ul>
+</li>
+<li>
+<p>DispatcherServlet</p>
+<ul>
+<li>负责将请求委托给控制器进行处理</li>
+<li>根据控制器返回的逻辑视图名选择具体的视图进行渲染（并把模型数据传入）</li>
+</ul>
+</li>
+</ul>
+<h3 id="controller">Controller接口控制器</h3>
+<ul>
+<li>
+<p>Controller接口</p>
+<ul>
+<li>用于进行请求的功能处理，处理完请求后返回ModelAndView</li>
+</ul>
+</li>
+<li>
+<p>WebContentGenerator</p>
+<ul>
+<li>用于提供如浏览器缓存控制、是否必须有session开启、支持的请求方法类型（GET、POST等）等</li>
+</ul>
+</li>
+<li>
+<p>AbstractController</p>
+<ul>
+<li>实现了Controller，并继承了WebContentGenerator</li>
+</ul>
+</li>
+<li>
+<p>ServletForwardingController</p>
+</li>
+<li>
+<p>BaseCommandController</p>
+<ul>
+<li>命令控制器通用基类，数据绑定，验证功能</li>
+</ul>
+</li>
+<li>
+<p>AbstractCommandController</p>
+<ul>
+<li>命令控制器之一，控制器能把自动封装请求参数到一个命令对象，而且提供了验证功能</li>
+</ul>
+</li>
+<li>
+<p>AbstractFormController</p>
+<ul>
+<li>用于支持带步骤的表单提交的命令控制器基类</li>
+</ul>
+</li>
+<li>
+<p>SimpleFormController</p>
+<ul>
+<li>提供了更好的两步表单支持：1、准备要展示的数据，并到表单展示页面；2、提交数据数据进行处理。</li>
+</ul>
+</li>
+<li>
+<p>CancellableFormController</p>
+<ul>
+<li>一个可取消的表单控制器，继承SimpleFormController，额外提供取消表单功能。</li>
+</ul>
+</li>
+<li>
+<p>AbstractWizardFormController</p>
+<ul>
+<li>提供了多步骤（向导）表单的支持</li>
+</ul>
+</li>
+<li>
+<p>ParameterizableViewController</p>
+<ul>
+<li>参数化视图控制器，不进行功能处理（即静态视图）</li>
+</ul>
+</li>
+<li>
+<p>AbstractUrlViewController</p>
+</li>
+<li>
+<p>UrlFilenameViewController</p>
+<ul>
+<li>提供根据请求URL路径直接转化为逻辑视图名的支持基类，即不需要功能处理，直接根据URL计算出逻辑视图名，并选择具体视图进行展示</li>
+</ul>
+</li>
+<li>
+<p>MultiActionController</p>
+<ul>
+<li>如AbstractCommandController、SimpleFormController等一般对应一个功能处理方法（如新增），如果我要实现比如最简单的用户增删改查（CRUD Create-Read-Update-Delete），那该怎么办呢</li>
+</ul>
+</li>
+</ul>
+<h2 id="2016815">2016.8.15</h2>
+<h3 id="heading">拦截器</h3>
+<ul>
+<li>
+<p>比如性能监控，记录拦截器preHandle的开始时间和afterCompletion结束时间。但拦截器是单例的，即线程不安全，如何记录时间呢？</p>
+<ul>
+<li>解决办法是使用ThreadLocal，它是线程绑定的变量，提供局部变量。</li>
+<li>在测试时得把此拦截器放在链的第一个，这样得到的时间比较准确。</li>
+</ul>
+</li>
+<li>
+<p>如登录拦截器</p>
+<ul>
+<li>能使用servlet规范中的过滤器Filter实现的功能就用Filter实现，因为HandlerInteceptor只有在Spring Web MVC环境下才能使用，因此Filter是最通用的、最先应该使用的。</li>
+</ul>
+</li>
+<li>
+<p>DefaultAnnotationHandlerMapping（3.1版本前）或者RequestMappingHandlerMapping（3.1版本后）：针对类上拥有注解的。  AnnotationMethodHandlerAdapter（3.1版本前）或者RequestMappingHandlerAdapter（3.1版本后）方法上拥有注解的。</p>
+</li>
+<li>
+<p>组合关系</p>
+<ul>
+<li>@RequestMapping的value、method、produces属性组合使用是<strong>或</strong>的关系</li>
+<li>@RequestMapping的params、headers属性组合使用是<strong>且</strong>的关系</li>
+</ul>
+</li>
+<li>
+<p>http相关</p>
+<ul>
+<li>CharacterEncodingFilter这个过滤器设置了编码(UTF-8)。编码只能被指定一次，即如果客户端设置了编</li>
+<li>服务器端通过headers的Content-Type来声明可处理的媒体类型，客户端可以通过headers的Accept声明。</li>
+<li>在spring3.1中使用HandlerMapping和HandlerAdapter可支持此特性。
+<ul>
+<li>consumes={&ldquo;application/json&rdquo;}：consumes指定方法能消费的媒体类型，通过Content-Type来判断</li>
+<li>produces = &ldquo;application/json&rdquo;：produces指定方法将产生json格式数据，通过Accept匹配</li>
+</ul>
+</li>
+<li>实际项目使用Accept请求头是比较麻烦的，大多数开放平台如淘宝、腾讯使用如下两种方式：扩展名，参数。</li>
+<li>@RequestParam原子类型：必须有值，否则抛出异常，如果允许空值请使用包装类代替。Boolean包装类型类型：默认Boolean.FALSE，其他引用类型默认为null。</li>
+</ul>
+</li>
+<li>
+<p>注解方式的数据绑定</p>
+<ul>
+<li>@RequestParam用于将请求参数区数据映射到功能处理方法的参数上</li>
+<li>@PathVariable用于将请求URL中的模板变量映射到功能处理方法的参数上</li>
+<li>@CookieValue用于将请求的Cookie数据映射到功能处理方法的参数上</li>
+<li>@RequestHeader用于将请求的头信息区数据映射到功能处理方法的参数上</li>
+<li>@ModelAttribute绑定请求参数到命令对象</li>
+<li>@SessionAttributes绑定命令对象到session</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/spring/">spring</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/WEB%E5%BC%80%E5%8F%91/python/%E5%BB%96%E9%9B%AA%E5%B3%B0Python%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">《廖雪峰Python教程》笔记</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E6%88%91%E5%AD%A6spirng3%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">《跟我学spirng3》笔记</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

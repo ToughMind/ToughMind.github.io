@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>极验 on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/categories/%E6%9E%81%E9%AA%8C/</link>
+    <description>Recent content in 极验 on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/categories/%E6%9E%81%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>项目常用</title>
+      <link>http://blog.nbgg.xyz/post/%E5%B7%A5%E4%BD%9C/%E6%9E%81%E9%AA%8C/%E9%A1%B9%E7%9B%AE%E5%B8%B8%E7%94%A8/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/%E5%B7%A5%E4%BD%9C/%E6%9E%81%E9%AA%8C/%E9%A1%B9%E7%9B%AE%E5%B8%B8%E7%94%A8/</guid>
+      <description>提交代码 1 2 3 git tag -a $(cat version) -m &amp;#34;1. 信息1 &amp;gt; 2. 信息2 &amp;gt; 3. 信息3&amp;#34; 日志 查看.gz日志，并控制行数 zcat XXXX.gz | grep XXXX -m 10 查询某段时间范围内的日志 sed -n &amp;lsquo;/15:20:00/,/15:40:00/p&amp;rsquo; *</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>sql数据库问题 - 人间忽晚 山河已秋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="1、mysql的cpu飙到500%怎么处理？ top查看哪个进程、哪个端口占用cpu最多 show processeslist查看是否由于大量并发，锁引" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/sql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="sql数据库问题" />
+<meta property="og:description" content="1、mysql的cpu飙到500%怎么处理？ top查看哪个进程、哪个端口占用cpu最多 show processeslist查看是否由于大量并发，锁引" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/mysql/sql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98/" />
+<meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="sql数据库问题">
+<meta itemprop="description" content="1、mysql的cpu飙到500%怎么处理？ top查看哪个进程、哪个端口占用cpu最多 show processeslist查看是否由于大量并发，锁引">
+<meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="1772">
+
+
+
+<meta itemprop="keywords" content="mysql," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="sql数据库问题"/>
+<meta name="twitter:description" content="1、mysql的cpu飙到500%怎么处理？ top查看哪个进程、哪个端口占用cpu最多 show processeslist查看是否由于大量并发，锁引"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">sql数据库问题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-17 </span>
+        <div class="post-category">
+            <a href="/categories/mysql/"> mysql </a>
+            </div>
+          <span class="more-meta"> 1772 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1mysqlcpu500">1、mysql的cpu飙到500%怎么处理？</a></li>
+        <li><a href="#2innodb">2、InnoDB支持的四种事务隔离级别？</a></li>
+        <li><a href="#3acid">3、数据库事务四个特性，ACID</a></li>
+        <li><a href="#4mysql-">4、MySQL 事务传播级别</a></li>
+        <li><a href="#5innodb">5、设置innodb事务级别的方法</a></li>
+        <li><a href="#6mysql">6、评测mysql</a></li>
+        <li><a href="#7mysql">7、mysql索引</a></li>
+        <li><a href="#8">8、锁的分类</a></li>
+        <li><a href="#9myisaminnodb">9、MyISAM和InnoDB</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h3 id="1mysqlcpu500">1、mysql的cpu飙到500%怎么处理？</h3>
+<ul>
+<li>top查看哪个进程、哪个端口占用cpu最多</li>
+<li>show processeslist查看是否由于大量并发，锁引起的负载问题</li>
+<li>查看man慢查询，执行时间最长的sql；explain分析是否走索引，sql优化</li>
+<li>是否缓存失效引起，查看buffer命中率</li>
+</ul>
+<h3 id="2innodb">2、InnoDB支持的四种事务隔离级别？</h3>
+<ul>
+<li>未提交读、提交读、 重复读、串行读</li>
+<li>脏读：同一事务中，会读取到还未提交事务修改的数据。</li>
+<li>非重复读：同一事务中，两个时刻读取同一行数据不一样（由于其他事务更新）。</li>
+<li>幻读：同一事务中，同一个查询多次进行，每次结果不一样（由于其他事务提交插入）</li>
+</ul>
+<h3 id="3acid">3、数据库事务四个特性，ACID</h3>
+<ul>
+<li>原子性：组成一个事务的多个数据库操作是一个原子单位。</li>
+<li>一致性：事务操作成功后数据库所处的状态和它的业务规则是一致的，比如银行转账</li>
+<li>隔离性：并发数据操作时，不同的事务拥有各自的数据空间，互相不完全干扰</li>
+<li>持久性：持久化到数据库中
+<img src="http://upload-images.jianshu.io/upload_images/971185-6c3a6fd6623ed3b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></li>
+</ul>
+<h3 id="4mysql-">4、MySQL 事务传播级别</h3>
+<ul>
+<li>PROPAGATION_REQUIRED：支持当前事务，若没有则新建</li>
+<li>PROPAGATION_SUPPORTS：支持当前事务，若没有，则无事务</li>
+<li>PROPAGATION_MANDATORY：支持当前事务，没有则抛异常</li>
+<li>PROPAGATION_REQUIRESNEW：新建事务，如果当前存在事务，把当前事务挂起。</li>
+<li>PROPAGATION_NOT_SUPPORTED：以非事务执行</li>
+<li>PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，则抛出异常</li>
+<li>PROPAGATION_NESTED：如果一个活动的事务存在，则运行在一个嵌套的事务中；如果没有活动事务, 则按REQUIRED属性执行</li>
+</ul>
+<h3 id="5innodb">5、设置innodb事务级别的方法</h3>
+<ul>
+<li>SET [SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL {READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZABLE}</li>
+<li>set global transaction isolation level read committed</li>
+</ul>
+<h3 id="6mysql">6、评测mysql</h3>
+<ul>
+<li>explain format = json</li>
+<li>mysql workbench的visual explain</li>
+<li>MySQL的CBO和Optimizer Trace</li>
+</ul>
+<h3 id="7mysql">7、mysql索引</h3>
+<ul>
+<li>
+<p>索引分类</p>
+<ul>
+<li>普通索引：char和varchar长度可以小于实际长度；blob和text必须制定长度。</li>
+<li>唯一索引：值唯一，允许有空值。</li>
+<li>主键索引：不允许有空值。</li>
+<li>组合索引</li>
+</ul>
+</li>
+<li>
+<p>建立索引的时机：一般来说，在WHERE和JOIN中出现的列需要建立索引。</p>
+</li>
+<li>
+<p>索引的不足之处</p>
+<ul>
+<li>降低表的更新速度（mysql不仅要保存数据，还要保存索引文件）</li>
+<li>会占用磁盘空间</li>
+</ul>
+</li>
+<li>
+<p>注意事项</p>
+<ul>
+<li>索引不会包含有NULL值的列</li>
+<li>尽量使用短索引</li>
+<li>索引列排序：MySQL查询只使用一个索引，因此如果where子句中已经使用了索引的话，那么order by中的列是不会使用索引的。</li>
+<li>like语</li>
+<li>句操作</li>
+<li>不要在列上进行运算</li>
+<li>不使用NOT IN和&lt;&gt;、！=操作</li>
+</ul>
+</li>
+<li>
+<p>建立索引的原则</p>
+<ul>
+<li>最左前缀匹配：mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止</li>
+<li>=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql查询优化器会优化</li>
+<li>尽量选择区分度高的列作为索引</li>
+<li>索引列不能参与计算</li>
+<li>尽量的扩展索引，不要新建索引</li>
+</ul>
+</li>
+</ul>
+<h3 id="8">8、锁的分类</h3>
+<p>锁是作用于索引的,行级锁都是基于索引的。只有通过索引条件检索数据，InnoDB才使用行级锁，否则，InnoDB将使用表锁</p>
+<ul>
+<li>死锁：当两个事务同时执行，一个锁住了主键索引，在等待其他相关索引。另一个锁定了非主键索引，在等待主键索引。这样就会发生死锁。</li>
+<li>表锁，分为共享读锁(又称读锁)和拍他锁
+<ul>
+<li>读锁：用户可以并发读取数据,但任何事物都不能对数据进行修改,除非释放了所有共享锁</li>
+<li>排他锁（exclusive Lock）又称写锁，获准排他锁的事务既能读数据，又能修改数据。其他事务不能再对A加任任何类型的锁。</li>
+<li>意向锁</li>
+</ul>
+</li>
+</ul>
+<h3 id="9myisaminnodb">9、MyISAM和InnoDB</h3>
+<ul>
+<li>
+<p>MyISAM：每一个MyISAM表都对应于硬盘上的三个文件。</p>
+<ul>
+<li>.frm文件保存表的定义，并不是MyISAM引擎的一部分，而是服务器的一部分</li>
+<li>.MYD保存表的数据</li>
+<li>.MYI是表的索引文件</li>
+<li>ISAM被设计为适合处理读频率远大于写频率</li>
+<li>MyISAM继承ISAM优点，还提供了表级锁，故障恢复，支持全文搜索，不支持外键</li>
+</ul>
+</li>
+<li>
+<p>InnoDB：适用于高并发读写，使用MVCC(Multi-Version Concurrency Control)以及行级锁来提供遵从ACID的事务支持。</p>
+<ul>
+<li>支持外键参照完整性，具备故障恢复能力</li>
+<li>性能不错</li>
+<li>备份恢复要麻烦一点，必须在停掉MYSQL后对进行数据恢复</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/mysql/">mysql</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/WEB%E5%BC%80%E5%8F%91/mysql/sql%E4%BC%98%E5%8C%96/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">sql优化</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/%E7%B3%BB%E7%BB%9F/Linux/unix%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+            <span class="next-text nav-default">unix常用命令</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

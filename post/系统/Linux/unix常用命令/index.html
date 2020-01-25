@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>unix常用命令 - 人间忽晚 山河已秋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="系统 配置 命令 说明 sudo chown -R git:git /home/git 修改权限 hostnamectl set-hostname &amp;lt;主机名&amp;gt; 修改主机名 ifconfig -a 查看内网ip curl ifconfig.me 查看外网ip cat /etc/redhat-release 查看当前系统 uname -m 查看多少位系统 进程" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/unix%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="unix常用命令" />
+<meta property="og:description" content="系统 配置 命令 说明 sudo chown -R git:git /home/git 修改权限 hostnamectl set-hostname &lt;主机名&gt; 修改主机名 ifconfig -a 查看内网ip curl ifconfig.me 查看外网ip cat /etc/redhat-release 查看当前系统 uname -m 查看多少位系统 进程" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/unix%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" />
+<meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="unix常用命令">
+<meta itemprop="description" content="系统 配置 命令 说明 sudo chown -R git:git /home/git 修改权限 hostnamectl set-hostname &lt;主机名&gt; 修改主机名 ifconfig -a 查看内网ip curl ifconfig.me 查看外网ip cat /etc/redhat-release 查看当前系统 uname -m 查看多少位系统 进程">
+<meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="1322">
+
+
+
+<meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="unix常用命令"/>
+<meta name="twitter:description" content="系统 配置 命令 说明 sudo chown -R git:git /home/git 修改权限 hostnamectl set-hostname &lt;主机名&gt; 修改主机名 ifconfig -a 查看内网ip curl ifconfig.me 查看外网ip cat /etc/redhat-release 查看当前系统 uname -m 查看多少位系统 进程"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">unix常用命令</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-17 </span>
+        <div class="post-category">
+            <a href="/categories/linux/"> linux </a>
+            </div>
+          <span class="more-meta"> 1322 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading-1">配置</a></li>
+    <li><a href="#heading-2">进程</a></li>
+    <li><a href="#heading-3">软件包</a>
+      <ul>
+        <li><a href="#ubuntu">ubuntu检查软件包是否安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#wget">wget</a>
+      <ul>
+        <li><a href="#wget-1">使用wget下载需要用户名和密码访问的网站资源</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4">缓存</a>
+      <ul>
+        <li><a href="#heading-5">清理内存</a></li>
+        <li><a href="#swap">清除swap</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#rpm">rpm</a></li>
+    <li><a href="#yum">yum</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-6">常用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-7">常用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-8">常用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-9">常用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-10">常用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-11">常用</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-12">常用</a></li>
+    <li><a href="#heading-13">配置代理</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading-14">常用</a></li>
+    <li><a href="#nginx">卸载nginx</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="heading">系统</h1>
+<h2 id="heading-1">配置</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sudo chown -R git:git /home/git</td>
+<td>修改权限</td>
+</tr>
+<tr>
+<td>hostnamectl set-hostname &lt;主机名&gt;</td>
+<td>修改主机名</td>
+</tr>
+<tr>
+<td>ifconfig -a</td>
+<td>查看内网ip</td>
+</tr>
+<tr>
+<td>curl ifconfig.me</td>
+<td>查看外网ip</td>
+</tr>
+<tr>
+<td>cat /etc/redhat-release</td>
+<td>查看当前系统</td>
+</tr>
+<tr>
+<td>uname -m</td>
+<td>查看多少位系统</td>
+</tr>
+</tbody>
+</table>
+<h2 id="heading-2">进程</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ps -aux</td>
+<td>查看进程</td>
+</tr>
+<tr>
+<td>pgrep、pidof、killall</td>
+<td>杀死进程</td>
+</tr>
+<tr>
+<td>netstat -tunlp</td>
+<td>grep 22<!-- raw HTML omitted -->netstat -a -t &ndash;numeric-ports -p</td>
+</tr>
+</tbody>
+</table>
+<h2 id="heading-3">软件包</h2>
+<h3 id="ubuntu">ubuntu检查软件包是否安装</h3>
+<ul>
+<li><code>dpkg -s XXX</code></li>
+<li><code>dpkg-query -l XXX</code></li>
+<li><code>dpkg -l | grep XXX</code></li>
+</ul>
+<h2 id="wget">wget</h2>
+<h3 id="wget-1">使用wget下载需要用户名和密码访问的网站资源</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">--http-user=USER设置HTTP用户 
+--http-passwd=PASS设置HTTP密码
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="heading-4">缓存</h2>
+<h3 id="heading-5">清理内存</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">echo 1 &gt; /proc/sys/vm/drop_caches
+echo 2 &gt; /proc/sys/vm/drop_caches
+echo 3 &gt; /proc/sys/vm/drop_caches
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="swap">清除swap</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">swapoff -a
+swapon -a
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="centos7">centos7</h1>
+<h2 id="rpm">rpm</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rpm -qa /rpm -ql name</td>
+<td>查看某个软件安装在哪个目录</td>
+</tr>
+</tbody>
+</table>
+<h2 id="yum">yum</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>yum search name</td>
+<td>查找指定软件包</td>
+</tr>
+<tr>
+<td>yum list</td>
+<td>列出所有可安装的软件包</td>
+</tr>
+<tr>
+<td>yum list updates</td>
+<td>列出所有可更新的软件包</td>
+</tr>
+<tr>
+<td>yum list extras</td>
+<td>列出所有已安装但不在Yum Repository软件包资源库内的软件包</td>
+</tr>
+<tr>
+<td>yum list name <!-- raw HTML omitted --> yum info name</td>
+<td>列出指定的软件包安装信息</td>
+</tr>
+<tr>
+<td>yum update name</td>
+<td>更新软件包</td>
+</tr>
+<tr>
+<td>yum update</td>
+<td>更新系统</td>
+</tr>
+<tr>
+<td>yum remove</td>
+<td>卸载软件包</td>
+</tr>
+</tbody>
+</table>
+<h1 id="virtualenvwrappervirtualenv">virtualenvwrapper和virtualenv</h1>
+<h2 id="heading-6">常用</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>workon <!-- raw HTML omitted --> lsvirtualenv</td>
+<td>列出虚拟环境列表</td>
+</tr>
+<tr>
+<td>mkvirtualenv name</td>
+<td>新建虚拟环境</td>
+</tr>
+<tr>
+<td>workon name</td>
+<td>启动/切换虚拟环境</td>
+</tr>
+<tr>
+<td>rmvirtualenv name</td>
+<td>删除虚拟环境</td>
+</tr>
+<tr>
+<td>deactivate</td>
+<td>离开虚拟环境</td>
+</tr>
+</tbody>
+</table>
+<h1 id="pyenvvirtualenv">pyenv和virtualenv</h1>
+<h2 id="heading-7">常用</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pyenv versions</td>
+<td>查看当前pyenv下的所有python版本</td>
+</tr>
+<tr>
+<td>pyenv install &ndash;list</td>
+<td>列出所有可以下载的python版本</td>
+</tr>
+<tr>
+<td>pyenv install 版本号</td>
+<td>下载并安装python版本</td>
+</tr>
+<tr>
+<td>python global 版本号</td>
+<td>切换当前默认的python版本，全局有效.</td>
+</tr>
+<tr>
+<td>python local 版本号</td>
+<td>切换当前默认的python版本，当前用户有效</td>
+</tr>
+<tr>
+<td>pyenv rehash</td>
+<td>重建环境变量，每当你增删 Python 版本或带有可执行文件的包（如 pip）以后，都应该执行一次本命令</td>
+</tr>
+<tr>
+<td>pyenv virtualenv 版本 环境名称</td>
+<td>virtualenv创建虚拟环境</td>
+</tr>
+<tr>
+<td>pyenv virtualenvs</td>
+<td>virtualenv查看已创建的虚拟环境</td>
+</tr>
+<tr>
+<td>pyenv activate 环境名称</td>
+<td>pyenv切换虚拟环境</td>
+</tr>
+<tr>
+<td>pyenv deactivate</td>
+<td>退出当前环境</td>
+</tr>
+<tr>
+<td>pyenv virtualenv-delete 环境名称</td>
+<td>删除虚拟环境</td>
+</tr>
+<tr>
+<td>pyenv local 环境名称</td>
+<td>在特定文件夹中设定环境</td>
+</tr>
+</tbody>
+</table>
+<h1 id="mongodb">mongodb</h1>
+<h2 id="heading-8">常用</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>systemctl stop mongod</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>mongo 127.0.0.1:27017</td>
+<td>连接mongodb并指定端口</td>
+</tr>
+<tr>
+<td>mongo 127.0.0.1:27017/test</td>
+<td>连接到指定的mongodb数据库</td>
+</tr>
+<tr>
+<td>mongo 127.0.0.1:27017/test -u user -p password</td>
+<td>指定用户名和密码连接到指定的mongodb数据库</td>
+</tr>
+</tbody>
+</table>
+<h1 id="redis">Redis</h1>
+<h2 id="heading-9">常用</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>redis-cli -h 127.0.0.1 -p 6379</td>
+<td>远程服务连接</td>
+</tr>
+<tr>
+<td>redis-cli -h 127.0.0.1 -p 6379 -a 123456</td>
+<td>有权限控制时(加上-a 密码)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="supervisor">supervisor</h1>
+<h2 id="heading-10">常用</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>supervisorctl stop name</td>
+<td>停止某一个进程，name 为 [program:x] 里的 x</td>
+</tr>
+<tr>
+<td>supervisorctl start name</td>
+<td>启动某个进程</td>
+</tr>
+<tr>
+<td>supervisorctl restart name</td>
+<td>重启某个进程</td>
+</tr>
+<tr>
+<td>supervisorctl stop groupworker:</td>
+<td>结束所有属于名为 groupworker 这个分组的进程 (start，restart 同理)</td>
+</tr>
+<tr>
+<td>supervisorctl stop groupworker:name1</td>
+<td>结束 groupworker:name1 这个进程 (start，restart 同理)</td>
+</tr>
+<tr>
+<td>supervisorctl stop all</td>
+<td>停止全部进程，注：start、restart、stop 都不会载入最新的配置文件</td>
+</tr>
+<tr>
+<td>supervisorctl reload</td>
+<td>载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程</td>
+</tr>
+<tr>
+<td>supervisorctl update</td>
+<td>根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启</td>
+</tr>
+<tr>
+<td>kill -9 $(ps -ef</td>
+<td>grep supervisor</td>
+</tr>
+</tbody>
+</table>
+<h1 id="pip">pip</h1>
+<h2 id="heading-11">常用</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pip install name==2.8.7</td>
+<td>安装指定版本包</td>
+</tr>
+<tr>
+<td>pip show &ndash;files name</td>
+<td>查看已安装的包</td>
+</tr>
+<tr>
+<td>pip list &ndash;outdated <!-- raw HTML omitted --> pip list -o</td>
+<td>检查需要更新的包</td>
+</tr>
+<tr>
+<td>pip install &ndash;upgrade name <!-- raw HTML omitted --> pip install -U &lt;包名&gt;</td>
+<td>升级包</td>
+</tr>
+<tr>
+<td>pip freeze &gt; path/requirements.txt</td>
+<td>导出requirements.txt</td>
+</tr>
+<tr>
+<td>pip show -f name</td>
+<td>显示包所在的目录</td>
+</tr>
+<tr>
+<td>pip search name</td>
+<td>搜索包</td>
+</tr>
+<tr>
+<td>pip freeze</td>
+<td>生成一个类似需要安装的包的列表</td>
+</tr>
+</tbody>
+</table>
+<h1 id="npmnrm">npm、nrm</h1>
+<h2 id="heading-12">常用</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>npm install -g nrm</td>
+<td>下载nrm</td>
+</tr>
+<tr>
+<td>nrm ls</td>
+<td>列出可用软件源</td>
+</tr>
+<tr>
+<td>nrm use taobao</td>
+<td>使用淘宝</td>
+</tr>
+</tbody>
+</table>
+<h2 id="heading-13">配置代理</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">npm config set proxy http://127.0.0.1:3128
+npm config set http-proxy http://127.0.0.1:3128
+npm config set https-proxy https://127.0.0.1:3128
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="apt">apt</h1>
+<h2 id="heading-14">常用</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apt-get autoremove</td>
+<td>卸载</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nginx">卸载nginx</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo apt-get remove nginx-*
+sudo apt-get purge nginx-*
+# 删除旧文件目录
+sudo find /etc -name &#34;*nginx*&#34; |xargs  rm -rf
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">linux</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/WEB%E5%BC%80%E5%8F%91/mysql/sql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%97%AE%E9%A2%98/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">sql数据库问题</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/WEB%E5%BC%80%E5%8F%91/java/JAVA-EE%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6%E5%AE%9E%E6%88%98-%E9%AB%98%E6%B4%AA%E5%B2%A9%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">《JAVA EE核心框架实战 高洪岩》笔记</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《实战Java高并发程序设计 葛一鸣》笔记 - 人间忽晚 山河已秋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="2016.12.8 一些基本概念 同步和异步：用来形容一次调用。 并发：偏重于多个任务交替进行，而多个任务之间可能是串行。并行：是真正意义上的“同时执行”。 临界区" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E6%88%98Java%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E8%91%9B%E4%B8%80%E9%B8%A3%E7%AC%94%E8%AE%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="《实战Java高并发程序设计 葛一鸣》笔记" />
+<meta property="og:description" content="2016.12.8 一些基本概念 同步和异步：用来形容一次调用。 并发：偏重于多个任务交替进行，而多个任务之间可能是串行。并行：是真正意义上的“同时执行”。 临界区" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E6%88%98Java%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E8%91%9B%E4%B8%80%E9%B8%A3%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="《实战Java高并发程序设计 葛一鸣》笔记">
+<meta itemprop="description" content="2016.12.8 一些基本概念 同步和异步：用来形容一次调用。 并发：偏重于多个任务交替进行，而多个任务之间可能是串行。并行：是真正意义上的“同时执行”。 临界区">
+<meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="6359">
+
+
+
+<meta itemprop="keywords" content="java," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《实战Java高并发程序设计 葛一鸣》笔记"/>
+<meta name="twitter:description" content="2016.12.8 一些基本概念 同步和异步：用来形容一次调用。 并发：偏重于多个任务交替进行，而多个任务之间可能是串行。并行：是真正意义上的“同时执行”。 临界区"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《实战Java高并发程序设计 葛一鸣》笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-17 </span>
+        <div class="post-category">
+            <a href="/categories/java/"> java </a>
+            </div>
+          <span class="more-meta"> 6359 words </span>
+          <span class="more-meta"> 13 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#2016128">2016.12.8</a>
+      <ul>
+        <li><a href="#heading">一些基本概念</a></li>
+        <li><a href="#heading-1">两个重要定律</a></li>
+        <li><a href="#jmmjava">JMM，java内存模型</a></li>
+      </ul>
+    </li>
+    <li><a href="#20161215">2016.12.15</a>
+      <ul>
+        <li><a href="#heading-2">关于线程</a></li>
+        <li><a href="#java">java实现线程</a></li>
+      </ul>
+    </li>
+    <li><a href="#20161226">2016.12.26</a>
+      <ul>
+        <li><a href="#java-1">java实现线程相关</a></li>
+      </ul>
+    </li>
+    <li><a href="#201616">2016.1.6</a>
+      <ul>
+        <li><a href="#java-2">java实现线程相关</a></li>
+      </ul>
+    </li>
+    <li><a href="#201717">2017.1.7</a>
+      <ul>
+        <li><a href="#java-3">java实现线程相关</a></li>
+      </ul>
+    </li>
+    <li><a href="#201719">2017.1.9</a>
+      <ul>
+        <li><a href="#java-4">java并发包</a></li>
+      </ul>
+    </li>
+    <li><a href="#2017117">2017.1.17</a>
+      <ul>
+        <li><a href="#heading-3">回顾复习线程基础和基本并行包</a></li>
+      </ul>
+    </li>
+    <li><a href="#201727">2017.2.7</a>
+      <ul>
+        <li><a href="#heading-4">线程池</a></li>
+      </ul>
+    </li>
+    <li><a href="#201729">2017.2.9</a>
+      <ul>
+        <li><a href="#heading-5">计划任务</a></li>
+      </ul>
+    </li>
+    <li><a href="#2017210">2017.2.10</a>
+      <ul>
+        <li><a href="#blockingqueue">BlockingQueue</a></li>
+      </ul>
+    </li>
+    <li><a href="#2017213">2017.2.13</a>
+      <ul>
+        <li><a href="#heading-6">拒绝策略</a></li>
+      </ul>
+    </li>
+    <li><a href="#2017214">2017.2.14</a>
+      <ul>
+        <li><a href="#heading-7">最优线程池数量</a></li>
+      </ul>
+    </li>
+    <li><a href="#2017215">2017.2.15</a>
+      <ul>
+        <li><a href="#forkjoin">fork/join框架</a></li>
+        <li><a href="#heading-8">并发集合容器</a></li>
+        <li><a href="#heading-9">锁性能提高</a></li>
+      </ul>
+    </li>
+    <li><a href="#2017216">2017.2.16</a>
+      <ul>
+        <li><a href="#jvm">jvm对锁优化</a></li>
+        <li><a href="#threadlocal">ThreadLocal相关</a></li>
+      </ul>
+    </li>
+    <li><a href="#2017217">2017.2.17</a>
+      <ul>
+        <li><a href="#threadlocal-1">ThreadLocal实现原理</a></li>
+        <li><a href="#cas">CAS技术</a></li>
+      </ul>
+    </li>
+    <li><a href="#2017218">2017.2.18</a>
+      <ul>
+        <li><a href="#jdkcas">JDK直接使用CAS操作的线程安全类</a></li>
+      </ul>
+    </li>
+    <li><a href="#2017220">2017.2.20</a>
+      <ul>
+        <li><a href="#atomicintegerfieldupdater">AtomicIntegerFieldUpdater类似</a></li>
+      </ul>
+    </li>
+    <li><a href="#vector">自己实现Vector的无锁算法</a></li>
+    <li><a href="#synchronousqueue">细看SynchronousQueue实现</a></li>
+    <li><a href="#heading-10">死锁</a></li>
+    <li><a href="#201754">2017.5.4</a>
+      <ul>
+        <li><a href="#heading-11">并行模式与算法，单例模式</a></li>
+        <li><a href="#heading-12">不变模式</a></li>
+        <li><a href="#heading-13">生产者和消费者</a></li>
+        <li><a href="#disruptor">无锁的缓存框架：Disruptor</a></li>
+      </ul>
+    </li>
+    <li><a href="#201755">2017.5.5</a>
+      <ul>
+        <li><a href="#disruptor-1">无锁的缓存框架：Disruptor</a></li>
+      </ul>
+    </li>
+    <li><a href="#201756">2017.5.6</a>
+      <ul>
+        <li><a href="#future">Future模式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h2 id="2016128">2016.12.8</h2>
+<h3 id="heading">一些基本概念</h3>
+<ul>
+<li>
+<p>同步和异步：用来形容一次调用。</p>
+</li>
+<li>
+<p>并发：偏重于多个任务交替进行，而多个任务之间可能是串行。并行：是真正意义上的“同时执行”。</p>
+</li>
+<li>
+<p>临界区：可以用来表示共享资源。但每次只能有一个线程使用它。</p>
+</li>
+<li>
+<p>阻塞和非阻塞：通常用来形容线程间的相互影响，一个线程影响其他线程的挂起和前进。</p>
+</li>
+<li>
+<p>死锁、饥饿、活锁：多线程活跃性的问题。</p>
+</li>
+<li>
+<p>并发级别：阻塞调度是悲观，非阻塞调度是乐观</p>
+<ul>
+<li>
+<p>阻塞：synchronized或者重入锁，会试图在执行后续代码前，得到临界区的锁。</p>
+</li>
+<li>
+<p>无饥饿：排队。</p>
+</li>
+<li>
+<p>无障碍：最弱的非阻塞调度。多个线程无障碍进入临界区，若一旦发现都有修改，则回滚；若没有发生数据竞争，则顺利完成。</p>
+</li>
+<li>
+<p>无锁：要求有一个线程可以在有限步内完成操作。</p>
+</li>
+<li>
+<p>无等待：要求所有线程必须在有限步内完成操作。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-1">两个重要定律</h3>
+<ul>
+<li>
+<p>加速比=优化前系统耗时/优化后系统耗时</p>
+</li>
+<li>
+<p>Amdahl定律：当串行比例一定时，加速比是有上限的。</p>
+</li>
+<li>
+<p>Gustafson定律：如果可被并行的代码所占比例足够多，那么加速比就可以随cpu数量线性增长。</p>
+</li>
+</ul>
+<h3 id="jmmjava">JMM，java内存模型</h3>
+<ul>
+<li>
+<p>原子性：一个操作不可中断，操作不会被其他线程干扰。</p>
+</li>
+<li>
+<p>可见性：一个线程更改了共享变量的值，其他线程是否能够立即知道这个修改。</p>
+<ul>
+<li>缓存优化、硬件优化，有些内存读写，指令重排、编辑器优化都可能导致一个线程修改不被另一个线程察觉。</li>
+</ul>
+</li>
+<li>
+<p>有序性：程序执行时，有可能会进行指令重排。</p>
+<ul>
+<li>指令重排可以保证串行语义一致，但没有义务保证多线程间的语义也一致。</li>
+</ul>
+</li>
+<li>
+<p>指令不能重排：Happen-Before规则。如程序顺序、volatile规则、锁规则、线程、finalize()等</p>
+</li>
+</ul>
+<h2 id="20161215">2016.12.15</h2>
+<h3 id="heading-2">关于线程</h3>
+<ul>
+<li>进程是系统资源分配和调度的基本单位，是程序执行实体，是关于某数据集合上的一次运行活动。
+<ul>
+<li>程序是死的，静态的；进程是活的</li>
+</ul>
+</li>
+<li>进程是线程的容器。线程就是轻量级的进程。
+<ul>
+<li>使用多线程而不使用多进程，是因为线程间的切换和调度成本远远小于进程。</li>
+</ul>
+</li>
+</ul>
+<h3 id="java">java实现线程</h3>
+<ul>
+<li>线程的所有状态有5种：NEW,RUNABLE,BLOCKED,WAITING,TIMED_WAITING,TERMINATED</li>
+<li>默认的Thread.run()就是直接调用内部的Runable接口。因此使用Runable接口更为合理。</li>
+</ul>
+<h2 id="20161226">2016.12.26</h2>
+<h3 id="java-1">java实现线程相关</h3>
+<ul>
+<li>Thread.sleep()方法由于中断而抛出异常，此时，它会清除中断标记。
+<ul>
+<li>注意，在catch代码里要重新设置中断。</li>
+</ul>
+</li>
+</ul>
+<h2 id="201616">2016.1.6</h2>
+<h3 id="java-2">java实现线程相关</h3>
+<ul>
+<li>
+<p>当调用object.notify()，会从等待队列中，随机选择一个线程，并将其唤醒。</p>
+<ul>
+<li>跟优先级无关，完全随机。</li>
+</ul>
+</li>
+<li>
+<p>object.wait()必须包含在synchronized语句中，因为wait()和notify()都需要先获得目标对象的监视器。</p>
+<ul>
+<li>wait()会释放目标对象的锁，但sleep()方法不会释放任何资源。</li>
+<li>suspend()和resume()是一对，suspend()也不会释放锁。若suspend()之后没有resume()就GG了。</li>
+</ul>
+</li>
+<li>
+<p>join()的本质还是wait()和notify()机制。</p>
+<ul>
+<li>由此值得注意：不要在Thread对象实例上使用类似wait和notify的方法，容易与系统API互相影响。</li>
+</ul>
+</li>
+<li>
+<p>volatile是无法保证i++的原子性的。不能代替锁，也无法保证一些复合操作的原子性。</p>
+</li>
+</ul>
+<h2 id="201717">2017.1.7</h2>
+<h3 id="java-3">java实现线程相关</h3>
+<ul>
+<li>synchronized实现线程间同步。对同步块加锁，使每次只能有一个线程进入同步块。
+<ul>
+<li>作用于对象：要获得给定对象的锁</li>
+<li>作用于实例方法：要获得当前实例对象的锁。注意并行操作时一定要保证是同一个实例才有效。</li>
+<li>作用于静态方法：要获得当前类的锁</li>
+</ul>
+</li>
+</ul>
+<h2 id="201719">2017.1.9</h2>
+<h3 id="java-4">java并发包</h3>
+<ul>
+<li>
+<p>重入锁，synchronized的功能扩展</p>
+<ul>
+<li>
+<p>为何叫重入？因为一个线程可以连续两次获得同一把锁。</p>
+</li>
+<li>
+<p>中断响应功能：一个线程在等待，那么它依然可以收到一个通知，被告知无须再等待。</p>
+</li>
+<li>
+<p>锁申请等待限时：避免死锁，除了上面的等待外部响应外，还可以限时。</p>
+</li>
+<li>
+<p>三个要素：</p>
+<ul>
+<li>原子状态，使用CAS操作来存储当前锁状态</li>
+<li>等待队列，未请求到锁的线程会进入等待队列</li>
+<li>阻塞原语park()和unpark()</li>
+</ul>
+</li>
+<li>
+<p>使用condition.await()和signal()前，要先获得重入锁，之后也记得要释放锁。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>信号量，Semaphore，允许多个线程同时访问。</p>
+</li>
+<li>
+<p>读写锁，读读之间是非阻塞的。</p>
+</li>
+<li>
+<p>CountDownLatch：让某个线程等到倒计时结束再执行（可指定数量的线程完成之后）。</p>
+</li>
+<li>
+<p>循环栅栏CyclicBarrier：功能比CountDownLatch更强大</p>
+<ul>
+<li>CountDownLatch就针对一次计时完成，然后执行动作；而CyclicBarrier可指定每一次计时完成触发动作。</li>
+<li>CyclicBarrier每一轮计数完毕后都会重新开始计数，并且可以指定每一轮完毕后的触发动作。这是很CountDownLatch的最大不同之处。</li>
+<li>被中断可能抛出BrokenBarrierException异常，因为此时CyclicBarrier已破损，继续等待已毫无意义。</li>
+</ul>
+</li>
+<li>
+<p>LockSupport非常实用的线程阻塞工具，支持中断，但park()方法不会抛出异常。</p>
+</li>
+</ul>
+<h2 id="2017117">2017.1.17</h2>
+<h3 id="heading-3">回顾复习线程基础和基本并行包</h3>
+<ul>
+<li>所有线程状态，Thread枚举
+<ul>
+<li>NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, TERMINATED</li>
+</ul>
+</li>
+</ul>
+<h2 id="201727">2017.2.7</h2>
+<h3 id="heading-4">线程池</h3>
+<ul>
+<li>newFixThreadPool():固定的线程数量</li>
+<li>newSingleThreadExecutor():只有一个线程</li>
+<li>newCachedThreadPool():可根据实际情况调整线程数量</li>
+<li>newSingleThreadScheduledExecutor():一个线程，给定时间执行某任务</li>
+<li>newScheduledThreadPool():功能同上，可指定线程数量</li>
+</ul>
+<h2 id="201729">2017.2.9</h2>
+<h3 id="heading-5">计划任务</h3>
+<ul>
+<li>newScheduledThreadPool
+<ul>
+<li>scheduleAtFixedRate()：调度的频率是一定的。</li>
+<li>scheduleWithFixedDelay()：是上一个任务结束再经过delay时间再执行。</li>
+</ul>
+</li>
+<li>如果任务中出现异常，则会停止调度</li>
+</ul>
+<h2 id="2017210">2017.2.10</h2>
+<h3 id="blockingqueue">BlockingQueue</h3>
+<ul>
+<li>直接提交：SynchronousQueue。没有容量，拒绝策略。</li>
+<li>有界：ArrayBlockingQueue。</li>
+<li>无界：LinkedBlockingQueue。</li>
+<li>优先：PriorityBlockingQueue。</li>
+<li>个人理解而言，线程池有数量限制，超出了限制，任务会放进队列里（不同队列有不同的处理策略），从队列里挤出来的任务，就需要线程池去复用或者开辟新空间去处理任务了。
+<ul>
+<li>队列是在线程池满的情况下使用，线程池开辟新线程也是队列里挤出任务出来时才使用。</li>
+</ul>
+</li>
+<li>keepAliveTime：超出线程池默认数量的线程空闲后的存活时间。</li>
+</ul>
+<h2 id="2017213">2017.2.13</h2>
+<h3 id="heading-6">拒绝策略</h3>
+<ul>
+<li>线程池和等待队列都最满状态了。JDK内置4种策略：
+<ul>
+<li>AbortPolicy：抛出异常，阻止工作。</li>
+<li>CallerRunsPolicy：直接在调用者线程中运行被丢弃的任务。</li>
+<li>DiscardOledestPolicy：丢弃最老的一个请求（就是即将被执行的任务），尝试重新提交任务</li>
+<li>DiscardPolicy：默默丢弃无法处理的任务。</li>
+</ul>
+</li>
+<li>均实现RejectedExecutionHandler接口</li>
+<li>shutdown()并不会暴力终止所有，会等待任务完成再关闭线程池。但之后线程池不能再接受其他新的任务了。</li>
+</ul>
+<h2 id="2017214">2017.2.14</h2>
+<h3 id="heading-7">最优线程池数量</h3>
+<ul>
+<li>CPU的数量 * 目标CPU的使用率 * 等待时间与计算时间的比率</li>
+</ul>
+<h2 id="2017215">2017.2.15</h2>
+<h3 id="forkjoin">fork/join框架</h3>
+<ul>
+<li>任务划分太深会导致线程量积多，栈溢出</li>
+<li>使用一个无锁的栈来管理空闲线程。</li>
+</ul>
+<h3 id="heading-8">并发集合容器</h3>
+<ul>
+<li>
+<p>ConcurrentHashMap：线程安全的hashmap</p>
+</li>
+<li>
+<p>CopyOnWriteArrayList：读多写少的场合，性能超好，远于Vector</p>
+<ul>
+<li>读操作完全不加锁</li>
+<li>写入不会阻塞读，但写入和写入需要同步等待</li>
+<li>写入前，先读数据复制到副本中，修改的是副本，然后在把副本替换掉原有数据。修改完后，读线程会立即“察觉”到这个修改，因为array变量是volatile型</li>
+</ul>
+</li>
+<li>
+<p>ConcurrentLinkedQueue：并发队列，链表实现</p>
+<ul>
+<li>t != t在多线程中可能发生，此队列实现源码里就有此应用</li>
+<li>不用锁，用CAS操作实现增加了设计和实现的难度，但性能非常高</li>
+</ul>
+</li>
+<li>
+<p>BlockQueue：接口，阻塞队列</p>
+<ul>
+<li>类似模式：希望线程A能够通知线程B，又希望线程A不知道线程B的存在。而中间联系点就是这个阻塞队列。</li>
+<li>难点：服务线程处理完队列的所有任务后，如何知道下一个任务消息呢？
+<ul>
+<li>1、此线程定时循环监控</li>
+<li>2、队列为空时，此线程等待；队列有新任务后，自动唤醒线程</li>
+</ul>
+</li>
+<li>offer()和poll()都是立即返回（null或false）；而put()和take()则会等待，体现了BlockQueue的关键</li>
+</ul>
+</li>
+<li>
+<p>ConCurrentSkipListMap：跳表</p>
+<ul>
+<li>空间换时间</li>
+<li>平衡树是全局调整，而跳表的插入和删除只需局部调整</li>
+<li>对于Node的所有操作都是CAS方法</li>
+</ul>
+</li>
+<li>
+<p>除以上并发包，java.util.Vector也是线程安全。Collections工具类可以帮助将任何集合包装成线程安全。</p>
+</li>
+</ul>
+<h3 id="heading-9">锁性能提高</h3>
+<ul>
+<li>
+<p>减小锁的持有时间</p>
+</li>
+<li>
+<p>减小锁粒度：缩小锁定对象的范围</p>
+<ul>
+<li>当系统需要取得全局锁时，消耗资源会增多，需要获取所有粒度的锁</li>
+<li>典型ConcurrentHashMap
+<ul>
+<li>put()操作，是对通过hashcode得到的某一段加锁，默认16段</li>
+<li>当获取全局信息时，比如size()，但此Map未采取直接获取所有子段的锁，而是通过无锁的方式获取求和，若失败才会获取所有粒度的锁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>读写分离锁代替独占锁</p>
+<ul>
+<li>可以看做减小锁粒度(根据数据结构分割)的特例，根据功能点分割</li>
+</ul>
+</li>
+<li>
+<p>锁分离</p>
+<ul>
+<li>例如LinkedBlockingQueue，take()和put()分别操作队列头和尾，采用了两把不同的锁，使得take和put没有竞争关系</li>
+</ul>
+</li>
+<li>
+<p>锁粗化</p>
+<ul>
+<li>jvm在遇到一连串连续对同一锁不断进行请求和释放的操作时，会把所有锁操作整合成对锁的一次请求</li>
+<li>某种程度上，锁粗化和减少锁持有时间的思想是相反的</li>
+<li>性能优化是根据运行时的真实情况对各个资源点进行权衡折中的过程</li>
+</ul>
+</li>
+</ul>
+<h2 id="2017216">2017.2.16</h2>
+<h3 id="jvm">jvm对锁优化</h3>
+<ul>
+<li>
+<p>锁偏向： 若一个线程获得锁，则进入偏向模式。当这个线程再请求此锁时，无须再做任何同步操作。</p>
+<ul>
+<li>在几乎没有锁竞争的场合适用。当锁竞争强力时，可能每次都是不同的线程来请求相同的锁。</li>
+<li>-XX:+UseBiasedLocking可以开启偏向锁</li>
+</ul>
+</li>
+<li>
+<p>轻量级锁（锁偏向失败）：简单将对象头部作为指针，指向持有锁的线程堆栈的内部，来判断一个线程是否持有对象锁。</p>
+</li>
+<li>
+<p>自旋锁（轻量级锁膨胀成重量级锁）</p>
+<ul>
+<li>当前线程暂时无法获得锁，什么时候获得也不知道，若直接挂起线程可能又得不偿失</li>
+<li>jvm会让当前线程做几个空循环（自旋），若经过若干循环后还未获得锁，则将线程在操作系统层面挂起</li>
+</ul>
+</li>
+<li>
+<p>锁消除：jvm在JIT编译时，扫描上下文消除不可能存在共享资源竞争的锁</p>
+<ul>
+<li>比如局部变量使用了Vector这样的</li>
+<li>设计一项关键技术为 逃逸分析
+<ul>
+<li>逃逸分析必须在 -server模式</li>
+<li>-XX:+DoEscapeAnalysis打开逃逸分析</li>
+</ul>
+</li>
+<li>-XX:EliminateLocks打开锁消除</li>
+</ul>
+</li>
+</ul>
+<h3 id="threadlocal">ThreadLocal相关</h3>
+<ul>
+<li>Thread是一个线程的局部变量，所以自然是线程安全的</li>
+<li>为每一个线程分配不同对象，需要在应用层面保证。ThreadLocal只起到了简单的容器作用</li>
+</ul>
+<h2 id="2017217">2017.2.17</h2>
+<h3 id="threadlocal-1">ThreadLocal实现原理</h3>
+<ul>
+<li>内部通过ThreadLocalMap管理</li>
+<li>要注意回收，使用线程池可能线程未退出.把内存变量置为空或者ThreadLocal.remove()可以加速垃圾回收</li>
+<li>ThreadLocalMap的实现使用了弱引用，以ThreadLocal作为key，但实际并不真的持有ThreadLocal的引用。而当ThreadLocal的外部强引用被回收时，ThreadLocalMap的key就置为null了。</li>
+<li>若在共享过程中，竞争对象会引起较大性能损耗，就应该考虑使用ThreadLocal为每个线程分配单独的对象</li>
+</ul>
+<h3 id="cas">CAS技术</h3>
+<ul>
+<li>非阻塞性，不会有死锁问题</li>
+<li>没有锁竞争带来的系统开销</li>
+<li>没有线程间频繁调度带来的开销</li>
+<li>(V,E,N)V是要更新的变量，E是预期值，N是新值。简单而言，CAS需要额外给出一个预期值</li>
+</ul>
+<h2 id="2017218">2017.2.18</h2>
+<h3 id="jdkcas">JDK直接使用CAS操作的线程安全类</h3>
+<ul>
+<li>AtomicInteger</li>
+<li>Unsafe：看源码可知，这是JDK内部使用专属类，自己写代码获取会抛出异常
+<ul>
+<li>应用程序是由App Loader加载的，而系统核心类如rt.jar中的类由BootStrap类加载器加载。BootStrap加载器没有java对象的对象，所以当一个类的类加载器是null时说明它是BootStrap加载的，且这个类极有可能是rt.jar中的类</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">public static Unsafe getUnsafe()
+{
+  Class localClass = Reflection.getCallerClass();
+  if (!(VM.isSystemDomainLoader(localClass.getClassLoader())))
+    throw new SecurityException(&#34;Unsafe&#34;);
+  return theUnsafe;
+}
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>AtomicReference，AtomicStampReference</p>
+<ul>
+<li>有个例外，当对象的值被其他线程连续修改了两次，而经过这两次修改后，对象值又恢复旧值，这时当前线程无法判断该对象是否被修改过。这个是业务上的需求，需要判断这个对象的值是否被修改过，显示加个时间戳标识可以解决这个问题。</li>
+</ul>
+</li>
+<li>
+<p>AtomicStampReference：带有时间戳的对象引用，在更新数据本身之外，还要更新时间戳。</p>
+</li>
+<li>
+<p>数组等复合结构，如AtomicIntegerArray，AtomicLongArray，AtomicReferenceArray等</p>
+</li>
+</ul>
+<h2 id="2017220">2017.2.20</h2>
+<h3 id="atomicintegerfieldupdater">AtomicIntegerFieldUpdater类似</h3>
+<ul>
+<li>只能修改其可见范围内的变量，是通过反射得到这个变量的</li>
+<li>为了确保变量正确可读，必须是volatile类型</li>
+<li>由于CAS操作会通过对象实例中的偏移量直接进行赋值，因此不支持static
+<ul>
+<li>Unsafe.objectFieldOffset不支持静态变量</li>
+</ul>
+</li>
+</ul>
+<h2 id="vector">自己实现Vector的无锁算法</h2>
+<ul>
+<li>用了二维AtomicReferenceArray数组：便于扩容，扩容是成倍增加</li>
+<li>利用位运算、前导零数量等判断出新增元素放在第几个数组的第几个偏移量中</li>
+</ul>
+<h2 id="synchronousqueue">细看SynchronousQueue实现</h2>
+<ul>
+<li>任何一个写都要等待一个读。与其称为队列，不如称为数据交换通道。</li>
+<li>大量使用无锁工具。</li>
+<li>内部会维护一个线程等待队列。</li>
+<li>核心三步骤
+<ul>
+<li>若等待队列为空，或队列结点类型和本次操作一致，那么当前操作压入等待队列</li>
+<li>若等待队列和本次操作互补，那么插入一个“完成”状态的结点，并“匹配”到一个等待结点上，接着弹出这两个结点使得对应两个线程继续执行</li>
+<li>若等待队列是“完成”结点，那么帮助这个结点完成任务。流程同2.</li>
+</ul>
+</li>
+<li>参与工作的所有线程不仅仅是竞争资源的关系，它们还会互相帮助，这种模式更大程度减少了饥饿的可能，提高系统整体并行度。</li>
+</ul>
+<h2 id="heading-10">死锁</h2>
+<ul>
+<li>两个或多个线程，相互占用对方需要的资源，而不进行释放，导致彼此都相互等待产生无限等待的现象。</li>
+<li>通常遇到死锁，表现是进程不再工作，而且CPU占用率为0.此时需要用jps命令得到java进程号，再用jstack命令得到线程堆栈。</li>
+</ul>
+<h2 id="201754">2017.5.4</h2>
+<h3 id="heading-11">并行模式与算法，单例模式</h3>
+<ul>
+<li>任何对某个类方法和字段的引用，都会导致类的初始化</li>
+<li>最佳实践：利用内部类。</li>
+</ul>
+<h3 id="heading-12">不变模式</h3>
+<ul>
+<li>当对象被创建，其内部状态和数据不再发生任何改变。</li>
+<li>对象需要被共享，被多线程频繁访问。</li>
+<li>广泛应用，如String，基本类型的封装类等</li>
+<li>不变模式是通过回避问题而不是解决问题的态度来处理多线程并发访问控制。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">1、去除setter及可以改变自身属性的方法
+2、所有属性私有，且private
+3、确保没有子类可以重载修改它的行为
+4、有可以创建完整对象的构造函数
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="heading-13">生产者和消费者</h3>
+<ul>
+<li>很经典的多线程设计模式</li>
+<li>生产者-消费者模式中的内存缓存区主要功能是在多线程间共享。此缓冲区可以缓解生产者和消费者的性能差。</li>
+</ul>
+<h3 id="disruptor">无锁的缓存框架：Disruptor</h3>
+<ul>
+<li>高性能无锁内存队列。</li>
+</ul>
+<h2 id="201755">2017.5.5</h2>
+<h3 id="disruptor-1">无锁的缓存框架：Disruptor</h3>
+<ul>
+<li>合适的策略
+<ul>
+<li>BlockingWaitStrategy：最节省CPU，效率最低</li>
+<li>SleepingWaitStrategy：对延迟要求不高。典型，异步日志</li>
+<li>YieldingWaitStrategy：低延时场合</li>
+<li>BusySpinWaitStrategy：最疯狂监控缓冲区的变化</li>
+</ul>
+</li>
+</ul>
+<h2 id="201756">2017.5.6</h2>
+<h3 id="future">Future模式</h3>
+<ul>
+<li>核心思想：异步调用</li>
+<li></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">java</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E7%B3%BB%E7%BB%9F/Linux/Linux%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E7%8E%B0-%E9%99%88%E5%8B%87%E5%8B%8B%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">《Linux网络安全技术与实现 陈勇勋》笔记</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/WEB%E5%BC%80%E5%8F%91/python/%E5%BB%96%E9%9B%AA%E5%B3%B0Python%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">《廖雪峰Python教程》笔记</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

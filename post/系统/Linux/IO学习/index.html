@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>IO学习 - 人间忽晚 山河已秋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="1、IO发生的步骤 网络IO的本质是socket的读取，socket在linux系统被抽象为流 对于一个network IO (以read举例)，涉及" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/IO%E5%AD%A6%E4%B9%A0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="IO学习" />
+<meta property="og:description" content="1、IO发生的步骤 网络IO的本质是socket的读取，socket在linux系统被抽象为流 对于一个network IO (以read举例)，涉及" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/IO%E5%AD%A6%E4%B9%A0/" />
+<meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="IO学习">
+<meta itemprop="description" content="1、IO发生的步骤 网络IO的本质是socket的读取，socket在linux系统被抽象为流 对于一个network IO (以read举例)，涉及">
+<meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="2331">
+
+
+
+<meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="IO学习"/>
+<meta name="twitter:description" content="1、IO发生的步骤 网络IO的本质是socket的读取，socket在linux系统被抽象为流 对于一个network IO (以read举例)，涉及"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">IO学习</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-17 </span>
+        <div class="post-category">
+            <a href="/categories/linux/"> linux </a>
+            </div>
+          <span class="more-meta"> 2331 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1io">1、IO发生的步骤</a></li>
+        <li><a href="#25ioblocking-io-nonblocking-io-io-multiplexingsignal-driven-ioasynchronous-io">2、5种IO模型，blocking IO、 nonblocking IO、 IO multiplexing、signal driven IO、asynchronous IO</a></li>
+        <li><a href="#22">2.2、五种模型的总结</a></li>
+        <li><a href="#3">3、阻塞、非阻塞、同步、异步</a></li>
+        <li><a href="#4-io">4、异步，同步与 IO，线程，进程，阻塞，非阻塞等的关系</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#51">5.1、同步和异步</a></li>
+        <li><a href="#52">5.2、阻塞和非阻塞</a></li>
+        <li><a href="#53">5.3、组合</a></li>
+        <li><a href="#54">5.4、究极场景：小明下载电影</a></li>
+        <li><a href="#6ioselectpollepoll">6、I/O多路复用之select、poll、epoll</a></li>
+      </ul>
+    </li>
+    <li><a href="#poll">poll</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h3 id="1io">1、IO发生的步骤</h3>
+<ul>
+<li>网络IO的本质是socket的读取，socket在linux系统被抽象为流</li>
+<li>对于一个network IO (以read举例)，涉及两个对象，一个是调用这个IO的process (or thread)，另一个就是系统内核(kernel)。
+<ul>
+<li>等待数据准备</li>
+<li>将数据从内核拷贝到进程中</li>
+</ul>
+</li>
+<li>对于socket流
+<ul>
+<li>通常涉及等待网络上的数据分组到达，然后被复制到内核的某个缓冲区</li>
+<li>把数据从内核缓冲区复制到应用进程缓冲区</li>
+</ul>
+</li>
+</ul>
+<h3 id="25ioblocking-io-nonblocking-io-io-multiplexingsignal-driven-ioasynchronous-io">2、5种IO模型，blocking IO、 nonblocking IO、 IO multiplexing、signal driven IO、asynchronous IO</h3>
+<ul>
+<li>同步模型：阻塞IO，非阻塞IO，多路复用IO，信号驱动IO。异步模型。
+<ul>
+<li>同步模型中，都是进程主动等待内核检查状态。</li>
+</ul>
+</li>
+<li>blocking IO：在IO执行的两个阶段都被block了
+<img src="https://static.oschina.net/uploads/img/201604/20150405_VKYH.png" alt="image"></li>
+<li>nonblocking IO
+<ul>
+<li>轮询（polling）方式</li>
+<li>用户进行read操作，若内核没有准备好，会立即返回error</li>
+<li>用户进程需要不断主动询问内核数据是否准备好</li>
+</ul>
+</li>
+<li>IO multiplexing（event driven IO）
+<ul>
+<li>select调用时内核级别的，可以监听多个socket</li>
+<li>基本原理就是select/epoll这个function会不断的轮询所负责的所有socket，当某个socket有数据到达了，就通知用户进程。</li>
+<li>当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket
+<img src="https://static.oschina.net/uploads/img/201604/20164149_LD8E.png" alt="image"></li>
+</ul>
+</li>
+<li>asynchronous IO
+<ul>
+<li>从kernel的角度，当它受到一个asynchronous read之后，首先它会立刻返回，然后，kernel会完成一切并给用户进程发送一个signal，告诉它read操作完成了。
+<img src="https://static.oschina.net/uploads/img/201604/20175459_gtgw.png" alt="image"></li>
+</ul>
+</li>
+</ul>
+<h3 id="22">2.2、五种模型的总结</h3>
+<ul>
+<li>同步非阻塞相比同步阻塞可以多个任务同时执行，但完成任务响应延迟增大。</li>
+<li>多路复用IO使得单线程情况下可以处理多个客户端请求。系统开销小，不需要新建线程。</li>
+<li>select 函数所提供的功能（异步阻塞 IO）与 AIO 类似。不过，它是对通知事件进行阻塞，而不是对 IO 调用进行阻塞</li>
+<li>linux中异步通知的方式是信号（还可以是回调函数）
+<ul>
+<li>若进程在做别的事，强行打算，调用事先注册的信号处理函数：由于突然闯进来，一般把事件登记在队列，然后返回该进程原来在做的事</li>
+<li>若进程在内核态，那通知挂起、</li>
+</ul>
+</li>
+<li>同步阻塞IO不能同时重叠处理操作，但同步非阻塞和异步IO可以</li>
+</ul>
+<h3 id="3">3、阻塞、非阻塞、同步、异步</h3>
+<ul>
+<li>阻塞io会一直block对应的进程直到操作完成</li>
+<li>非阻塞io在内核还在准备数据的情况下立刻返回</li>
+<li>同步io是指在做io操作（真实的）的时候，会将process阻塞
+<ul>
+<li>这么定义，blocking IO，non-blocking IO，IO multiplexing都属于synchronous IO</li>
+</ul>
+</li>
+<li>本质没有关系
+<ul>
+<li>同步与异步是关于指令执行顺序的</li>
+<li>阻塞非阻塞是关于线程与进程的</li>
+</ul>
+</li>
+<li>详解
+<ul>
+<li>同步是指代码调用IO操作时，必须等待IO操作完成才返回</li>
+<li>异步是指代码调用IO操作时，不必等IO操作完成就返回
+<ul>
+<li>异步则需要多线程，多CPU或者非阻塞IO的支持</li>
+</ul>
+</li>
+<li>阻塞是指调用线程或者进程被操作系统挂起</li>
+<li>非阻塞是指调用线程或者进程不会被操作系统挂起</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-io">4、异步，同步与 IO，线程，进程，阻塞，非阻塞等的关系</h3>
+<ul>
+<li>单线程
+<ul>
+<li>只有同步，IO都是阻塞的</li>
+</ul>
+</li>
+<li>多线程让非阻塞成为可能</li>
+</ul>
+<h1 id="5">5、另一种解释</h1>
+<h3 id="51">5.1、同步和异步</h3>
+<ul>
+<li>同步：一个任务的完成需要依赖另外一个任务</li>
+<li>异步：是不需要等待被依赖的任务完成</li>
+<li>消息通知
+<ul>
+<li>当同步调用发出，调用者要等待消息（结果）通知后，才能继续；当异步过程调用发出，调用者不能立刻得到返回消息（结果）</li>
+</ul>
+</li>
+<li>场景：银行办理业务，排队等候（同步），取号等待（异步）</li>
+</ul>
+<h3 id="52">5.2、阻塞和非阻塞</h3>
+<ul>
+<li>阻塞和非阻塞这两个概念与程序（线程）等待消息通知(无所谓同步或者异步)时的状态有关</li>
+<li>场景：延续上面例子，如果排队或是取号过程中，不能做别的事就是阻塞。</li>
+</ul>
+<h3 id="53">5.3、组合</h3>
+<ul>
+<li>同步阻塞：这个线程在等待函数返回，没有执行其他消息处理
+<ul>
+<li>专心排队，什么事都不做</li>
+</ul>
+</li>
+<li>同步非阻塞：这个线程在等待函数返回，仍在执行其他消息处理
+<ul>
+<li>边玩自己边抬头看到自己没有</li>
+</ul>
+</li>
+<li>异步阻塞：异步操作是可以被阻塞住的，只不过它不是在处理消息时阻塞，而是在等待消息通知时被阻塞
+<ul>
+<li>取号等待，但不能离开银行，阻塞在等待这个操作上面</li>
+</ul>
+</li>
+<li>异步非阻塞：函数会马上返回不会被阻塞，当所关注的事件被触发时会调用之前注册的回调函数进行处理
+<ul>
+<li>取号想出去抽烟，告诉大堂经理号到了叫自己（注册回调函数）</li>
+</ul>
+</li>
+<li>同步和阻塞
+<ul>
+<li>比如读写操作，这里消息是指：fd是否可读写。如果是非阻塞，会直接返回fd是否可读写，那么读写操作不会在等待消息通知里阻塞</li>
+</ul>
+</li>
+<li>异步和非阻塞
+<ul>
+<li>异步操作一般不会在真正的IO操作阻塞，比如select函数，当select返回可读时再去读一般不会阻塞，而是在select函数调用处阻塞</li>
+</ul>
+</li>
+</ul>
+<h3 id="54">5.4、究极场景：小明下载电影</h3>
+<ul>
+<li>同步阻塞：小明盯着下载进度条，直到100%
+<ul>
+<li>同步：等待下载完成通知</li>
+<li>阻塞：等待过程中不能做其他事</li>
+</ul>
+</li>
+<li>同步非阻塞：小明提交下载任务后就去干别的，每过一段时间就去瞄一眼进度条。
+<ul>
+<li>同步：等待下载完成通知</li>
+<li>非阻塞：可干别的事（小明必须在这两个任务间切换）</li>
+</ul>
+</li>
+<li>异步阻塞：下载完有叮的一声，小明一直等待声音
+<ul>
+<li>异步：叮的一声通知</li>
+<li>阻塞：不能做其他事</li>
+</ul>
+</li>
+<li>异步非阻塞：下载完有叮的一声，小明去干别的事
+<ul>
+<li>异步：叮的一声通知</li>
+<li>非阻塞：可以干别的事（不需关注进度，只需接收软件“叮”声通知，即可）</li>
+</ul>
+</li>
+<li>同步/异步是“下载完成消息”通知的方式（机制），阻塞和非阻塞是等待通知过程中的状态
+<ul>
+<li>同步是处理消息者自己去等待消息是否触发</li>
+<li>异步是由某些触发机制通知处理者。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6ioselectpollepoll">6、I/O多路复用之select、poll、epoll</h3>
+<ul>
+<li>select
+<ul>
+<li>函数监视的文件描述符有writefds、readfds、和exceptfds。</li>
+<li>调用select会立即阻塞，直到有描述符就绪</li>
+<li>可以设置超时参数，以达到立即返回</li>
+<li>缺点
+<ul>
+<li>连接数受限</li>
+<li>查找配对速度慢</li>
+<li>数据由内核拷贝到用户态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2 id="poll">poll</h2>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">linux</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E7%B3%BB%E7%BB%9F/Mac/Intellij%E9%85%8D%E7%BD%AE/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Intellij配置</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/WEB%E5%BC%80%E5%8F%91/java/JVM%E5%AD%A6%E4%B9%A0/">
+            <span class="next-text nav-default">JVM学习</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

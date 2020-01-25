@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《跟我学spring mvc》笔记 - 人间忽晚 山河已秋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="mvc各模块 Front Controller：为表现层提供统一访问点，将选择具体视图和功能处理分离。 DispatcherServlet Application Controller(策略模式)：选择具体视图" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E6%88%91%E5%AD%A6spring-mvc%E7%AC%94%E8%AE%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="《跟我学spring mvc》笔记" />
+<meta property="og:description" content="mvc各模块 Front Controller：为表现层提供统一访问点，将选择具体视图和功能处理分离。 DispatcherServlet Application Controller(策略模式)：选择具体视图" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E6%88%91%E5%AD%A6spring-mvc%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="《跟我学spring mvc》笔记">
+<meta itemprop="description" content="mvc各模块 Front Controller：为表现层提供统一访问点，将选择具体视图和功能处理分离。 DispatcherServlet Application Controller(策略模式)：选择具体视图">
+<meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="3428">
+
+
+
+<meta itemprop="keywords" content="spring," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《跟我学spring mvc》笔记"/>
+<meta name="twitter:description" content="mvc各模块 Front Controller：为表现层提供统一访问点，将选择具体视图和功能处理分离。 DispatcherServlet Application Controller(策略模式)：选择具体视图"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《跟我学spring mvc》笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-17 </span>
+        <div class="post-category">
+            <a href="/categories/spring/"> spring </a>
+            </div>
+          <span class="more-meta"> 3428 words </span>
+          <span class="more-meta"> 7 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#mvc">mvc各模块</a></li>
+        <li><a href="#heading">关键词</a></li>
+        <li><a href="#heading-1">强大的典型特点</a></li>
+        <li><a href="#heading-2">各种注解</a></li>
+        <li><a href="#spring-mvc">spring mvc配置</a></li>
+        <li><a href="#dispatcherservlet">DispatcherServlet初始化顺序</a></li>
+        <li><a href="#dispatcherservlet-1">DispatcherServlet默认配置</a></li>
+        <li><a href="#spring230">Spring2风格的控制器（3.0开始已经不推荐使用了）</a></li>
+        <li><a href="#heading-3">数据类型转换和验证</a></li>
+      </ul>
+    </li>
+    <li><a href="#20161013">2016.10.13</a>
+      <ul>
+        <li><a href="#http6">http请求主要包含6部分信息</a></li>
+      </ul>
+    </li>
+    <li><a href="#20161021">2016.10.21</a>
+      <ul>
+        <li><a href="#heading-4">常见的媒体类型格式</a></li>
+        <li><a href="#spring">spring各阶段</a></li>
+        <li><a href="#requestmapper">类和方法上使用requestMapper标签时</a></li>
+        <li><a href="#contenttypeaccept">对contentType和Accept自动化</a></li>
+        <li><a href="#heading-5">方法支持的自动传递的参数</a></li>
+        <li><a href="#heading-6">形参赋值问题</a></li>
+        <li><a href="#sessionattributes">包含@SessionAttributes的执行流程</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h3 id="mvc">mvc各模块</h3>
+<ul>
+<li>
+<p>Front Controller：为表现层提供统一访问点，将选择具体视图和功能处理分离。</p>
+<ul>
+<li>DispatcherServlet</li>
+</ul>
+</li>
+<li>
+<p>Application Controller(策略模式)：选择具体视图技术和功能处理。</p>
+<ul>
+<li>Handler Mapping和View Resolver</li>
+</ul>
+</li>
+<li>
+<p>Page Controller(命令模式)：封装参数，转调业务对象处理模型，返回视图名给前端控制器（和具体视图技术解耦）。</p>
+</li>
+<li>
+<p>Context（ThreadLocal模式）：相关数据可放置在上下文</p>
+</li>
+</ul>
+<h3 id="heading">关键词</h3>
+<ul>
+<li>基于java，实现mvc模式，请求驱动，轻量级，web框架，约定大于配置（惯例优先原则），契约式编程</li>
+</ul>
+<h3 id="heading-1">强大的典型特点</h3>
+<ul>
+<li>web层干净、简单</li>
+<li>与spring框架天生集成</li>
+<li>容易web层单元测试</li>
+<li>url到page controller映射灵活</li>
+<li>灵活数据验证、格式化、绑定，本地化、主题解析</li>
+<li>强大jsp标签库</li>
+<li>简单异常处理</li>
+<li>静态资源支持</li>
+<li>restful风格</li>
+</ul>
+<h3 id="heading-2">各种注解</h3>
+<ul>
+<li>@Controller：用于标识是处理器类；</li>
+<li>@RequestMapping：请求到处理器功能方法的映射规则；</li>
+<li>@RequestParam：请求参数到处理器功能处理方法的方法参数上的绑定；</li>
+<li>@ModelAttribute：请求参数到命令对象的绑定；</li>
+<li>@SessionAttributes：用于声明session级别存储的属性，放置在处理器类上，通常列出模型属性（如@ModelAttribute）对应的名称，则这些属性会透明的保存到session中；</li>
+<li>@InitBinder：自定义数据绑定注册支持，用于将请求参数转换到命令对象属性的对应类型；</li>
+<li>@CookieValue：cookie数据到处理器功能处理方法的方法参数上的绑定；</li>
+<li>@RequestHeader：请求头（header）数据到处理器功能处理方法的方法参数上的绑定；</li>
+<li>@RequestBody：请求的body体的绑定（通过HttpMessageConverter进行类型转换）；</li>
+<li>@ResponseBody：处理器功能处理方法的返回值作为响应体（通过HttpMessageConverter进行类型转换）；</li>
+<li>@ResponseStatus：定义处理器功能处理方法/异常处理器返回的状态码和原因；</li>
+<li>@ExceptionHandler：注解式声明异常处理器；</li>
+<li>@PathVariable：请求URI中的模板变量部分到处理器功能处理方法的方法参数上的绑定，从而支持RESTful架构风格
+的URI；</li>
+</ul>
+<h3 id="spring-mvc">spring mvc配置</h3>
+<ul>
+<li>
+<p>contextConfigLocation：表示用于加载Bean的配置文件；</p>
+</li>
+<li>
+<p>contextClass：表示用于加载Bean的ApplicationContext实现类，默认WebApplicationContext。</p>
+</li>
+<li>
+<p>创建完毕后会将该上下文放在ServletContext。</p>
+</li>
+</ul>
+<h3 id="dispatcherservlet">DispatcherServlet初始化顺序</h3>
+<ul>
+<li>
+<p>总结了而言，1、初始化spring web mvc使用的web上下文 2、初始化DispatcherServlet使用的策略，如mapper、adapter</p>
+</li>
+<li>
+<p>继承体系结构</p>
+<ul>
+<li>HttpServlet &lt;- HttpServletBean &lt;- FrameworkServlet &lt;- DispatcherServlet</li>
+</ul>
+</li>
+<li>
+<p>HtppServletBean的init方法：将（init-param）设置到该组件上（如contextAttribute,contextClass,contextConfigLocation）</p>
+</li>
+<li>
+<p>FrameworkServlet的initServletBean()方法，初始化web上下文。</p>
+</li>
+<li>
+<p>DispatcherServlet的onRefresh()方法,会进行我们需要的Web层Bean的配置，如HandlerMapping、
+HandlerAdapter等，而且如果我们没有配置，还会给我们提供默认的配置</p>
+</li>
+</ul>
+<h3 id="dispatcherservlet-1">DispatcherServlet默认配置</h3>
+<ul>
+<li>默认配置在DispatcherServlet.properties（和DispatcherServlet类在一个包下）</li>
+</ul>
+<h3 id="spring230">Spring2风格的控制器（3.0开始已经不推荐使用了）</h3>
+<p><img src="http://sishuok.com/forum/upload/2012/7/26/c6052a24f0e0a212529755716a56a2b6__1.JPG" alt="image"></p>
+<ul>
+<li>
+<p>Controller接口：只有一个方法handleRequest，返回
+ModelAndView</p>
+</li>
+<li>
+<p>WebContentGenerator：浏览器缓存、session开启、请求方法类型等</p>
+</li>
+<li>
+<p>AbstractController：是否在执行时同步session（会话的串行化访问功能）</p>
+</li>
+<li>
+<p>ServletForwardingController：将接收到的请求转发到一个命名的servlet</p>
+</li>
+<li>
+<p>BaseCommandController：请求参数绑定到一个命令对象，提供Validator注册功能</p>
+</li>
+<li>
+<p>AbstractCommandController：自动封装请求参数到一个命令对象，而且提供了验证功能</p>
+</li>
+<li>
+<p>AbstractFormController：带步骤的表单提交基类，表单的渲染和提交表单处理</p>
+</li>
+<li>
+<p>SimpleFormController：两步表单支持</p>
+</li>
+<li>
+<p>CancellableFormController：可取消的表单控制器</p>
+</li>
+<li>
+<p>AbstractWizardFormController：向导控制器类提供了多步骤（向导）表单的支持</p>
+</li>
+<li>
+<p>ParameterizableViewController：静态视图</p>
+</li>
+<li>
+<p>AbstractUrlViewController：直接根据URL计算出逻辑视图
+名</p>
+</li>
+<li>
+<p>UrlFilenameViewController：将请求的URL路径转换为逻辑视图名并返回</p>
+</li>
+<li>
+<p>MultiActionController：将不同的请求映射不同的请求的功能处理方法</p>
+</li>
+</ul>
+<h3 id="heading-3">数据类型转换和验证</h3>
+<ul>
+<li>createBinder(request, command)</li>
+<li>initBinder(request, binder)</li>
+<li>binder.bind(request)</li>
+<li>ongBind(request, command, errors)</li>
+<li>validators</li>
+<li>onBindAndValidate(request, command, errors)</li>
+<li>errors(BindException类型)</li>
+</ul>
+<h2 id="20161013">2016.10.13</h2>
+<h3 id="http6">http请求主要包含6部分信息</h3>
+<ul>
+<li>请求方法</li>
+<li>URL</li>
+<li>协议及版本</li>
+<li>请求头，包括cookie</li>
+<li>回车换行，CRLF</li>
+<li>请求内容区</li>
+</ul>
+<h2 id="20161021">2016.10.21</h2>
+<h3 id="heading-4">常见的媒体类型格式</h3>
+<ul>
+<li>text/html、text/plain、text/xml、image/gif、image/jpeg、image/png、application/x-www-form-urlencoded、multipart/form-data、application/xhtml+xml、application/pdf等</li>
+</ul>
+<h3 id="spring">spring各阶段</h3>
+<ul>
+<li>2.5版本之前，通过实现Controller接口定义处理器类，已经@Deprecated</li>
+<li>2.5版本之后，利用注解，需要处理映射DefaultAnnotationHandlerMapping和处理适配器AnnotationMethodHandlerAdapter</li>
+<li>3.1版本后，全新处理器，RequestMappingHandlerMapping和RequestMappingHandlerAdapter</li>
+</ul>
+<h3 id="requestmapper">类和方法上使用requestMapper标签时</h3>
+<ul>
+<li>只有生产者/消费者 模式 是覆盖，其他的使用方法是继承，如headers、params等都是继承</li>
+</ul>
+<h3 id="contenttypeaccept">对contentType和Accept自动化</h3>
+<ul>
+<li>Spring提供了一组注解（@RequestBody、@ResponseBody）和一组转换类（HttpMessageConverter）</li>
+</ul>
+<h3 id="heading-5">方法支持的自动传递的参数</h3>
+<ul>
+<li>
+<p>ServletRequest/HttpServletRequest 和 ServletResponse/HttpServletResponse</p>
+</li>
+<li>
+<p>InputStream/OutputStream 和 Reader/Writer</p>
+<ul>
+<li>等价于request.getInputStream()等</li>
+</ul>
+</li>
+<li>
+<p>WebRequest/NativeWebRequest</p>
+</li>
+<li>
+<p>HttpSession</p>
+</li>
+<li>
+<p>命令/表单对象</p>
+</li>
+<li>
+<p>Model、Map、ModelMap：此三者是同一个对象</p>
+</li>
+<li>
+<p>Errors/BindingResult</p>
+</li>
+<li>
+<p>其他杂项：Locale，Principal等</p>
+</li>
+</ul>
+<h3 id="heading-6">形参赋值问题</h3>
+<ul>
+<li>
+<p>赋值主要是看@RequestParam的value，而不是形参名。</p>
+<ul>
+<li>原子类型，必须有值，否则异常。但用boolean的时候默认false。</li>
+<li>所有引用类型中，Boolean默认为FALSE，其余都是null。</li>
+</ul>
+</li>
+<li>
+<p>若对象里的属性和形参名相同，则两处都会赋值</p>
+</li>
+<li>
+<p>形参若是List，一定要加上@requestParam，因为List是一个接口。</p>
+</li>
+<li>
+<p>注意接受数组形式的时候很奇怪，比如String[]，传入s=a,b,c,d则是传入了4个；传入s=a,b&amp;s=c,d则是传入了两个。</p>
+</li>
+</ul>
+<h3 id="sessionattributes">包含@SessionAttributes的执行流程</h3>
+<ul>
+<li>
+<p>根据@SessionAttributes将对象放入到模型数据中</p>
+</li>
+<li>
+<p>执行@ModelAttribute注解的方法：若模型中包含同名数据，则不执行，而是使用上步骤的回话数据；反之，则执行。</p>
+</li>
+<li>
+<p>执行@RequestMapping方法：是否有@ModelAttribute注解
+的同名对象，如果有直接使用，否则通过反射创建一个</p>
+<ul>
+<li>如果有@SessionAttributes注解，则此处一定是从模型中拿，否则报错</li>
+</ul>
+</li>
+<li>
+<p><code>mvc:annotation-driven</code>会自动注册</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;bean id=&#34;validator&#34;
+class=&#34;org.springframework.validation.beanvalidation.LocalValidatorFactoryBean&#34;&gt;
+&lt;property name=&#34;providerClass&#34; value=&#34;org.hibernate.validator.HibernateValidator&#34;/&gt;
+&lt;!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties --&gt;
+&lt;property name=&#34;validationMessageSource&#34; ref=&#34;messageSource&#34;/&gt;
+&lt;/bean&gt;
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/spring/">spring</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E6%88%91%E5%AD%A6spirng3%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">《跟我学spirng3》笔记</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/WEB%E5%BC%80%E5%8F%91/java/%E4%B9%A6%E7%B1%8D/">
+            <span class="next-text nav-default">书籍</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

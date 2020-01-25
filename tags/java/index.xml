@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/tags/java/</link>
+    <description>Recent content in java on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JVM学习</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/JVM%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/JVM%E5%AD%A6%E4%B9%A0/</guid>
+      <description>1、Java程序执行的过程 方法区存放类信息，常量，静态变量，方法信息等。 栈记录了线程的方法调用。有新方法调用，则栈会增加一个存储单元，即帧(</description>
+    </item>
+    
+    <item>
+      <title>Servlet及Tomcat学习</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/Servlet%E5%8F%8ATomcat%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/Servlet%E5%8F%8ATomcat%E5%AD%A6%E4%B9%A0/</guid>
+      <description>2016.8.11 ContextConfig 的 init 方法将会主要完成以下工作： 创建用于解析 xml 配置文件的 contextDigester 对象 读取默认 context.xml 配置文件，如果存在解析 读取默认 Host 配置文件，如果存在解析它 读取默认 Context</description>
+    </item>
+    
+    <item>
+      <title>《JAVA EE核心框架实战 高洪岩》笔记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/JAVA-EE%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6%E5%AE%9E%E6%88%98-%E9%AB%98%E6%B4%AA%E5%B2%A9%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/JAVA-EE%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6%E5%AE%9E%E6%88%98-%E9%AB%98%E6%B4%AA%E5%B2%A9%E7%AC%94%E8%AE%B0/</guid>
+      <description>2016.7.18 为什么要使用mybatis类似的框架呢？ 在传统的jdbc代码时，需要编写DAO层代码将数据库表中的数据封装到自定义的实体bean中。而my</description>
+    </item>
+    
+    <item>
+      <title>《JAVA程序性能优化 高一鸣》笔记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/JAVA%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E9%AB%98%E4%B8%80%E9%B8%A3%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/JAVA%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E9%AB%98%E4%B8%80%E9%B8%A3%E7%AC%94%E8%AE%B0/</guid>
+      <description>2016.12.7 善用单例模式 普通的单例模式，在属性中就实例化了对象，使得在使用该单例类的其他方法时也实例化了该对象。 若把实例化工作放入到getInstan</description>
+    </item>
+    
+    <item>
+      <title>《实战Java高并发程序设计 葛一鸣》笔记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E6%88%98Java%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E8%91%9B%E4%B8%80%E9%B8%A3%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E6%88%98Java%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E8%91%9B%E4%B8%80%E9%B8%A3%E7%AC%94%E8%AE%B0/</guid>
+      <description>2016.12.8 一些基本概念 同步和异步：用来形容一次调用。 并发：偏重于多个任务交替进行，而多个任务之间可能是串行。并行：是真正意义上的“同时执行”。 临界区</description>
+    </item>
+    
+    <item>
+      <title>书籍</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E4%B9%A6%E7%B1%8D/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E4%B9%A6%E7%B1%8D/</guid>
+      <description>java 1、thinking in java 2、effective java 3、refactoring – improve the design of existing code 4、J2EE Development Without EJB 5、J2EE Design &amp;amp; Development 6、Domai</description>
+    </item>
+    
+    <item>
+      <title>事务学习</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E4%BA%8B%E5%8A%A1%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E4%BA%8B%E5%8A%A1%E5%AD%A6%E4%B9%A0/</guid>
+      <description>1、数据库事务 访问并可能更新数据库中各数据项的一个程序执行单元 为数据库提供一个从失败恢复到正常的方法 多个应用程序并发访问数据库时，提供隔离方</description>
+    </item>
+    
+    <item>
+      <title>学习杂记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E5%AD%A6%E4%B9%A0%E6%9D%82%E8%AE%B0/</guid>
+      <description>2016.7.20 Tomcat, Jetty, JBoss, and GlassFish自带的默认Servlet的名字 &amp;ndash; &amp;ldquo;default&amp;rdquo; Google App Engine 自带的 默认Servlet的名字 &amp;ndash;&amp;quot;_ah_default&amp;rdquo; Resin 自带的默认Servlet的名字 &amp;ndash; &amp;ldquo;resin-file&amp;rdquo; WebLogic 自</description>
+    </item>
+    
+    <item>
+      <title>并发和多线程学习</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E5%B9%B6%E5%8F%91%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/%E5%B9%B6%E5%8F%91%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/</guid>
+      <description>1、多核多cpu问题 多个单核cpu，每个cpu需要独立电路，有自己的cache 跑一个多线程，每个线程跑一个独立cpu，线程间协作都要走总线，</description>
+    </item>
+    
+  </channel>
+</rss>

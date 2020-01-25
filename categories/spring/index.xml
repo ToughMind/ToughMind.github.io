@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/categories/spring/</link>
+    <description>Recent content in spring on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/categories/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>《跟开涛学Spring MVC》笔记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E5%BC%80%E6%B6%9B%E5%AD%A6Spring-MVC%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E5%BC%80%E6%B6%9B%E5%AD%A6Spring-MVC%E7%AC%94%E8%AE%B0/</guid>
+      <description>2016.7.19 比较MVC框架的性能 SpringMvc使用简单，学习成本低；灵活；性能高。 SpringMvc核心类和接口 DispatcherServlet 前置控制器 HandlerMapp</description>
+    </item>
+    
+    <item>
+      <title>《跟我学spirng3》笔记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E6%88%91%E5%AD%A6spirng3%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E6%88%91%E5%AD%A6spirng3%E7%AC%94%E8%AE%B0/</guid>
+      <description>2016.10.28 Bean的基本配置 Bean中使用id和name是不能重复的。 （可能，并未验证成功）id可以利用xml解析器验证引用id是否存在，而name</description>
+    </item>
+    
+    <item>
+      <title>《跟我学spring mvc》笔记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E6%88%91%E5%AD%A6spring-mvc%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spring/%E8%B7%9F%E6%88%91%E5%AD%A6spring-mvc%E7%AC%94%E8%AE%B0/</guid>
+      <description>mvc各模块 Front Controller：为表现层提供统一访问点，将选择具体视图和功能处理分离。 DispatcherServlet Application Controller(策略模式)：选择具体视图</description>
+    </item>
+    
+  </channel>
+</rss>

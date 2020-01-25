@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《JAVA EE核心框架实战 高洪岩》笔记 - 人间忽晚 山河已秋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="文刀白水" /><meta name="description" content="2016.7.18 为什么要使用mybatis类似的框架呢？ 在传统的jdbc代码时，需要编写DAO层代码将数据库表中的数据封装到自定义的实体bean中。而my" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.1 with theme even" />
+
+
+<link rel="canonical" href="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/JAVA-EE%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6%E5%AE%9E%E6%88%98-%E9%AB%98%E6%B4%AA%E5%B2%A9%E7%AC%94%E8%AE%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/reset-even.css">
+
+
+<meta property="og:title" content="《JAVA EE核心框架实战 高洪岩》笔记" />
+<meta property="og:description" content="2016.7.18 为什么要使用mybatis类似的框架呢？ 在传统的jdbc代码时，需要编写DAO层代码将数据库表中的数据封装到自定义的实体bean中。而my" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/java/JAVA-EE%E6%A0%B8%E5%BF%83%E6%A1%86%E6%9E%B6%E5%AE%9E%E6%88%98-%E9%AB%98%E6%B4%AA%E5%B2%A9%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2020-01-17T11:51:28+08:00" />
+<meta property="article:modified_time" content="2018-07-10T00:00:00+08:00" />
+<meta itemprop="name" content="《JAVA EE核心框架实战 高洪岩》笔记">
+<meta itemprop="description" content="2016.7.18 为什么要使用mybatis类似的框架呢？ 在传统的jdbc代码时，需要编写DAO层代码将数据库表中的数据封装到自定义的实体bean中。而my">
+<meta itemprop="datePublished" content="2020-01-17T11:51:28&#43;08:00" />
+<meta itemprop="dateModified" content="2018-07-10T00:00:00&#43;08:00" />
+<meta itemprop="wordCount" content="3178">
+
+
+
+<meta itemprop="keywords" content="java," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《JAVA EE核心框架实战 高洪岩》笔记"/>
+<meta name="twitter:description" content="2016.7.18 为什么要使用mybatis类似的框架呢？ 在传统的jdbc代码时，需要编写DAO层代码将数据库表中的数据封装到自定义的实体bean中。而my"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于我</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于我</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《JAVA EE核心框架实战 高洪岩》笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-17 </span>
+        <div class="post-category">
+            <a href="/categories/java/"> java </a>
+            </div>
+          <span class="more-meta"> 3178 words </span>
+          <span class="more-meta"> 7 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#201685">2016.8.5</a></li>
+    <li><a href="#201686">2016.8.6</a></li>
+    <li><a href="#201688">2016.8.8</a></li>
+    <li><a href="#201689">2016.8.9</a></li>
+    <li><a href="#2016810">2016.8.10</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-07-10T00:00:00" title="July 10, 2018">July 10, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="2016718">2016.7.18</h1>
+<ul>
+<li>
+<p>为什么要使用mybatis类似的框架呢？</p>
+<ul>
+<li>在传统的jdbc代码时，需要编写DAO层代码将数据库表中的数据封装到自定义的实体bean中。而mybatis和hibernate类似的框架则已经封装好了。</li>
+</ul>
+</li>
+<li>
+<p>mybatis是个持久层框架，是一种半自动化的ORM映射框架。核心是SqlSessionFactory对象，由SqlSessionFactoryBuilder类创建。</p>
+</li>
+</ul>
+<h1 id="201683">2016.8.3</h1>
+<ul>
+<li>
+<p>SqlSessionFactoryBuilder创建了SqlSessionFactory后就不需要存在了，也就是不需要保持此对象的状态。SqlSessionFactory对象应在应用程序执行期间都存在，最佳方式就是写单例。而SqlSession每个线程都应该有自己的实例，决不能将SqlSession实例对象放在静态变量、实例字段即任何类型的管理范围中。</p>
+</li>
+<li>
+<p>处理null值时可以用jdbcType指定方式，也可以用<!-- raw HTML omitted -->标签进行判断。</p>
+</li>
+<li>
+<p>编写动态sql时，对连接%和字段的语句可以用CONCAT('%',#{companyName},'%')</p>
+<ul>
+<li>书中的写法是 &lsquo;%&lsquo;||#{companyName}||&rsquo;%&rsquo;</li>
+<li>视频讲解中直接用 &lsquo;%&rsquo; #{companyName} &lsquo;%&rsquo;</li>
+</ul>
+</li>
+<li>
+<p>MVC模型开发所必须的知识</p>
+<ul>
+<li>解析并创建XML文件：在struts2中利用dom4j可解析和创建xml文件</li>
+<li>java反射技术：对对象的内容进行动态访问</li>
+<li>实现MVC模型，自定义配置文件，然后根据配置文件设计封装类</li>
+</ul>
+</li>
+<li>
+<p>Servlet中，<!-- raw HTML omitted -->标签仅当前servlet对象可以获取，而<!-- raw HTML omitted -->中的参数所有的servlet都可以获取</p>
+</li>
+</ul>
+<h2 id="201685">2016.8.5</h2>
+<ul>
+<li>使用struts2标签可以显示html代码</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib uri=&#34;/struts-tags&#34; prefix=&#34;s&#34; %&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>要想去掉struts2标签自动生成的html代码，只需在配置文件中加入</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;constant name=&#34;struts.ui.theme&#34; value=&#34;simple&#34;&gt;&lt;/constant&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>用&lt;s:debug&gt;标签可以打印出调试信息，看到ValueStack发现addFiledError是使用Map进行存储，而addActionError是使用ArrayList进行存储。</p>
+</li>
+<li>
+<p>在action中有多个业务方法时的处理</p>
+<ul>
+<li>通过url叹号“！”参数</li>
+<li>在action标记中加入method属性</li>
+</ul>
+</li>
+<li>
+<p>在action中使用servlet的api</p>
+<ul>
+<li>ServletActionContext.getRequest()</li>
+<li>ActionContext.getContext().get(&ldquo;request&rdquo;)</li>
+<li>ActionContext.getContext().put(&quot;&quot;,&quot;&quot;)</li>
+</ul>
+</li>
+<li>
+<p>WebService是一种基于HTTP协议的交互数据技术，使用的是SOAP协议，实现协议的语言叫做wsdl。其实wsdl就是一种xml格式的语言。</p>
+</li>
+</ul>
+<h2 id="201686">2016.8.6</h2>
+<ul>
+<li>
+<p>js语言主要目的是为web浏览器提供一种页面脚本语言，用来控制web浏览器中的DOM对象。</p>
+</li>
+<li>
+<p>特殊字符，&quot;&quot;&quot;、&quot;&quot;、&quot;/&quot;、&ldquo;b&rdquo;、&ldquo;f&rdquo;、&ldquo;n&rdquo;、&ldquo;r&rdquo;、&ldquo;t&rdquo;</p>
+</li>
+<li>
+<p>前端可以使用json.org网站提供的json2.js框架文件将js对象转换成json字符串。</p>
+</li>
+<li>
+<p>spring MVC 知识点</p>
+<ul>
+<li>从控制层重定向到控制层</li>
+<li>匹配URL路径，用/user/{userId}的形式</li>
+<li>将url中的参数转成实体的示例</li>
+<li>服务器端获取json字符串并解析，利用@RequestBody标签</li>
+<li>服务器端响应json对象，利用@ResponseBody标签。可以在RequestMapping标签设置consumes=&quot;application/json&quot;限制前台传递过来的数据格式必须是JSON，设置produces=&quot;application/json&quot;限制返回的数据要转成JSON格式</li>
+<li>利用@SessionAttributes标签操作HttpSession对象，很类似memcache缓存</li>
+</ul>
+</li>
+<li>
+<p>spring mvc常用</p>
+<ul>
+<li>路径中添加通配符的功能</li>
+<li>service层在controller层注入，有多个实现类，利用Resource标签指定某一个</li>
+<li>控制层返回void数据的情况：若用到了PrintWriter，则不会到默认jsp文件；否则就跳转到了默认jsp页面
+<ul>
+<li>使用默认的jsp</li>
+<li>通过HttpServletResponse输出</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="201688">2016.8.8</h2>
+<ul>
+<li>
+<p>hibernate知识点</p>
+<ul>
+<li>不要手动修改OID，会造成缓存中数据不对</li>
+<li>如果使用延迟加载，session.close()后，将list中的对象使用方法：Hibernate.initialize（代理对象参数）将list中的代理类进行实例化。</li>
+<li>（联系延迟加载而言）load和get，load方法根据id 如果找不到实体类就返回一个代理实体类，而get返回null。</li>
+</ul>
+</li>
+<li>
+<p>spring4</p>
+<ul>
+<li>BeanFactory使用bean是延迟取得，第一次使用时才创建指定类的对象，；而ApplicationContext接口取得Bean的实例是在自身容器被初始化时就创建全部类对象。</li>
+<li>作用域：Singleton、Prototype、request、session、globalSession。</li>
+<li>AOP类似于增强，但区别于方法中增强，因为AOP通过代理原理，在代理类中进行了增强处理。代理分为静态代理和动态代理。静态代理是面向接口，动态代理是面向实现类。</li>
+<li>静态代理和动态代理都是对方法进行增强，而spirng 页支持方法的advice增强。</li>
+</ul>
+</li>
+</ul>
+<h2 id="201689">2016.8.9</h2>
+<ul>
+<li>Session的运行机制主要通过Cookie对象，当第一次访问服务器时在服务器生成一个MAP对象，此map的key值就是一个唯一的sessionId。返回的数据带有符合HTTP协议的Cookie数据，IE能根据数据中的格式创建一个Cookie。第二次访问的时候就会携带刚刚创建的Cookie，其值sessionId。</li>
+</ul>
+<h2 id="2016810">2016.8.10</h2>
+<ul>
+<li>EJB3主要的场合就是在数据分布情况下，对事务支持并考虑多数据源，也就是跨容器的自动全局性事务。</li>
+<li>ejb分为远程调用和本地调用。个人觉得本地调用很类似于maven依赖包，而所需要的方法在jar包中。ejb项目和web项目在一个企业级项目中。而远程调用相当于一个项目在weblogic中，另一个项目在tomcat中。
+<ul>
+<li>不过远程调用用到了JNDI技术</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Properties props = new Properties();	props.setProperty(Context.INITIAL_CONTEXT_FACTORY,&#34;weblogic.jndi.WLInitialContextFactory&#34;);
+props.setProperty(Context.PROVIDER_URL, &#34;t3://localhost:7001&#34;);
+props.setProperty(Context.SECURITY_PRINCIPAL, &#34;weblogic&#34;);
+props.setProperty(Context.SECURITY_CREDENTIALS, &#34;weblogic123&#34;);
+
+Context context = new InitialContext(props);
+SayHelloRemoteTypeRemote sayHelloRemoteTypeRemoteRef = (SayHelloRemoteTypeRemote) context.lookup(&#34;sayHelloRemoteTypeJNDI#publicinterface.SayHelloRemoteTypeRemote&#34;);
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>@PostConstruct执行，只一次，然后无状态bean进入method-ready pool，准备供外使用。当空闲bean太多或者bean占用大量系统资源时，系统调用@PreDestroy方法，只一次，然后bean变到does not exist状态。很类似于serlvet。</p>
+</li>
+<li>
+<p>可以在无状态bean中使用实例变量，但尽量不要去改变它的值。因为weblogic容器有自己的连接池，类似于缓存，并不是每次都重新创建一个对象。若想要共享数据，在bean中的方法以传递参数的形式进行共享数据。</p>
+</li>
+<li>
+<p>从从实例池取出的数据都是代理对象。</p>
+</li>
+<li>
+<p>有状态bean存在HttpSession中作为一个副本，那么把远程或本地的有状态bean存储到HttpSession中和把普通Service类存储到HttpSession对象中有什么区别呢？</p>
+<ul>
+<li>如果使用EJB，可以将业务组件以服务提供者的身份供其他组件调用，而不需要将源代码发布出去。</li>
+</ul>
+</li>
+<li>
+<p>如果查找本地的有状态bean，可以在web.xml文件中注册引用，使用<!-- raw HTML omitted -->标签。</p>
+</li>
+<li>
+<p>对于有状态bean，若访问量大，服务器很快就溢出。ejb标准可对其实行钝化和激活策略。钝化就是把不常使用的bean序列化到硬盘中，激活就是若业务需要，将刚钝化的bean反序列化到内存。</p>
+<ul>
+<li>若要用钝化，则要声明序列化接口Serializable。</li>
+<li>实体bean必须实现Serializable接口，并且要有一个参数为空的构造函数。</li>
+</ul>
+</li>
+<li>
+<p>EJB3中实体状态</p>
+<ul>
+<li>瞬时态：新建对象，在内存中</li>
+<li>托管态：已分配id，由EntityManager对象的上下文接管</li>
+<li>游离态：上下文已经关闭</li>
+<li>删除状态：与EntityManager对象上下文关联，并要删除对应的数据。</li>
+</ul>
+</li>
+<li>
+<p>EJB3中的事务</p>
+<ul>
+<li>本地资源事务，使用JDBC中的连接来管理当前活动的事务对象</li>
+<li>JTA事务，也叫容器事务，自动管理事务生命周期并支持分布式的JTA参与。</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">文刀白水</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-07-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">MIT</span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">java</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E7%B3%BB%E7%BB%9F/Linux/unix%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">unix常用命令</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/WEB%E5%BC%80%E5%8F%91/java/JAVA%E7%A8%8B%E5%BA%8F%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E9%AB%98%E4%B8%80%E9%B8%A3%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">《JAVA程序性能优化 高一鸣》笔记</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+            repo="ToughMind/ToughMind/ToughMind.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/utterance">comments powered by utterances.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+  <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">文刀白水</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-CN".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

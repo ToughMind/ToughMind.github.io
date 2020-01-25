@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/categories/linux/</link>
+    <description>Recent content in linux on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>IO学习</title>
+      <link>http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/IO%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/IO%E5%AD%A6%E4%B9%A0/</guid>
+      <description>1、IO发生的步骤 网络IO的本质是socket的读取，socket在linux系统被抽象为流 对于一个network IO (以read举例)，涉及</description>
+    </item>
+    
+    <item>
+      <title>unix常用命令</title>
+      <link>http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/unix%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/unix%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>系统 配置 命令 说明 sudo chown -R git:git /home/git 修改权限 hostnamectl set-hostname &amp;lt;主机名&amp;gt; 修改主机名 ifconfig -a 查看内网ip curl ifconfig.me 查看外网ip cat /etc/redhat-release 查看当前系统 uname -m 查看多少位系统 进程</description>
+    </item>
+    
+    <item>
+      <title>《Linux网络安全技术与实现 陈勇勋》笔记</title>
+      <link>http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/Linux%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E7%8E%B0-%E9%99%88%E5%8B%87%E5%8B%8B%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/Linux%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E7%8E%B0-%E9%99%88%E5%8B%87%E5%8B%8B%E7%AC%94%E8%AE%B0/</guid>
+      <description>2016.9.8 tcp/ip基本概念 常用的四层架构 应用层：HTTP、HTTPS、SMTP、POP3、FTP等 传输层：TCP、UDP 网络层：IP定位，路由决</description>
+    </item>
+    
+    <item>
+      <title>操作系统学习</title>
+      <link>http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/%E7%B3%BB%E7%BB%9F/Linux/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0/</guid>
+      <description>1、缓存 I/O 缓存I/O又被称作标准I/O Linux缓存机制中，会将IO数据缓存在文件系统的页缓存 对于写操作，数据先写到页缓存中去 同步写，应用程</description>
+    </item>
+    
+  </channel>
+</rss>

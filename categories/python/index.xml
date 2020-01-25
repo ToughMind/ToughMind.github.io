@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/categories/python/</link>
+    <description>Recent content in python on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>django学习</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/python/django%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/python/django%E5%AD%A6%E4%B9%A0/</guid>
+      <description>入门 创建一个项目 django-admin startproject XXX 数据库的建立 python manage.py migrate 启动服务器 python manage.py runserver python manage.py runserver 0.0.0.0:8000 创建模型 python manage.py startapp XXX 激活模型 python manage.py makemigrations polls python manage.py sqlmigrate polls 0001 数据库中创建表 python manage.py migrate</description>
+    </item>
+    
+    <item>
+      <title>《廖雪峰Python教程》笔记</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/python/%E5%BB%96%E9%9B%AA%E5%B3%B0Python%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/python/%E5%BB%96%E9%9B%AA%E5%B3%B0Python%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/</guid>
+      <description>博客链接 1、字符串编码 ASCII、Unicode、UTF-8 ASCII编码是1个字节，而Unicode编码通常是2个字节 如果统一成Unico</description>
+    </item>
+    
+  </channel>
+</rss>

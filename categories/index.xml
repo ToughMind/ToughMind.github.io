@@ -1,15 +1,150 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on 文刀白水</title>
+    <title>Categories on 人间忽晚 山河已秋</title>
     <link>http://blog.nbgg.xyz/categories/</link>
-    <description>Recent content in Categories on 文刀白水</description>
+    <description>Recent content in Categories on 人间忽晚 山河已秋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
     
 	<atom:link href="http://blog.nbgg.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ansible</title>
+      <link>http://blog.nbgg.xyz/categories/ansible/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>http://blog.nbgg.xyz/categories/git/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>http://blog.nbgg.xyz/categories/java/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>http://blog.nbgg.xyz/categories/linux/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mac</title>
+      <link>http://blog.nbgg.xyz/categories/mac/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mybatis</title>
+      <link>http://blog.nbgg.xyz/categories/mybatis/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/mybatis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>http://blog.nbgg.xyz/categories/mysql/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>http://blog.nbgg.xyz/categories/python/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spark</title>
+      <link>http://blog.nbgg.xyz/categories/spark/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/spark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring</title>
+      <link>http://blog.nbgg.xyz/categories/spring/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>杂记</title>
+      <link>http://blog.nbgg.xyz/categories/%E6%9D%82%E8%AE%B0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/%E6%9D%82%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>极验</title>
+      <link>http://blog.nbgg.xyz/categories/%E6%9E%81%E9%AA%8C/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/%E6%9E%81%E9%AA%8C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>消息队列</title>
+      <link>http://blog.nbgg.xyz/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>缓存</title>
+      <link>http://blog.nbgg.xyz/categories/%E7%BC%93%E5%AD%98/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/%E7%BC%93%E5%AD%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>网络</title>
+      <link>http://blog.nbgg.xyz/categories/%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/categories/%E7%BD%91%E7%BB%9C/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>category-2</title>
@@ -35,42 +170,6 @@
       <pubDate>Tue, 10 Jul 2018 00:00:00 +0800</pubDate>
       
       <guid>http://blog.nbgg.xyz/categories/Theme-preview/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>English</title>
-      <link>http://blog.nbgg.xyz/categories/English/</link>
-      <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
-      
-      <guid>http://blog.nbgg.xyz/categories/English/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>日本語</title>
-      <link>http://blog.nbgg.xyz/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
-      <pubDate>Wed, 30 Aug 2017 01:53:34 +0800</pubDate>
-      
-      <guid>http://blog.nbgg.xyz/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>中文</title>
-      <link>http://blog.nbgg.xyz/categories/%E4%B8%AD%E6%96%87/</link>
-      <pubDate>Wed, 30 Aug 2017 01:37:56 +0800</pubDate>
-      
-      <guid>http://blog.nbgg.xyz/categories/%E4%B8%AD%E6%96%87/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>shortcodes</title>
-      <link>http://blog.nbgg.xyz/categories/shortcodes/</link>
-      <pubDate>Tue, 30 Aug 2016 16:01:23 +0800</pubDate>
-      
-      <guid>http://blog.nbgg.xyz/categories/shortcodes/</guid>
       <description></description>
     </item>
     

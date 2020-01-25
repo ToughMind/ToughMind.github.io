@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网络 on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/categories/%E7%BD%91%E7%BB%9C/</link>
+    <description>Recent content in 网络 on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/categories/%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>shadowsocks</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/%E7%BD%91%E7%BB%9C/shadowsocks/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/%E7%BD%91%E7%BB%9C/shadowsocks/</guid>
+      <description>配置文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 { &amp;#34;server&amp;#34;:&amp;#34;0.0.0.0&amp;#34;, &amp;#34;server_ipv6&amp;#34;:&amp;#34;::&amp;#34;, &amp;#34;local_address&amp;#34;:&amp;#34;127.0.0.1&amp;#34;, &amp;#34;local_port&amp;#34;:1080, &amp;#34;port_password&amp;#34;:{ #纯 SS 不带混淆 端口25 密码为123456. &amp;#34;25&amp;#34;:&amp;#34;123456&amp;#34;, #端口443，密码</description>
+    </item>
+    
+    <item>
+      <title>浏览器输入url发生了什么</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/%E7%BD%91%E7%BB%9C/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/%E7%BD%91%E7%BB%9C/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
+      <description>[基本知识点] 1、总体而言 DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束 2.1、DNS解析 实</description>
+    </item>
+    
+    <item>
+      <title>网络工程相关</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E7%9B%B8%E5%85%B3/</guid>
+      <description>1、OSI的七层协议 应用层 表示层 会话层 运输层 网络层 数据链路层 物理层 2、TCP/IP的体系结构 应用层（各种应用层协议如TELNET,FTP,S</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ansible on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/tags/ansible/</link>
+    <description>Recent content in ansible on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ansible基础学习</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/ansible/ansible%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/ansible/ansible%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</guid>
+      <description>基本连接命令 1 2 ansible -i ./hosts --connection=local local -m ping ansible -i ./hosts remote -v -m ping -u root --private-key=~/.ssh/id_rsa 角色相关 1 2 3 4 5 ansible-galaxy init roles/mysql # 安装别人写好的roles：(galaxy.ansible.com</description>
+    </item>
+    
+  </channel>
+</rss>

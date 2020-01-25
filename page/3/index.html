@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>文刀白水</title>
+  <title>人间忽晚 山河已秋</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -27,8 +27,8 @@
 
 
 <link rel="canonical" href="http://blog.nbgg.xyz/" />
-  <link href="http://blog.nbgg.xyz/index.xml" rel="alternate" type="application/rss+xml" title="文刀白水" />
-  <link href="http://blog.nbgg.xyz/index.xml" rel="feed" type="application/rss+xml" title="文刀白水" />
+  <link href="http://blog.nbgg.xyz/index.xml" rel="alternate" type="application/rss+xml" title="人间忽晚 山河已秋" />
+  <link href="http://blog.nbgg.xyz/index.xml" rel="feed" type="application/rss+xml" title="人间忽晚 山河已秋" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,14 +41,14 @@
 <link rel="stylesheet" href="/css/reset-even.css">
 
 
-<meta property="og:title" content="文刀白水" />
+<meta property="og:title" content="人间忽晚 山河已秋" />
 <meta property="og:description" content="Hugo theme even example site." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://blog.nbgg.xyz/" />
 <meta property="og:updated_time" content="2020-01-17T11:51:28+08:00" />
-<meta itemprop="name" content="文刀白水">
+<meta itemprop="name" content="人间忽晚 山河已秋">
 <meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="文刀白水"/>
+<meta name="twitter:title" content="人间忽晚 山河已秋"/>
 <meta name="twitter:description" content="Hugo theme even example site."/>
 
 <!--[if lte IE 9]>
@@ -64,7 +64,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">文刀白水</a>
+    <a href="/" class="logo">人间忽晚 山河已秋</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -74,7 +74,9 @@
 </div>
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
-    <a href="/">
+    <a href="/about/">
+        <li class="mobile-menu-item"></li>
+      </a><a href="/">
         <li class="mobile-menu-item">首页</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">归档</li>
@@ -90,12 +92,14 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">文刀白水</a>
+  <a href="/" class="logo">人间忽晚 山河已秋</a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
     <li class="menu-item">
+        <a class="menu-item-link" href="/about/"></a>
+      </li><li class="menu-item">
         <a class="menu-item-link" href="/">首页</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">归档</a>
@@ -116,109 +120,115 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/WEB%E5%BC%80%E5%8F%91/mybatis/%E6%97%A0%E6%A0%87%E9%A2%98Markdown/"></a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/WEB%E5%BC%80%E5%8F%91/java/JVM%E5%AD%A6%E4%B9%A0/">JVM学习</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 0001-01-01 </span>
-      
-        <span class="more-meta"> 68 words </span>
-        <span class="more-meta"> 1 min read </span>
+      <span class="post-time"> 2020-01-17 </span>
+      <div class="post-category">
+          <a href="/categories/java/"> java </a>
+          </div>
+        <span class="more-meta"> 2841 words </span>
+        <span class="more-meta"> 6 mins read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      整合配置的坑 读取资源文件问题  一般在applicationContext.xml文件里写引入properties文件的代码  1 2 3 4 5 6 7 8  &lt;bean id=&#34;propertyConfigurer&#34; class=&#34;org.springframework.beans.factory.config.PropertyPlaceholderConfigurer&#34;&gt; &lt;property name=&#34;locations&#34;&gt; &lt;list&gt; &lt;value&gt;classpath:config/*.properties&lt;/value&gt; &lt;!--要是有多个配置文件，只需在这里继续添加即可 --&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt;     通常引入的多个属性文件，如果属性文件里有重名的，则只会读其中一个，个人觉得是最后读取的那个（覆盖）。所以在属性文件中尽量避免重名。
-  在没有spring的时候，要关联mybatis的xml的mapper文件需要配置mybatis-config.xml文件。引入spring后，通常写在application.xml中
-  1 2 3 4 5 6  &lt;!-- 配置Mybatis的文件 ，mapperLocations配置**Mapper.xml文件位置，configLocation配置mybatis-config文件位置 --&gt; &lt;bean id=&#34;sqlSessionFactory&#34; class=&#34;org.mybatis.spring.SqlSessionFactoryBean&#34;&gt; &lt;property name=&#34;dataSource&#34; ref=&#34;dataSource&#34; /&gt; &lt;property name=&#34;mapperLocations&#34; value=&#34;classpath*:lq/justtest/mapper/**/*.xml&#34; /&gt; //&lt;property name=&#34;configLocation&#34; value=&#34;classpath:mybatis-config.xml&#34; /&gt; &lt;/bean&gt;    如果上述没有配置mapperLocations属性，则没有关联到mapper文件，有没有办法呢？若采用的是接口编程方式，声明了mapper文件对应的接口后，可以通过接口自动找到对应同名的mapper文件，这是源代码中自动做的。  若采取了接口编程，下面的声明一定要，不然dao层调用mapper文件对应接口的时候，就会注入错误。 格外注意，若没有声明xml的mapper文件，只声明了接口位置，那么接口名和xml的mapper文件名要相同，不然报错。    1 2 3 4  &lt;!
+      1、Java程序执行的过程 方法区存放类信息，常量，静态变量，方法信息等。 栈记录了线程的方法调用。有新方法调用，则栈会增加一个存储单元，即帧(
     </div>
     <div class="read-more">
-      <a href="/post/WEB%E5%BC%80%E5%8F%91/mybatis/%E6%97%A0%E6%A0%87%E9%A2%98Markdown/" class="read-more-link">Read more...</a>
+      <a href="/post/WEB%E5%BC%80%E5%8F%91/java/JVM%E5%AD%A6%E4%B9%A0/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E6%9D%82%E8%AE%B0/shadowsocks/"></a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E7%B3%BB%E7%BB%9F/Mac/mac%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">mac常用命令</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 0001-01-01 </span>
-      
-        <span class="more-meta"> 92 words </span>
+      <span class="post-time"> 2020-01-17 </span>
+      <div class="post-category">
+          <a href="/categories/mac/"> mac </a>
+          </div>
+        <span class="more-meta"> 220 words </span>
         <span class="more-meta"> 1 min read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29  { &#34;server&#34;:&#34;0.0.0.0&#34;, &#34;server_ipv6&#34;:&#34;::&#34;, &#34;local_address&#34;:&#34;127.0.0.1&#34;, &#34;local_port&#34;:1080, &#34;port_password&#34;:{ #纯 SS 不带混淆 端口25 密码为123456. &#34;25&#34;:&#34;123456&#34;, #端口443，密码123456 ，protocol选择auth_chain_a。obfs选择tls1.2_ticket_auth，具体插件的介绍如下参考资料中 &#34;443&#34;:{&#34;protocol&#34;:&#34;auth_chain_a&#34;, &#34;password&#34;:&#34;123456&#34;, &#34;obfs&#34;:&#34;tls1.2_ticket_auth&#34;, &#34;obfs_param&#34;:&#34;&#34;}, #注意无论怎么变化，最后一个端口设置，不带逗号！ &#34;3389&#34;:{&#34;protocol&#34;:&#34;auth_aes128_md5&#34;, &#34;password&#34;:&#34;123456&#34;, &#34;obfs&#34;:&#34;tls1.2_ticket_auth&#34;, &#34;obfs_param&#34;:&#34;&#34;}#此处没有逗号！ }, &#34;timeout&#34;:400, #默认全局的加密方式，即上边各个端口的默认加密方式。一般为aes-256-cfb，	此处，选择为chacha20，移动设备性能较好。 &#34;method&#34;:&#34;chacha20&#34;, #protocol.协议定义插件的默认值，origin即使用原版SS协议，不混淆。即上面端口配置中，你没有设置 protocol 和 obfs 情况下，使用的默认值。 &#34;protocol&#34;: &#34;origin&#34;, &#34;protocol_param&#34;: &#34;&#34;, #protocol.协议定义插件的默认值，plain即使用原协议，不混淆。 &#34;obfs&#34;: &#34;plain&#34;, &#34;obfs_param&#34;: &#34;&#34;, &#34;redirect&#34;: &#34;&#34;, &#34;dns_ipv6&#34;: true, #TCP FAST OPEN ，打开 &#34;fast_open&#34;: true, &#34;workers&#34;: 1 }   启动  /etc/init.
+      gem ruby下的gem，nodejs下的npm 常用 命令 说明 gem sources -l 查看gem源地址 gem sources &ndash;remove https://rubygems.org/ 移除默认源 gem sources -a https://gems.ruby-china.org/ 添加ruby-china的源 nginx 常用 命
     </div>
     <div class="read-more">
-      <a href="/post/%E6%9D%82%E8%AE%B0/shadowsocks/" class="read-more-link">Read more...</a>
+      <a href="/post/%E7%B3%BB%E7%BB%9F/Mac/mac%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%B3%BB%E7%BB%9F/Linux/ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8/"></a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/WEB%E5%BC%80%E5%8F%91/mybatis/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">mybatis学习笔记</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 0001-01-01 </span>
-      
-        <span class="more-meta"> 103 words </span>
+      <span class="post-time"> 2020-01-17 </span>
+      <div class="post-category">
+          <a href="/categories/mybatis/"> mybatis </a>
+          </div>
+        <span class="more-meta"> 448 words </span>
         <span class="more-meta"> 1 min read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      apt安装的mysql    项目 说明     数据库目录 /var/lib/mysql/   配置文件 /usr/share/mysql（命令及配置文件） ，/etc/mysql（如：my.cnf）   相关命令 /usr/bin(mysqladmin mysqldump等命令) 和/usr/sbin   启动脚本 /etc/init.d/mysql   启动 sudo service mysql start   连接数据库 mysql -h 127.0.0.1 -P 3306 -uroot -p123456    卸载mysql 1 2 3 4 5 6 7 8  #首先使用以下命令删除MySQL服务器： sudo apt-get remove mysql-server #然后，删除随MySQL服务器自动安装的任何其他软件： sudo apt-get autoremove #卸载其他组件： sudo apt-get remove &lt;&lt;package-name&gt;&gt; #查看从MySQL APT存储库安装的软件包列表： dpkg -l | grep mysql | grep ii   卸载nginx 1 2 3 4  sudo apt-get remove nginx-* sudo apt-get purge nginx-* # 删除旧文件目录 sudo find /etc -name &#34;*nginx*&#34; |xargs rm -rf   卸载php7.
+      2016.7.19 SqlSession的作用 向SQL语句传入参数 执行SQL语句 获取执行SQL语句的结果 事务的控制 2016.7.21 jdbcType 数据表支持的类型列表。这个属性只在ins
     </div>
     <div class="read-more">
-      <a href="/post/%E7%B3%BB%E7%BB%9F/Linux/ubuntu%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="read-more-link">Read more...</a>
+      <a href="/post/WEB%E5%BC%80%E5%8F%91/mybatis/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%B3%BB%E7%BB%9F/Linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"></a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/WEB%E5%BC%80%E5%8F%91/mybatis/mybatis%E9%85%8D%E7%BD%AE/">mybatis配置</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 0001-01-01 </span>
-      
-        <span class="more-meta"> 242 words </span>
+      <span class="post-time"> 2020-01-17 </span>
+      <div class="post-category">
+          <a href="/categories/mybatis/"> mybatis </a>
+          </div>
+        <span class="more-meta"> 693 words </span>
         <span class="more-meta"> 2 mins read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      彻底卸载mysql 1 2 3 4 5 6 7 8  sudo apt-get autoremove --purge mysql-server-5.7 Y sudo apt-get remove mysql-common sudo rm -rf /etc/mysql/ /var/lib/mysql #很重要 #清理残留数据 dpkg -l |grep ^rc|awk &#39;{print $2}&#39; |sudo xargs dpkg -P sudo apt autoremove sudo apt autoreclean   复制数据库表结构
-1 2  create table a like b show create table a   安装ansible
-1 2 3  sudo apt-add-repository ppa:ansible/ansible sudo apt-get update sudo apt-get install ansible   完全卸载nvidia
+      整合配置的坑 读取资源文件问题 一般在applicationContext.xml文件里写引入properties文件的代码 1 2 3 4 5 6 7 8 &lt;bean id=&#34;propertyConfigurer&#34;
     </div>
     <div class="read-more">
-      <a href="/post/%E7%B3%BB%E7%BB%9F/Linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="read-more-link">Read more...</a>
+      <a href="/post/WEB%E5%BC%80%E5%8F%91/mybatis/mybatis%E9%85%8D%E7%BD%AE/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E7%B3%BB%E7%BB%9F/Mac/Intellij%E9%85%8D%E7%BD%AE/"></a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/WEB%E5%BC%80%E5%8F%91/mysql/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">mysql常用命令</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 0001-01-01 </span>
-      
-        <span class="more-meta"> 120 words </span>
+      <span class="post-time"> 2020-01-17 </span>
+      <div class="post-category">
+          <a href="/categories/mysql/"> mysql </a>
+          </div>
+        <span class="more-meta"> 47 words </span>
         <span class="more-meta"> 1 min read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      模板相关 Code Templates  File Header  1 2 3 4 5  /** @(#)${NAME}.JAVA, ${YEAR}年${MONTH}月${DAY}日. * * Copyright ${YEAR} Netease, Inc. All rights reserved. * NETEASE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms. */    Files  1 2 3 4 5  /** * ${DESC} * * @author 刘泉 ${YEAR}年${MONTH}月${DAY}日 ${TIME} */   Live Templates  at，作者信息，主要作用备注里  date(&ldquo;yyyy年MM月dd日 HH:mm&rdquo;)    1  @author 刘泉 $date$    mc，简化的方法注释模板  1 2 3 4 5  /** * * * @author 刘泉 $date$ */    main  1 2 3  public static void main(String[] args){ $END$ }    de，debug日志模板  methodName() groovyScript(&quot;_1.
+      2016.8.21 查看和更改字符集语句 查找MySQL的cnf文件的位置 find / -iname &lsquo;*.cnf&rsquo; -print 查看字符集设置 show variables like &lsquo;collation_%'; show variables like &lsquo;character_set_%';
     </div>
     <div class="read-more">
-      <a href="/post/%E7%B3%BB%E7%BB%9F/Mac/Intellij%E9%85%8D%E7%BD%AE/" class="read-more-link">Read more...</a>
+      <a href="/post/WEB%E5%BC%80%E5%8F%91/mysql/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
@@ -243,25 +253,15 @@
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="417650332@qq.com" class="iconfont icon-email" title="email"></a>
       <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
       <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
       <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="http://www.cnblogs.com/stevexu" class="iconfont icon-cnblogs" title="cnblogs"></a>
-      <a href="mailto:stevexugc@gmail.com" class="iconfont icon-email" title="email"></a>
       <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
-      <a href="https://juejin.im/user/59aeb829f265da249960595a" class="iconfont icon-juejin" title="juejin"></a>
-      <a href="https://www.v2ex.com/member/stevexu" class="iconfont icon-v2ex" title="v2ex"></a>
       <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
       <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
       <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
-      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
   <a href="http://blog.nbgg.xyz/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 

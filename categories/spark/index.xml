@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spark on 人间忽晚 山河已秋</title>
+    <link>http://blog.nbgg.xyz/categories/spark/</link>
+    <description>Recent content in spark on 人间忽晚 山河已秋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 17 Jan 2020 11:51:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.nbgg.xyz/categories/spark/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>hadoop和spark环境搭建</title>
+      <link>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spark/hadoop%E5%92%8Cspark%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Fri, 17 Jan 2020 11:51:28 +0800</pubDate>
+      
+      <guid>http://blog.nbgg.xyz/post/WEB%E5%BC%80%E5%8F%91/spark/hadoop%E5%92%8Cspark%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description>~/.bashrc配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 export PATH=$PATH:$HOME/.pyenv/bin eval &amp;#34;$(pyenv init -)&amp;#34; eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34; source ~/.myshell export JAVA_HOME=/home/liuquan/tools/jdk1.8.0_151 export JRE_HOME=/home/liuquan/tools/jdk1.8.0_151/jre export CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/ export SPARK_HOME=/home/liuquan/tools/spark-2.2.0-bin export PATH=$PATH:$JAVA_HOME/bin:$JRE/bin:$SPARK_HOME export HADOOP_HOME=/home/liuquan/tools/hadoop-2.7.4 export HADOOP_INSTALL=$HADOOP_HOME export HADOOP_MAPRED_HOME=$HADOOP_HOME export HADOOP_COMMON_HOME=$HADOOP_HOME export HADOOP_HDFS_HOME=$HADOOP_HOME export YARN_HOME=$HADOOP_HOME export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/ export HADOOP_OPTS=&amp;#34;-Djava.library.path=$HADOOP_HOME/&amp;#34;</description>
+    </item>
+    
+  </channel>
+</rss>
